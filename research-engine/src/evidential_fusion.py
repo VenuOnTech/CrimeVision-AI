@@ -120,7 +120,7 @@ class EvidentialOptimalTransport(nn.Module):
 
         if ot is not None:
             # Python Optimal Transport solver
-            P_plan = ot.sinkhorn(a_np, b_np, C_np, reg=self.epsilon)
+            P_plan = ot.sinkhorn(a_np, b_np, C_np, reg=self.epsilon, numItermax=5000)
         else:
             # Fallback PyTorch Sinkhorn Implementation
             K_mat = torch.exp(-C_tilde / self.epsilon)
@@ -143,5 +143,5 @@ class EvidentialOptimalTransport(nn.Module):
         P_plan = self.solve_sinkhorn(C_tilde)
         
         # Overall Contradiction Score
-        contradiction_score = torch.sum(torch.tensor(P_plan) * C_tilde.cpu())
+        contradiction_score = torch.sum(torch.as_tensor(P_plan) * C_tilde.cpu())
         return contradiction_score, P_plan, C_tilde
