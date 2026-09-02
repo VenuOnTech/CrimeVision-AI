@@ -1,7 +1,7 @@
 # CrimeVision AI
 > A Multimodal Artificial Intelligence Framework for Intelligent Crime Scene Reconstruction, Uncertainty-Aware Evidence Fusion, and Investigation Support
 
-[![Python](https://shields.io)](https://python.org)
+[![Python](https://shields.io)](/static/img/python-logo.png)
 [![FastAPI](https://shields.io)](https://tiangolo.com)
 [![Framework](https://shields.io)]()
 [![License](https://shields.io)](LICENSE)
