@@ -6,6 +6,8 @@ import tempfile
 import os
 import PyPDF2
 import docx
+import shutil
+from pathlib import Path
 from PIL import Image
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -61,43 +63,32 @@ def sinkhorn_knopp(C, epsilon=0.1, iterations=10):
         v = 1.0 / (K.T @ u)
     return torch.diag(u) @ K @ torch.diag(v)
 
-def extract_sampled_frames(video_bytes, sample_rate_fps=1):
+def extract_sampled_frames(video_path, sample_rate_fps=1):
     """
-    INDUSTRY FIX: Scans the entire video and extracts 1 frame per second.
-    Zero blind spots for criminal movement.
+    INDUSTRY FIX (Disk Streaming): Reads the video directly from the hard drive.
+    No more RAM limits or TempFiles!
     """
-    temp_video_path = ""
-    try:
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as temp_video:
-            temp_video.write(video_bytes)
-            temp_video_path = temp_video.name
+    cap = cv2.VideoCapture(video_path)
+    video_fps = cap.get(cv2.CAP_PROP_FPS)
+    if video_fps <= 0: video_fps = 30
+    
+    frame_interval = int(video_fps / sample_rate_fps)
+    frames = []
+    
+    frame_idx = 0
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
         
-        cap = cv2.VideoCapture(temp_video_path)
-        video_fps = cap.get(cv2.CAP_PROP_FPS)
-        if video_fps <= 0: video_fps = 30
-        
-        # Calculate how many frames to skip to get exactly 1 frame per second
-        frame_interval = int(video_fps / sample_rate_fps)
-        frames = []
-        
-        frame_idx = 0
-        while True:
-            ret, frame = cap.read()
-            if not ret:
-                break
+        if frame_idx % frame_interval == 0:
+            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            frames.append(Image.fromarray(frame_rgb))
             
-            # Grab frame if it lands on our 1-second interval
-            if frame_idx % frame_interval == 0:
-                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                frames.append(Image.fromarray(frame_rgb))
-                
-            frame_idx += 1
-            
-        cap.release()
-        return frames
-    finally:
-        if os.path.exists(temp_video_path):
-            os.remove(temp_video_path)
+        frame_idx += 1
+        
+    cap.release()
+    return frames
 
 def generate_graphrag_audit_report(case_id, new_cost, new_statement, new_filename, kg_engine):
     print(f"🧠 Querying Neo4j for Case {case_id} history...")
@@ -130,52 +121,59 @@ async def analyze_evidence(
     statement_text: str = Form(None), 
     statement_file: UploadFile = File(None)
 ):
+    # 1. ENTERPRISE DISK STREAMING (Bypass RAM)
+    # Create a local directory to hold the physical files
+    UPLOAD_DIR = Path("C:/Capstone-Project/CrimeVision-AI/research-engine/local_evidence_vault")
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    
     final_statement = ""
     
-    # --- UPGRADED TEXT/DOCUMENT PARSER ---
+    # Process text/document by saving it to disk first
     if statement_file:
+        statement_path = UPLOAD_DIR / statement_file.filename
+        with open(statement_path, "wb") as buffer:
+            shutil.copyfileobj(statement_file.file, buffer) # Streams in tiny 1MB chunks
+            
         file_ext = statement_file.filename.lower()
-        file_bytes = await statement_file.read()
-        
         if file_ext.endswith(".txt"):
-            final_statement = file_bytes.decode('utf-8')
-            
+            with open(statement_path, "r", encoding="utf-8") as f:
+                final_statement = f.read()
         elif file_ext.endswith(".pdf"):
-            pdf_reader = PyPDF2.PdfReader(io.BytesIO(file_bytes))
+            pdf_reader = PyPDF2.PdfReader(str(statement_path))
             final_statement = " ".join([page.extract_text() for page in pdf_reader.pages if page.extract_text()])
-            
         elif file_ext.endswith(".docx"):
-            doc = docx.Document(io.BytesIO(file_bytes))
+            doc = docx.Document(str(statement_path))
             final_statement = " ".join([p.text for p in doc.paragraphs])
-            
         else:
-            return {"error": f"Unsupported document format: {file_ext}. Use .txt, .pdf, or .docx"}
+            return {"error": f"Unsupported format: {file_ext}"}
             
     elif statement_text:
         final_statement = statement_text
     else:
-        return {"error": "You must provide a typed statement or a .txt, .pdf, or .docx file!"}
+        return {"error": "Provide a statement!"}
 
-    # --- UPGRADED MEDIA PARSER ---
-    ev_ext = evidence_file.filename.lower()
-    file_bytes = await evidence_file.read()
-    
-    # Supported Video Formats (Now includes AVI, MOV, MKV)
-    if ev_ext.endswith(('.mp4', '.avi', '.mov', '.mkv')):
-        images = extract_sampled_frames(file_bytes, sample_rate_fps=1)
-        if not images:
-            return {"error": f"Failed to extract frames from {ev_ext} video."}
-            
-    # Supported Image Formats
-    elif ev_ext.endswith(('.jpg', '.jpeg', '.png')):
-        images = [Image.open(io.BytesIO(file_bytes)).convert("RGB")]
+    # Process Media by saving it to disk first
+    evidence_path = UPLOAD_DIR / evidence_file.filename
+    with open(evidence_path, "wb") as buffer:
+        shutil.copyfileobj(evidence_file.file, buffer) # Streams heavy video directly to C:\ drive
         
+    ev_ext = evidence_file.filename.lower()
+    
+    # 2. Extract Data directly from the Hard Drive
+    if ev_ext.endswith(('.mp4', '.avi', '.mov', '.mkv')):
+        # Notice we pass the file PATH now, not the raw bytes!
+        images = extract_sampled_frames(str(evidence_path), sample_rate_fps=1)
+        if not images:
+            return {"error": f"Failed to extract frames from {ev_ext}"}
+            
+    elif ev_ext.endswith(('.jpg', '.jpeg', '.png')):
+        images = [Image.open(str(evidence_path)).convert("RGB")]
     else:
-        return {"error": f"Unsupported media format: {ev_ext}. Use MP4, AVI, MOV, MKV, JPG, or PNG."}
+        return {"error": f"Unsupported media: {ev_ext}"}
     
-    print(f"🔍 AI Scanning {len(images)} frames across the timeline for {ev_ext}...")
+    print(f"🔍 AI Scanning {len(images)} frames from secure local vault...")
     
-    # 2. PyTorch Math Engine - Find the Best Matching Frame
+    # ... (The rest of the PyTorch math and Neo4j graph saving remains EXACTLY the same from here down!) ...
     text_embeddings = sbert_model.encode([final_statement], convert_to_tensor=True).clone()
     best_cost = float('inf')
     
@@ -202,19 +200,12 @@ async def analyze_evidence(
                 
     final_cost = best_cost
 
-    # 3. Save NEW data to Neo4j
     try:
-        kg_engine.create_evidential_link(
-            case_id=case_id,
-            evidence_filename=evidence_file.filename,
-            statement_text=final_statement,
-            sinkhorn_cost=final_cost
-        )
+        kg_engine.create_evidential_link(case_id, evidence_file.filename, final_statement, final_cost)
         graph_status = "Saved to Neo4j Successfully"
     except Exception as e:
         graph_status = f"Neo4j Error: {str(e)}"
 
-    # 4. GraphRAG AI Engine
     try:
         audit_report = generate_graphrag_audit_report(case_id, round(final_cost, 4), final_statement, evidence_file.filename, kg_engine)
     except Exception as e:
