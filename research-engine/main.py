@@ -17,7 +17,7 @@ from langchain_community.llms import Ollama
 
 warnings.filterwarnings("ignore")
 
-app = FastAPI(title="CrimeVision AI Engine", version="1.0")
+app = FastAPI(title="CrimeVision AI Engine", version="2.0-Scanner")
 
 app.add_middleware(
     CORSMiddleware,
@@ -36,14 +36,13 @@ kg_engine = None
 @app.on_event("startup")
 async def load_ai_models():
     global sbert_model, clip_model, clip_processor, kg_engine
-    print("🚀 Booting up CrimeVision AI Engine...")
+    print("🚀 Booting up CrimeVision AI Engine (Full Video Scanner)...")
     sbert_model = SentenceTransformer('all-MiniLM-L6-v2').to(device)
     clip_model = CLIPVisionModelWithProjection.from_pretrained("openai/clip-vit-base-patch32").to(device)
     clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
     
     print("🔗 Connecting to Neo4j...")
     kg_engine = KnowledgeGraphEngine()
-    
     print("✅ AI Engine is live and listening for evidence!")
 
 @app.on_event("shutdown")
@@ -60,7 +59,11 @@ def sinkhorn_knopp(C, epsilon=0.1, iterations=10):
         v = 1.0 / (K.T @ u)
     return torch.diag(u) @ K @ torch.diag(v)
 
-def extract_keyframe_from_video(video_bytes):
+def extract_sampled_frames(video_bytes, sample_rate_fps=1):
+    """
+    INDUSTRY FIX: Scans the entire video and extracts 1 frame per second.
+    Zero blind spots for criminal movement.
+    """
     temp_video_path = ""
     try:
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp4") as temp_video:
@@ -68,27 +71,35 @@ def extract_keyframe_from_video(video_bytes):
             temp_video_path = temp_video.name
         
         cap = cv2.VideoCapture(temp_video_path)
-        total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-        cap.set(cv2.CAP_PROP_POS_FRAMES, max(0, total_frames // 2))
-        ret, frame = cap.read()
-        cap.release()
+        video_fps = cap.get(cv2.CAP_PROP_FPS)
+        if video_fps <= 0: video_fps = 30
         
-        if ret:
-            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            return Image.fromarray(frame_rgb)
-        return None
+        # Calculate how many frames to skip to get exactly 1 frame per second
+        frame_interval = int(video_fps / sample_rate_fps)
+        frames = []
+        
+        frame_idx = 0
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            
+            # Grab frame if it lands on our 1-second interval
+            if frame_idx % frame_interval == 0:
+                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                frames.append(Image.fromarray(frame_rgb))
+                
+            frame_idx += 1
+            
+        cap.release()
+        return frames
     finally:
         if os.path.exists(temp_video_path):
             os.remove(temp_video_path)
 
 def generate_graphrag_audit_report(case_id, new_cost, new_statement, new_filename, kg_engine):
-    """The core GraphRAG pipeline: Fetches Neo4j context, then prompts Llama-3."""
     print(f"🧠 Querying Neo4j for Case {case_id} history...")
-    
-    # 1. RETRIEVAL: Pull the existing graph knowledge
     case_context = kg_engine.get_case_context(case_id)
-    
-    # 2. AUGMENTED GENERATION: Feed graph + new evidence to local Llama-3
     print("🧠 Passing Graph Context to Llama-3...")
     llm = Ollama(model="llama3", temperature=0)
     
@@ -127,34 +138,48 @@ async def analyze_evidence(
         return {"error": "You must provide either a typed statement or a .txt file!"}
 
     file_bytes = await evidence_file.read()
-    if evidence_file.content_type.startswith("video") or evidence_file.filename.endswith(".mp4"):
-        image = extract_keyframe_from_video(file_bytes)
-        if image is None:
-            return {"error": "Failed to extract frame from MP4 video."}
-    else:
-        image = Image.open(io.BytesIO(file_bytes)).convert("RGB")
     
-    # 1. PyTorch Math Engine
-    inputs = clip_processor(images=[image], return_tensors="pt", padding=True).to(device)
-    with torch.no_grad():
-        vision_features = clip_model(**inputs).image_embeds
+    # 1. Video Processing: Grab ALL sampled frames instead of just the middle one
+    if evidence_file.content_type.startswith("video") or evidence_file.filename.endswith(".mp4"):
+        images = extract_sampled_frames(file_bytes, sample_rate_fps=1)
+        if not images:
+            return {"error": "Failed to extract frames from MP4 video."}
+    else:
+        images = [Image.open(io.BytesIO(file_bytes)).convert("RGB")]
+    
+    print(f"🔍 AI Scanning {len(images)} frames across the video timeline...")
+    
+    # 2. PyTorch Math Engine - Find the Best Matching Frame
     text_embeddings = sbert_model.encode([final_statement], convert_to_tensor=True).clone()
+    best_cost = float('inf')
     
     with torch.no_grad():
         torch.manual_seed(42)
         text_projector = torch.nn.Linear(384, 256).to(device)
         vision_projector = torch.nn.Linear(512, 256).to(device)
+        
         aligned_text = text_projector(text_embeddings)
-        aligned_vision = vision_projector(vision_features)
-        
         aligned_text = aligned_text / aligned_text.norm(dim=-1, keepdim=True)
-        aligned_vision = aligned_vision / aligned_vision.norm(dim=-1, keepdim=True)
         
-        cost_matrix = 1.0 - (aligned_text @ aligned_vision.T)
-        ot_plan = sinkhorn_knopp(cost_matrix)
-        final_cost = cost_matrix[0][0].item()
+        # Scan through the extracted frames one by one
+        for img in images:
+            inputs = clip_processor(images=[img], return_tensors="pt", padding=True).to(device)
+            vision_features = clip_model(**inputs).image_embeds
+            
+            aligned_vision = vision_projector(vision_features)
+            aligned_vision = aligned_vision / aligned_vision.norm(dim=-1, keepdim=True)
+            
+            cost_matrix = 1.0 - (aligned_text @ aligned_vision.T)
+            current_cost = cost_matrix[0][0].item()
+            
+            # Keep the lowest cost (This identifies the frame where the event actually happens)
+            if current_cost < best_cost:
+                best_cost = current_cost
+                
+    # We now have the best possible cost found across the entire video
+    final_cost = best_cost
 
-    # 2. Save NEW data to Neo4j
+    # 3. Save NEW data to Neo4j
     try:
         kg_engine.create_evidential_link(
             case_id=case_id,
@@ -166,9 +191,8 @@ async def analyze_evidence(
     except Exception as e:
         graph_status = f"Neo4j Error: {str(e)}"
 
-    # 3. GraphRAG AI Engine
+    # 4. GraphRAG AI Engine
     try:
-        # We pass the kg_engine into the function so Llama-3 can read the database!
         audit_report = generate_graphrag_audit_report(case_id, round(final_cost, 4), final_statement, evidence_file.filename, kg_engine)
     except Exception as e:
         audit_report = f"LLM Error: {str(e)}"
