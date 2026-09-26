@@ -4,6 +4,8 @@ import io
 import cv2
 import tempfile
 import os
+import PyPDF2
+import docx
 from PIL import Image
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,7 +19,7 @@ from langchain_community.llms import Ollama
 
 warnings.filterwarnings("ignore")
 
-app = FastAPI(title="CrimeVision AI Engine", version="2.0-Scanner")
+app = FastAPI(title="CrimeVision AI Engine", version="2.0-Production-Ready")
 
 app.add_middleware(
     CORSMiddleware,
@@ -36,7 +38,7 @@ kg_engine = None
 @app.on_event("startup")
 async def load_ai_models():
     global sbert_model, clip_model, clip_processor, kg_engine
-    print("🚀 Booting up CrimeVision AI Engine (Full Video Scanner)...")
+    print("🚀 Booting up CrimeVision AI Engine (Full Video Scanner & Multi-format parser)...")
     sbert_model = SentenceTransformer('all-MiniLM-L6-v2').to(device)
     clip_model = CLIPVisionModelWithProjection.from_pretrained("openai/clip-vit-base-patch32").to(device)
     clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
@@ -129,25 +131,49 @@ async def analyze_evidence(
     statement_file: UploadFile = File(None)
 ):
     final_statement = ""
-    if statement_file and statement_file.filename.endswith(".txt"):
-        txt_bytes = await statement_file.read()
-        final_statement = txt_bytes.decode('utf-8')
+    
+    # --- UPGRADED TEXT/DOCUMENT PARSER ---
+    if statement_file:
+        file_ext = statement_file.filename.lower()
+        file_bytes = await statement_file.read()
+        
+        if file_ext.endswith(".txt"):
+            final_statement = file_bytes.decode('utf-8')
+            
+        elif file_ext.endswith(".pdf"):
+            pdf_reader = PyPDF2.PdfReader(io.BytesIO(file_bytes))
+            final_statement = " ".join([page.extract_text() for page in pdf_reader.pages if page.extract_text()])
+            
+        elif file_ext.endswith(".docx"):
+            doc = docx.Document(io.BytesIO(file_bytes))
+            final_statement = " ".join([p.text for p in doc.paragraphs])
+            
+        else:
+            return {"error": f"Unsupported document format: {file_ext}. Use .txt, .pdf, or .docx"}
+            
     elif statement_text:
         final_statement = statement_text
     else:
-        return {"error": "You must provide either a typed statement or a .txt file!"}
+        return {"error": "You must provide a typed statement or a .txt, .pdf, or .docx file!"}
 
+    # --- UPGRADED MEDIA PARSER ---
+    ev_ext = evidence_file.filename.lower()
     file_bytes = await evidence_file.read()
     
-    # 1. Video Processing: Grab ALL sampled frames instead of just the middle one
-    if evidence_file.content_type.startswith("video") or evidence_file.filename.endswith(".mp4"):
+    # Supported Video Formats (Now includes AVI, MOV, MKV)
+    if ev_ext.endswith(('.mp4', '.avi', '.mov', '.mkv')):
         images = extract_sampled_frames(file_bytes, sample_rate_fps=1)
         if not images:
-            return {"error": "Failed to extract frames from MP4 video."}
-    else:
+            return {"error": f"Failed to extract frames from {ev_ext} video."}
+            
+    # Supported Image Formats
+    elif ev_ext.endswith(('.jpg', '.jpeg', '.png')):
         images = [Image.open(io.BytesIO(file_bytes)).convert("RGB")]
+        
+    else:
+        return {"error": f"Unsupported media format: {ev_ext}. Use MP4, AVI, MOV, MKV, JPG, or PNG."}
     
-    print(f"🔍 AI Scanning {len(images)} frames across the video timeline...")
+    print(f"🔍 AI Scanning {len(images)} frames across the timeline for {ev_ext}...")
     
     # 2. PyTorch Math Engine - Find the Best Matching Frame
     text_embeddings = sbert_model.encode([final_statement], convert_to_tensor=True).clone()
@@ -161,7 +187,6 @@ async def analyze_evidence(
         aligned_text = text_projector(text_embeddings)
         aligned_text = aligned_text / aligned_text.norm(dim=-1, keepdim=True)
         
-        # Scan through the extracted frames one by one
         for img in images:
             inputs = clip_processor(images=[img], return_tensors="pt", padding=True).to(device)
             vision_features = clip_model(**inputs).image_embeds
@@ -172,11 +197,9 @@ async def analyze_evidence(
             cost_matrix = 1.0 - (aligned_text @ aligned_vision.T)
             current_cost = cost_matrix[0][0].item()
             
-            # Keep the lowest cost (This identifies the frame where the event actually happens)
             if current_cost < best_cost:
                 best_cost = current_cost
                 
-    # We now have the best possible cost found across the entire video
     final_cost = best_cost
 
     # 3. Save NEW data to Neo4j
