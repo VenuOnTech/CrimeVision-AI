@@ -1,0 +1,38 @@
+{
+  "clean": {
+    "n": 20,
+    "discarded_mass_mean": 0.7085811792561785,
+    "discarded_mass_stdev": 0.17916342276479683,
+    "discarded_mass_min": 0.0,
+    "discarded_mass_max": 0.9169309887404331,
+    "sinkhorn_mean": 0.2202197150398008,
+    "sinkhorn_stdev": 0.14477717605652493
+  },
+  "mild": {
+    "n": 20,
+    "discarded_mass_mean": 0.6553893763237955,
+    "discarded_mass_stdev": 0.16550459153096056,
+    "discarded_mass_min": 0.0,
+    "discarded_mass_max": 0.8594448422661244,
+    "sinkhorn_mean": 0.2533332473033894,
+    "sinkhorn_stdev": 0.13502248073852785
+  },
+  "moderate": {
+    "n": 20,
+    "discarded_mass_mean": 0.5358106964170487,
+    "discarded_mass_stdev": 0.16548228547245786,
+    "discarded_mass_min": 0.0,
+    "discarded_mass_max": 0.9196304011358678,
+    "sinkhorn_mean": 0.3348099075789527,
+    "sinkhorn_stdev": 0.13282619682572464
+  },
+  "heavy": {
+    "n": 20,
+    "discarded_mass_mean": 0.4155759045908765,
+    "discarded_mass_stdev": 0.1546221575742144,
+    "discarded_mass_min": 0.0,
+    "discarded_mass_max": 0.8413473373601312,
+    "sinkhorn_mean": 0.419134149348027,
+    "sinkhorn_stdev": 0.12116993216245865
+  }
+}

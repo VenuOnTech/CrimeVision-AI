@@ -1,76 +1,80 @@
 import React, { useState } from 'react';
-import { Layers, Sparkles, HelpCircle, Eye, UploadCloud } from 'lucide-react';
+import { Layers, Info } from 'lucide-react';
 
-export default function Heatmap({ data = [], tokens = [], patches = [], visualUncertainty, evidenceName, cost }) {
+const VALID_ASSESSMENTS = new Set(['MATCH', 'CONTRADICTION', 'INDETERMINATE']);
+
+const STATUS_STYLES = {
+  MATCH: 'bg-emerald-950/80 text-emerald-300 border-emerald-700',
+  CONTRADICTION: 'bg-red-950/80 text-red-300 border-red-700',
+  INDETERMINATE: 'bg-slate-900 text-slate-300 border-slate-600',
+};
+
+export default function Heatmap({
+  data = [],
+  tokens = [],
+  patches = [],
+  assessmentStatus = 'INDETERMINATE',
+  evidenceName,
+  cost,
+  modelEpistemicUncertainty,
+  visualQualityMetrics,
+}) {
   const [hoveredCell, setHoveredCell] = useState(null);
 
-  const hasData = data && data.length > 0 && tokens && tokens.length > 0;
-  const uncertainty = typeof visualUncertainty === 'number' ? visualUncertainty : 0.0;
-  const isContra = cost !== undefined && cost !== null && (cost > 1.15);
-  const isHighUncertainty = uncertainty > 0.5;
+  // Legacy / malformed / lowercase assessment values fail closed to
+  // INDETERMINATE, matching EvidenceTable and EvidenceModal. Never convert
+  // an unknown status into MATCH.
+  const rawStatus = String(assessmentStatus || '').toUpperCase();
+  const normalizedStatus = VALID_ASSESSMENTS.has(rawStatus) ? rawStatus : 'INDETERMINATE';
 
-  const badgeColor = isContra 
-    ? "bg-red-950/80 text-red-300 border border-red-700"
-    : isHighUncertainty
-      ? "bg-amber-950/80 text-amber-300 border border-amber-700"
-      : "bg-emerald-950/80 text-emerald-300 border border-emerald-700";
+  const hasData = Array.isArray(data) && data.length > 0 && Array.isArray(tokens) && tokens.length > 0;
+  const statusStyle = STATUS_STYLES[normalizedStatus];
 
-  const badgeText = isContra
-    ? "⚠️ Contradiction Flagged (> 1.15)"
-    : isHighUncertainty
-      ? "High Visual Doubt (Dampened)"
-      : "✅ Verified Congruent (≤ 1.15)";
+  const qualitySummary = visualQualityMetrics
+    ? `HF residual ${Number(visualQualityMetrics.mean_absolute_high_frequency_residual).toFixed(2)} · Laplacian variance ${Number(visualQualityMetrics.laplacian_variance).toFixed(2)}`
+    : null;
 
   return (
     <div className="bg-slate-800/95 backdrop-blur-md p-5 rounded-2xl border border-slate-700/80 shadow-2xl flex flex-col space-y-3">
-      {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="p-1.5 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-400">
+          <div className="p-1.5 bg-blue-500/10 border border-blue-500/30 rounded-lg text-blue-400">
             <Layers size={18} />
           </div>
           <div>
-            <h3 className="text-base font-black text-slate-100 flex items-center gap-2">
-              Evidential Optimal Transport Alignment Matrix
-            </h3>
-            {evidenceName ? (
-              <p className="text-[11px] text-blue-300 font-mono">Target: <span className="font-bold">{evidenceName}</span></p>
-            ) : (
-              <p className="text-[11px] text-slate-400">Awaiting media & statement ingestion</p>
-            )}
+            <h3 className="text-base font-black text-slate-100">Projected Patch-to-Token Dissimilarity Matrix</h3>
+            <p className="text-[11px] text-slate-400 font-mono">
+              {evidenceName ? `Evidence: ${evidenceName}` : 'Awaiting evidence analysis'}
+            </p>
           </div>
         </div>
-        {hasData && (
-          <span className={`px-3 py-1 rounded-full text-xs font-bold ${badgeColor}`}>
-            {badgeText}
-          </span>
-        )}
-      </div>
-      
-      {/* Info Banner */}
-      <div className="flex flex-wrap items-center justify-between bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/60 text-xs text-slate-300 gap-2">
-        <div className="flex items-center gap-1.5">
-          <span className="text-slate-400">Cross-referencing witness text tokens with CCTV spatial patches.</span>
-        </div>
-        {hasData && (
-          <div className="flex items-center gap-4 font-mono text-[11px]">
-            <span>Visual Uncertainty: <strong className="text-amber-400">{(uncertainty * 100).toFixed(1)}%</strong></span>
-            {cost !== undefined && cost !== null && (
-              <span>Sinkhorn Score: <strong className={isContra ? "text-red-400 font-bold" : "text-emerald-400 font-bold"}>{typeof cost === 'number' ? cost.toFixed(4) : cost}</strong></span>
-            )}
-          </div>
-        )}
+        <span className={`px-3 py-1 rounded-full border text-xs font-bold ${statusStyle}`}>
+          {normalizedStatus}
+        </span>
       </div>
 
-      {/* Heatmap Table or Empty State */}
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/80 p-3 rounded-xl border border-slate-700/60 text-xs text-slate-300">
+        <div className="flex items-center gap-2 text-slate-400">
+          <Info size={14} />
+          <span>Exploratory CLIP sequence-feature dissimilarities; not supervised region-word grounding, object detections or verdicts.</span>
+        </div>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 font-mono text-[11px]">
+          {typeof cost === 'number' && (
+            <span>Debiased Sinkhorn divergence: <strong className="text-blue-300">{cost.toFixed(6)}</strong></span>
+          )}
+          {typeof modelEpistemicUncertainty === 'number' && (
+            <span>Model uncertainty: <strong className="text-amber-300">{(modelEpistemicUncertainty * 100).toFixed(1)}%</strong></span>
+          )}
+          {qualitySummary && <span className="text-slate-400">Image quality: {qualitySummary}</span>}
+        </div>
+      </div>
+
       {!hasData ? (
-        <div className="rounded-xl border border-slate-700/80 bg-slate-950 p-10 flex flex-col items-center justify-center text-center space-y-2">
-          <div className="p-3 bg-slate-900 border border-slate-800 rounded-2xl text-slate-500">
-            <Layers size={32} />
-          </div>
-          <p className="text-sm font-bold text-slate-300">No Optimal Transport Matrix Generated Yet</p>
-          <p className="text-xs text-slate-500 max-w-sm">
-            Upload digital evidence and a transcript to compute Dirichlet epistemic uncertainty & Sinkhorn cross-modal divergence.
+        <div className="rounded-xl border border-slate-700/80 bg-slate-950 p-8 text-center space-y-2">
+          <Layers size={30} className="mx-auto text-slate-500" />
+          <p className="text-sm font-bold text-slate-300">No stored patch/token matrix</p>
+          <p className="text-xs text-slate-500 max-w-md mx-auto">
+            A matrix is shown immediately after live analysis. Older graph records do not contain the original matrix, so it is not reconstructed or fabricated.
           </p>
         </div>
       ) : (
@@ -78,39 +82,34 @@ export default function Heatmap({ data = [], tokens = [], patches = [], visualUn
           <table className="w-full text-center border-collapse text-xs">
             <thead>
               <tr className="bg-slate-900/90 font-mono text-[11px] text-slate-400">
-                <th className="p-2.5 border border-slate-700/80 text-left font-semibold">Visual Zone / Token</th>
-                {tokens.map((token, i) => (
-                  <th key={i} className="p-2.5 border border-slate-700/80 font-mono text-xs font-bold text-blue-300 bg-slate-800/60">
+                <th className="p-2.5 border border-slate-700/80 text-left font-semibold">Visual patch / text token</th>
+                {tokens.map((token, index) => (
+                  <th key={`${token}-${index}`} className="p-2.5 border border-slate-700/80 font-bold text-blue-300 bg-slate-800/60">
                     {token}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {data.map((row, i) => (
-                <tr key={i} className="hover:bg-slate-800/30 transition-colors">
-                  <td className="p-2.5 border border-slate-700/80 font-mono text-xs text-left text-slate-300 bg-slate-900/60 font-semibold">
-                    {patches[i] || `Patch ${i + 1}`}
+              {data.map((row, rowIndex) => (
+                <tr key={rowIndex} className="hover:bg-slate-800/30 transition-colors">
+                  <td className="p-2.5 border border-slate-700/80 font-mono text-left text-slate-300 bg-slate-900/60 font-semibold">
+                    {patches[rowIndex] || `Patch ${rowIndex + 1}`}
                   </td>
-                  {row.map((val, j) => {
-                    const normalizedVal = Math.min(Math.max(val, 0), 1.5);
-                    const isHovered = hoveredCell && hoveredCell.row === i && hoveredCell.col === j;
-                    
-                    const cellBg = val > 1.15
-                      ? `rgba(220, 38, 38, ${Math.min(0.85, Math.max(0.2, (val - 1.0) * 1.5))})`
-                      : `rgba(16, 185, 129, ${Math.min(0.75, Math.max(0.15, (1.15 - val) * 1.2))})`;
-
+                  {row.map((rawValue, columnIndex) => {
+                    const value = Number(rawValue);
+                    const safeValue = Number.isFinite(value) ? value : 0;
+                    const intensity = Math.min(0.75, Math.max(0.12, safeValue / 2.0));
+                    const isHovered = hoveredCell?.row === rowIndex && hoveredCell?.col === columnIndex;
                     return (
-                      <td 
-                        key={j} 
-                        onMouseEnter={() => setHoveredCell({ row: i, col: j, val, token: tokens[j], patch: patches[i] })}
+                      <td
+                        key={columnIndex}
+                        onMouseEnter={() => setHoveredCell({ row: rowIndex, col: columnIndex, value: safeValue, token: tokens[columnIndex], patch: patches[rowIndex] })}
                         onMouseLeave={() => setHoveredCell(null)}
-                        className={`p-2.5 border border-slate-700/80 text-slate-100 font-mono font-bold text-xs cursor-pointer transition-all ${
-                          isHovered ? 'ring-2 ring-blue-400 scale-105 z-10' : ''
-                        }`}
-                        style={{ backgroundColor: cellBg }}
+                        className={`p-2.5 border border-slate-700/80 text-slate-100 font-mono font-bold cursor-pointer transition-all ${isHovered ? 'ring-2 ring-blue-400 scale-105 z-10' : ''}`}
+                        style={{ backgroundColor: `rgba(56, 189, 248, ${intensity})` }}
                       >
-                        {val.toFixed(2)}
+                        {safeValue.toFixed(3)}
                       </td>
                     );
                   })}
@@ -121,11 +120,10 @@ export default function Heatmap({ data = [], tokens = [], patches = [], visualUn
         </div>
       )}
 
-      {/* Hover Cell Inspector */}
       {hoveredCell && (
-        <div className="p-2 bg-slate-900 border border-slate-700 rounded-lg text-[11px] text-slate-300 flex items-center justify-between font-mono animate-fadeIn">
-          <span>Patch: <strong className="text-white">{hoveredCell.patch}</strong> &harr; Token: <strong className="text-blue-300">"{hoveredCell.token}"</strong></span>
-          <span>Alignment Cost: <strong className="text-amber-400">{hoveredCell.val.toFixed(3)}</strong></span>
+        <div className="p-2 bg-slate-900 border border-slate-700 rounded-lg text-[11px] text-slate-300 flex flex-wrap items-center justify-between gap-2 font-mono">
+          <span>Patch: <strong className="text-white">{hoveredCell.patch || `Patch ${hoveredCell.row + 1}`}</strong> ↔ Token: <strong className="text-blue-300">{hoveredCell.token}</strong></span>
+          <span>Cosine dissimilarity: <strong className="text-blue-300">{hoveredCell.value.toFixed(6)}</strong></span>
         </div>
       )}
     </div>

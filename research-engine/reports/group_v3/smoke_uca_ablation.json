@@ -1,0 +1,395 @@
+{
+  "alpha": 0.1,
+  "manifest": {
+    "manifest_schema_version": 1,
+    "created_at_utc": "2026-11-15T03:28:02.561237+00:00",
+    "experiment_script": "ablate_conformal_scores.py",
+    "model": {
+      "name": "openai/clip-vit-base-patch32",
+      "resolved_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268"
+    },
+    "feature_schema_version": 4,
+    "splits": {
+      "fit": {
+        "file_name": "fit.csv",
+        "sha256": "32451c1d57b98d5ef7d30ea9d3399d107183c7bf1e4c58515dc1635d4d1ece11",
+        "image_assets_sha256": "ba72f306019a16cb7e5a24a63224a3f2b37f40497c84ba8bc3e0a248ce7ae827",
+        "sample_count": 3136,
+        "class_counts": {
+          "CONTRADICTION": 1568,
+          "MATCH": 1568
+        },
+        "recording_count": 1568
+      },
+      "calibration": {
+        "file_name": "calibration.csv",
+        "sha256": "f647e36d9a9b4ed296671430f96d7c1ebbe2ee86f4be01ba1ef2628127e72629",
+        "image_assets_sha256": "5c4ba0e749ab676139c6654c6c8f01601fe32444033120687e4d58e35e1a6092",
+        "sample_count": 140,
+        "class_counts": {
+          "MATCH": 70,
+          "CONTRADICTION": 70
+        },
+        "recording_count": 70
+      },
+      "test": {
+        "file_name": "test.csv",
+        "sha256": "125ca450b822ffff48b8dcf848531ed6263af00428b0d58553e868fcc38f9da9",
+        "image_assets_sha256": "02555b6585cc1a42844acaeaeb4ab806313fac21eb6b2ddcb0f4b867006b2485",
+        "sample_count": 140,
+        "class_counts": {
+          "MATCH": 70,
+          "CONTRADICTION": 70
+        },
+        "recording_count": 70
+      }
+    },
+    "split_audit": {
+      "split_names": [
+        "fit",
+        "calibration",
+        "test"
+      ],
+      "splits": {
+        "fit": {
+          "sample_count": 3136,
+          "class_counts": {
+            "MATCH": 1568,
+            "CONTRADICTION": 1568
+          },
+          "source_recording_count": 1568,
+          "camera_id_count": 1568,
+          "environment_category_count": 14
+        },
+        "calibration": {
+          "sample_count": 140,
+          "class_counts": {
+            "MATCH": 70,
+            "CONTRADICTION": 70
+          },
+          "source_recording_count": 70,
+          "camera_id_count": 70,
+          "environment_category_count": 13
+        },
+        "test": {
+          "sample_count": 140,
+          "class_counts": {
+            "MATCH": 70,
+            "CONTRADICTION": 70
+          },
+          "source_recording_count": 70,
+          "camera_id_count": 70,
+          "environment_category_count": 12
+        }
+      },
+      "pairwise_group_overlap_counts": {
+        "source_recording_id": {
+          "fit__calibration": 0,
+          "fit__test": 0,
+          "calibration__test": 0
+        },
+        "camera_id": {
+          "fit__calibration": 0,
+          "fit__test": 0,
+          "calibration__test": 0
+        },
+        "environment_id": {
+          "fit__calibration": 13,
+          "fit__test": 12,
+          "calibration__test": 12
+        }
+      },
+      "source_recording_disjoint": true,
+      "camera_id_is_recording_alias": true,
+      "camera_generalization_claim_supported": false,
+      "physical_camera_identity_verified": false,
+      "environment_ids_are_activity_categories": true,
+      "statement_source_provenance_available": true,
+      "environment_disjointness_required": false,
+      "note": "Source-recording IDs are disjoint. In the current UCA adapter, camera_id is derived from source_recording_id and is not an independently verified physical camera ID; environment_id represents an activity category and may overlap across splits."
+    },
+    "configuration": {
+      "alpha": 0.1,
+      "inference_config": {
+        "trust_mode": "heterogeneity",
+        "force_full_ot": false,
+        "sinkhorn_epsilon": 0.1,
+        "dustbin_cost": 10.0
+      },
+      "max_recordings_per_split": 30,
+      "sample_seed": 42,
+      "calibration_unit": "source_recording_id_max",
+      "cache_paths": {
+        "fit": ".cache\\group_v3_smoke\\fit.3fa57b8edd2f0794910f.npz",
+        "calibration": ".cache\\group_v3_smoke\\calibration.ff3a960c1dbd854234de.npz",
+        "test": ".cache\\group_v3_smoke\\test.8e679a81fcc1f061dbe1.npz"
+      },
+      "selected_rows_sha256": {
+        "fit": "81df4d8e4c7daa68d4dbbae5d383f2972307561b239abcb093de5395ee359da3",
+        "calibration": "8fa94a9db6aec8577ccf08fa019bb04b97a2d77ec6ba1b2a9c06b62904566687",
+        "test": "dfc34ab4a8de5ec87849776b8f4fcffedc5585d94d5f36986c5b08e016c3828c"
+      },
+      "selected_recording_ids": {
+        "fit": [
+          "Arson052_x264",
+          "Assault004_x264",
+          "Assault015_x264",
+          "Burglary026_x264",
+          "Explosion040_x264",
+          "Fighting020_x264",
+          "Normal_Videos285_x264",
+          "Normal_Videos343_x264",
+          "Normal_Videos386_x264",
+          "Normal_Videos394_x264",
+          "Normal_Videos414_x264",
+          "Normal_Videos421_x264",
+          "Normal_Videos513_x264",
+          "Normal_Videos531_x264",
+          "Normal_Videos549_x264",
+          "Normal_Videos589_x264",
+          "Normal_Videos768_x264",
+          "Normal_Videos769_x264",
+          "Normal_Videos854_x264",
+          "RoadAccidents024_x264",
+          "RoadAccidents052_x264",
+          "RoadAccidents093_x264",
+          "RoadAccidents103_x264",
+          "RoadAccidents143_x264",
+          "Robbery062_x264",
+          "Robbery081_x264",
+          "Robbery099_x264",
+          "Stealing022_x264",
+          "Stealing103_x264",
+          "Vandalism045_x264"
+        ],
+        "calibration": [
+          "Arson010_x264",
+          "Arson035_x264",
+          "Assault011_x264",
+          "Burglary079_x264",
+          "Explosion002_x264",
+          "Explosion029_x264",
+          "Explosion039_x264",
+          "RoadAccidents004_x264",
+          "RoadAccidents009_x264",
+          "RoadAccidents011_x264",
+          "RoadAccidents016_x264",
+          "RoadAccidents017_x264",
+          "RoadAccidents019_x264",
+          "RoadAccidents122_x264",
+          "RoadAccidents124_x264",
+          "Robbery050_x264",
+          "Robbery106_x264",
+          "Shooting004_x264",
+          "Shooting013_x264",
+          "Shooting015_x264",
+          "Shooting024_x264",
+          "Shooting043_x264",
+          "Shooting046_x264",
+          "Shoplifting016_x264",
+          "Shoplifting017_x264",
+          "Shoplifting028_x264",
+          "Shoplifting029_x264",
+          "Shoplifting049_x264",
+          "Stealing058_x264",
+          "Stealing062_x264"
+        ],
+        "test": [
+          "Arrest039_x264",
+          "Arson007_x264",
+          "Arson016_x264",
+          "Arson022_x264",
+          "Burglary005_x264",
+          "Burglary061_x264",
+          "Explosion008_x264",
+          "Explosion027_x264",
+          "Explosion028_x264",
+          "Explosion033_x264",
+          "Fighting003_x264",
+          "Fighting018_x264",
+          "Fighting033_x264",
+          "Fighting047_x264",
+          "RoadAccidents001_x264",
+          "RoadAccidents021_x264",
+          "RoadAccidents022_x264",
+          "RoadAccidents121_x264",
+          "RoadAccidents125_x264",
+          "RoadAccidents128_x264",
+          "RoadAccidents133_x264",
+          "Shooting010_x264",
+          "Shooting011_x264",
+          "Shooting034_x264",
+          "Shooting037_x264",
+          "Shoplifting005_x264",
+          "Shoplifting007_x264",
+          "Shoplifting037_x264",
+          "Stealing079_x264",
+          "Vandalism007_x264"
+        ]
+      }
+    },
+    "interpretation": "This manifest establishes input and configuration provenance. It does not establish annotation validity, forensic suitability, or generalisation to unseen physical cameras."
+  },
+  "variants": {
+    "clip_only": {
+      "features": [
+        "one_minus_global_clip_similarity"
+      ],
+      "feature_count": 1,
+      "q_hat": 0.6710417727909249,
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 30,
+      "empirical_coverage": 1.0,
+      "singleton_rate": 0.1,
+      "selective_accuracy": 1.0,
+      "abstention_rate": 0.9,
+      "average_set_size": 1.9,
+      "recording_group_coverage": {
+        "group_key": "source_recording_id",
+        "group_count": 30,
+        "simultaneously_covered_group_count": 30,
+        "simultaneous_group_coverage": 1.0,
+        "groups_with_any_missed_label": 0,
+        "group_sizes": {
+          "min": 2,
+          "max": 2
+        },
+        "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+      }
+    },
+    "sinkhorn_only": {
+      "features": [
+        "sinkhorn_divergence"
+      ],
+      "feature_count": 1,
+      "q_hat": 0.5387389810807464,
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 30,
+      "empirical_coverage": 0.9833333333333333,
+      "singleton_rate": 0.03333333333333333,
+      "selective_accuracy": 0.5,
+      "abstention_rate": 0.9666666666666667,
+      "average_set_size": 1.9666666666666666,
+      "recording_group_coverage": {
+        "group_key": "source_recording_id",
+        "group_count": 30,
+        "simultaneously_covered_group_count": 29,
+        "simultaneous_group_coverage": 0.9666666666666667,
+        "groups_with_any_missed_label": 1,
+        "group_sizes": {
+          "min": 2,
+          "max": 2
+        },
+        "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+      }
+    },
+    "discarded_only": {
+      "features": [
+        "discarded_mass"
+      ],
+      "feature_count": 1,
+      "q_hat": 0.5000000014886282,
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 30,
+      "empirical_coverage": 1.0,
+      "singleton_rate": 0.0,
+      "selective_accuracy": null,
+      "abstention_rate": 1.0,
+      "average_set_size": 2.0,
+      "recording_group_coverage": {
+        "group_key": "source_recording_id",
+        "group_count": 30,
+        "simultaneously_covered_group_count": 30,
+        "simultaneous_group_coverage": 1.0,
+        "groups_with_any_missed_label": 0,
+        "group_sizes": {
+          "min": 2,
+          "max": 2
+        },
+        "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+      }
+    },
+    "sinkhorn_plus_clip": {
+      "features": [
+        "sinkhorn_divergence",
+        "one_minus_global_clip_similarity"
+      ],
+      "feature_count": 2,
+      "q_hat": 0.6683223384360371,
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 30,
+      "empirical_coverage": 1.0,
+      "singleton_rate": 0.13333333333333333,
+      "selective_accuracy": 1.0,
+      "abstention_rate": 0.8666666666666667,
+      "average_set_size": 1.8666666666666667,
+      "recording_group_coverage": {
+        "group_key": "source_recording_id",
+        "group_count": 30,
+        "simultaneously_covered_group_count": 30,
+        "simultaneous_group_coverage": 1.0,
+        "groups_with_any_missed_label": 0,
+        "group_sizes": {
+          "min": 2,
+          "max": 2
+        },
+        "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+      }
+    },
+    "discarded_plus_clip": {
+      "features": [
+        "discarded_mass",
+        "one_minus_global_clip_similarity"
+      ],
+      "feature_count": 2,
+      "q_hat": 0.695924005561532,
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 30,
+      "empirical_coverage": 1.0,
+      "singleton_rate": 0.1,
+      "selective_accuracy": 1.0,
+      "abstention_rate": 0.9,
+      "average_set_size": 1.9,
+      "recording_group_coverage": {
+        "group_key": "source_recording_id",
+        "group_count": 30,
+        "simultaneously_covered_group_count": 30,
+        "simultaneous_group_coverage": 1.0,
+        "groups_with_any_missed_label": 0,
+        "group_sizes": {
+          "min": 2,
+          "max": 2
+        },
+        "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+      }
+    },
+    "all_three": {
+      "features": [
+        "sinkhorn_divergence",
+        "discarded_mass",
+        "one_minus_global_clip_similarity"
+      ],
+      "feature_count": 3,
+      "q_hat": 0.6980302230212878,
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 30,
+      "empirical_coverage": 1.0,
+      "singleton_rate": 0.1,
+      "selective_accuracy": 1.0,
+      "abstention_rate": 0.9,
+      "average_set_size": 1.9,
+      "recording_group_coverage": {
+        "group_key": "source_recording_id",
+        "group_count": 30,
+        "simultaneously_covered_group_count": 30,
+        "simultaneous_group_coverage": 1.0,
+        "groups_with_any_missed_label": 0,
+        "group_sizes": {
+          "min": 2,
+          "max": 2
+        },
+        "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+      }
+    }
+  }
+}

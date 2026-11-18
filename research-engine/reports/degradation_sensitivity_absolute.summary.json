@@ -1,0 +1,53 @@
+{
+  "clean": {
+    "n": 20,
+    "discarded_mass_mean": 0.50556552145615,
+    "discarded_mass_stdev": 0.06846038486197384,
+    "discarded_mass_min": 0.38789518625621167,
+    "discarded_mass_max": 0.622459376192978,
+    "sinkhorn_mean": 0.3586390768058971,
+    "sinkhorn_stdev": 0.04893781265739289
+  },
+  "mild": {
+    "n": 20,
+    "discarded_mass_mean": 0.6125039381777111,
+    "discarded_mass_stdev": 0.007384477174841637,
+    "discarded_mass_min": 0.5893280590277004,
+    "discarded_mass_max": 0.622459376192978,
+    "sinkhorn_mean": 0.2763849793541035,
+    "sinkhorn_stdev": 0.013146270880767063
+  },
+  "moderate": {
+    "n": 20,
+    "discarded_mass_mean": 0.6176572082845139,
+    "discarded_mass_stdev": 0.0025669767933708563,
+    "discarded_mass_min": 0.6107843001957476,
+    "discarded_mass_max": 0.622459376192978,
+    "sinkhorn_mean": 0.2706235195541202,
+    "sinkhorn_stdev": 0.013025841666875893
+  },
+  "heavy": {
+    "n": 20,
+    "discarded_mass_mean": 0.6194411231651865,
+    "discarded_mass_stdev": 0.0011748902053955689,
+    "discarded_mass_min": 0.6179656166627598,
+    "discarded_mass_max": 0.622459376192978,
+    "sinkhorn_mean": 0.2701811215141505,
+    "sinkhorn_stdev": 0.012965806676167448
+  },
+  "_meta": {
+    "trust_mode": "absolute",
+    "trust_tau": 50.0,
+    "trust_k": 100.0,
+    "test_csv": "datasets/uca/test.csv",
+    "max_examples": 20,
+    "model_name": "openai/clip-vit-base-patch32",
+    "model_revision": null,
+    "severities": [
+      "clean",
+      "mild",
+      "moderate",
+      "heavy"
+    ]
+  }
+}

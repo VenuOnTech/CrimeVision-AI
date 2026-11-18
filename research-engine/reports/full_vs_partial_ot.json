@@ -1,0 +1,55 @@
+{
+  "alpha": 0.1,
+  "results": {
+    "full_ot__clip_only": {
+      "mode": "full_ot",
+      "variant": "clip_only",
+      "features": [
+        "one_minus_global_clip_similarity"
+      ],
+      "q_hat": 0.582702397050568,
+      "empirical_coverage": 0.8642857142857143,
+      "singleton_rate": 0.4714285714285714,
+      "selective_accuracy": 0.7121212121212122,
+      "abstention_rate": 0.5285714285714286
+    },
+    "full_ot__sinkhorn_plus_clip": {
+      "mode": "full_ot",
+      "variant": "sinkhorn_plus_clip",
+      "features": [
+        "sinkhorn_divergence",
+        "one_minus_global_clip_similarity"
+      ],
+      "q_hat": 0.5752346498411598,
+      "empirical_coverage": 0.8928571428571429,
+      "singleton_rate": 0.42142857142857143,
+      "selective_accuracy": 0.7457627118644068,
+      "abstention_rate": 0.5785714285714286
+    },
+    "partial_ot__clip_only": {
+      "mode": "partial_ot",
+      "variant": "clip_only",
+      "features": [
+        "one_minus_global_clip_similarity"
+      ],
+      "q_hat": 0.582702397050568,
+      "empirical_coverage": 0.8642857142857143,
+      "singleton_rate": 0.4714285714285714,
+      "selective_accuracy": 0.7121212121212122,
+      "abstention_rate": 0.5285714285714286
+    },
+    "partial_ot__sinkhorn_plus_clip": {
+      "mode": "partial_ot",
+      "variant": "sinkhorn_plus_clip",
+      "features": [
+        "sinkhorn_divergence",
+        "one_minus_global_clip_similarity"
+      ],
+      "q_hat": 0.5840397295253559,
+      "empirical_coverage": 0.8928571428571429,
+      "singleton_rate": 0.42142857142857143,
+      "selective_accuracy": 0.7457627118644068,
+      "abstention_rate": 0.5785714285714286
+    }
+  }
+}

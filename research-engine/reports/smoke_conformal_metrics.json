@@ -1,0 +1,1694 @@
+{
+  "mode": "conformal",
+  "schema_version": 2,
+  "model_name": "openai/clip-vit-base-patch32",
+  "model_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+  "test_csv": "C:\\Capstone-Project\\CrimeVision-AI\\research-engine\\datasets\\smoke\\test.csv",
+  "conformal_artifact": "C:\\Capstone-Project\\CrimeVision-AI\\research-engine\\models\\smoke_conformal.json",
+  "artifact_alpha": 0.1,
+  "artifact_q_hat": 0.531299112238048,
+  "fit_sample_count": 96,
+  "fit_class_counts": {
+    "MATCH": 48,
+    "CONTRADICTION": 48
+  },
+  "calibration_sample_count": 120,
+  "calibration_class_counts": {
+    "MATCH": 60,
+    "CONTRADICTION": 60
+  },
+  "test_sample_count": 216,
+  "test_camera_count": 9,
+  "test_environment_count": 3,
+  "runs": [
+    {
+      "alpha": 0.05,
+      "target_coverage": 0.95,
+      "q_hat": 0.531299112238048,
+      "overall": {
+        "alpha": 0.05,
+        "target_coverage": 0.95,
+        "empirical_coverage": 0.9629629629629629,
+        "sample_count": 216,
+        "singleton_count": 201,
+        "singleton_rate": 0.9305555555555556,
+        "selective_accuracy": 0.9601990049751243,
+        "empty_count": 0,
+        "empty_rate": 0.0,
+        "both_classes_count": 15,
+        "both_classes_rate": 0.06944444444444445,
+        "abstention_count": 15,
+        "abstention_rate": 0.06944444444444445,
+        "average_set_size": 1.0694444444444444,
+        "per_class": {
+          "MATCH": {
+            "sample_count": 108,
+            "coverage": 1.0,
+            "singleton_rate": 0.8888888888888888,
+            "selective_accuracy": 1.0
+          },
+          "CONTRADICTION": {
+            "sample_count": 108,
+            "coverage": 0.9259259259259259,
+            "singleton_rate": 0.9722222222222222,
+            "selective_accuracy": 0.9238095238095239
+          }
+        },
+        "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+      },
+      "per_camera": {
+        "cam_circle_green": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 0.9583333333333334,
+          "sample_count": 24,
+          "singleton_count": 21,
+          "singleton_rate": 0.875,
+          "selective_accuracy": 0.9523809523809523,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 3,
+          "both_classes_rate": 0.125,
+          "abstention_count": 3,
+          "abstention_rate": 0.125,
+          "average_set_size": 1.125,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.9166666666666666,
+              "singleton_rate": 0.75,
+              "selective_accuracy": 0.8888888888888888
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_green": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_blue": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.8333333333333334,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.6666666666666666
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_red": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 12,
+          "singleton_rate": 0.5,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 12,
+          "both_classes_rate": 0.5,
+          "abstention_count": 12,
+          "abstention_rate": 0.5,
+          "average_set_size": 1.5,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 0.0,
+              "selective_accuracy": null
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_green": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_red": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_blue": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 0.9583333333333334,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9583333333333334,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.9166666666666666,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.9166666666666666
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_red": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_blue": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 0.9166666666666666,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9166666666666666,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.8333333333333334,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.8333333333333334
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "per_environment": {
+        "env_green": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 0.9861111111111112,
+          "sample_count": 72,
+          "singleton_count": 69,
+          "singleton_rate": 0.9583333333333334,
+          "selective_accuracy": 0.9855072463768116,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 3,
+          "both_classes_rate": 0.041666666666666664,
+          "abstention_count": 3,
+          "abstention_rate": 0.041666666666666664,
+          "average_set_size": 1.0416666666666667,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.9722222222222222,
+              "singleton_rate": 0.9166666666666666,
+              "selective_accuracy": 0.9696969696969697
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_blue": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 0.9027777777777778,
+          "sample_count": 72,
+          "singleton_count": 72,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9027777777777778,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.8055555555555556,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.8055555555555556
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_red": {
+          "alpha": 0.05,
+          "target_coverage": 0.95,
+          "empirical_coverage": 1.0,
+          "sample_count": 72,
+          "singleton_count": 60,
+          "singleton_rate": 0.8333333333333334,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 12,
+          "both_classes_rate": 0.16666666666666666,
+          "abstention_count": 12,
+          "abstention_rate": 0.16666666666666666,
+          "average_set_size": 1.1666666666666667,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 0.6666666666666666,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "status_counts": {
+        "MATCH": 104,
+        "CONTRADICTION": 97,
+        "INDETERMINATE": 15
+      }
+    },
+    {
+      "alpha": 0.1,
+      "target_coverage": 0.9,
+      "q_hat": 0.531299112238048,
+      "overall": {
+        "alpha": 0.1,
+        "target_coverage": 0.9,
+        "empirical_coverage": 0.9629629629629629,
+        "sample_count": 216,
+        "singleton_count": 201,
+        "singleton_rate": 0.9305555555555556,
+        "selective_accuracy": 0.9601990049751243,
+        "empty_count": 0,
+        "empty_rate": 0.0,
+        "both_classes_count": 15,
+        "both_classes_rate": 0.06944444444444445,
+        "abstention_count": 15,
+        "abstention_rate": 0.06944444444444445,
+        "average_set_size": 1.0694444444444444,
+        "per_class": {
+          "MATCH": {
+            "sample_count": 108,
+            "coverage": 1.0,
+            "singleton_rate": 0.8888888888888888,
+            "selective_accuracy": 1.0
+          },
+          "CONTRADICTION": {
+            "sample_count": 108,
+            "coverage": 0.9259259259259259,
+            "singleton_rate": 0.9722222222222222,
+            "selective_accuracy": 0.9238095238095239
+          }
+        },
+        "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+      },
+      "per_camera": {
+        "cam_circle_green": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 0.9583333333333334,
+          "sample_count": 24,
+          "singleton_count": 21,
+          "singleton_rate": 0.875,
+          "selective_accuracy": 0.9523809523809523,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 3,
+          "both_classes_rate": 0.125,
+          "abstention_count": 3,
+          "abstention_rate": 0.125,
+          "average_set_size": 1.125,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.9166666666666666,
+              "singleton_rate": 0.75,
+              "selective_accuracy": 0.8888888888888888
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_green": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_blue": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.8333333333333334,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.6666666666666666
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_red": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 12,
+          "singleton_rate": 0.5,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 12,
+          "both_classes_rate": 0.5,
+          "abstention_count": 12,
+          "abstention_rate": 0.5,
+          "average_set_size": 1.5,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 0.0,
+              "selective_accuracy": null
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_green": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_red": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_blue": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 0.9583333333333334,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9583333333333334,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.9166666666666666,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.9166666666666666
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_red": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_blue": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 0.9166666666666666,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9166666666666666,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.8333333333333334,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.8333333333333334
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "per_environment": {
+        "env_green": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 0.9861111111111112,
+          "sample_count": 72,
+          "singleton_count": 69,
+          "singleton_rate": 0.9583333333333334,
+          "selective_accuracy": 0.9855072463768116,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 3,
+          "both_classes_rate": 0.041666666666666664,
+          "abstention_count": 3,
+          "abstention_rate": 0.041666666666666664,
+          "average_set_size": 1.0416666666666667,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.9722222222222222,
+              "singleton_rate": 0.9166666666666666,
+              "selective_accuracy": 0.9696969696969697
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_blue": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 0.9027777777777778,
+          "sample_count": 72,
+          "singleton_count": 72,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9027777777777778,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.8055555555555556,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.8055555555555556
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_red": {
+          "alpha": 0.1,
+          "target_coverage": 0.9,
+          "empirical_coverage": 1.0,
+          "sample_count": 72,
+          "singleton_count": 60,
+          "singleton_rate": 0.8333333333333334,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 12,
+          "both_classes_rate": 0.16666666666666666,
+          "abstention_count": 12,
+          "abstention_rate": 0.16666666666666666,
+          "average_set_size": 1.1666666666666667,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 0.6666666666666666,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "status_counts": {
+        "MATCH": 0,
+        "CONTRADICTION": 0,
+        "INDETERMINATE": 0
+      }
+    },
+    {
+      "alpha": 0.2,
+      "target_coverage": 0.8,
+      "q_hat": 0.455937280316019,
+      "overall": {
+        "alpha": 0.2,
+        "target_coverage": 0.8,
+        "empirical_coverage": 0.8842592592592593,
+        "sample_count": 216,
+        "singleton_count": 199,
+        "singleton_rate": 0.9212962962962963,
+        "selective_accuracy": 0.9597989949748744,
+        "empty_count": 17,
+        "empty_rate": 0.0787037037037037,
+        "both_classes_count": 0,
+        "both_classes_rate": 0.0,
+        "abstention_count": 17,
+        "abstention_rate": 0.0787037037037037,
+        "average_set_size": 0.9212962962962963,
+        "per_class": {
+          "MATCH": {
+            "sample_count": 108,
+            "coverage": 0.8888888888888888,
+            "singleton_rate": 0.8888888888888888,
+            "selective_accuracy": 1.0
+          },
+          "CONTRADICTION": {
+            "sample_count": 108,
+            "coverage": 0.8796296296296297,
+            "singleton_rate": 0.9537037037037037,
+            "selective_accuracy": 0.9223300970873787
+          }
+        },
+        "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+      },
+      "per_camera": {
+        "cam_circle_green": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 24,
+          "singleton_count": 21,
+          "singleton_rate": 0.875,
+          "selective_accuracy": 0.9523809523809523,
+          "empty_count": 3,
+          "empty_rate": 0.125,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 3,
+          "abstention_rate": 0.125,
+          "average_set_size": 0.875,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 0.75,
+              "selective_accuracy": 0.8888888888888888
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_green": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_blue": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.8333333333333334,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.6666666666666666
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_red": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.4166666666666667,
+          "sample_count": 24,
+          "singleton_count": 10,
+          "singleton_rate": 0.4166666666666667,
+          "selective_accuracy": 1.0,
+          "empty_count": 14,
+          "empty_rate": 0.5833333333333334,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 14,
+          "abstention_rate": 0.5833333333333334,
+          "average_set_size": 0.4166666666666667,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 0.0,
+              "singleton_rate": 0.0,
+              "selective_accuracy": null
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.8333333333333334,
+              "singleton_rate": 0.8333333333333334,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_green": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_red": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_blue": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.9583333333333334,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9583333333333334,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.9166666666666666,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.9166666666666666
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_red": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_blue": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.9166666666666666,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9166666666666666,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.8333333333333334,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.8333333333333334
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "per_environment": {
+        "env_green": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.9444444444444444,
+          "sample_count": 72,
+          "singleton_count": 69,
+          "singleton_rate": 0.9583333333333334,
+          "selective_accuracy": 0.9855072463768116,
+          "empty_count": 3,
+          "empty_rate": 0.041666666666666664,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 3,
+          "abstention_rate": 0.041666666666666664,
+          "average_set_size": 0.9583333333333334,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.8888888888888888,
+              "singleton_rate": 0.9166666666666666,
+              "selective_accuracy": 0.9696969696969697
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_blue": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.9027777777777778,
+          "sample_count": 72,
+          "singleton_count": 72,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 0.9027777777777778,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.8055555555555556,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 0.8055555555555556
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_red": {
+          "alpha": 0.2,
+          "target_coverage": 0.8,
+          "empirical_coverage": 0.8055555555555556,
+          "sample_count": 72,
+          "singleton_count": 58,
+          "singleton_rate": 0.8055555555555556,
+          "selective_accuracy": 1.0,
+          "empty_count": 14,
+          "empty_rate": 0.19444444444444445,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 14,
+          "abstention_rate": 0.19444444444444445,
+          "average_set_size": 0.8055555555555556,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 0.6666666666666666,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.9444444444444444,
+              "singleton_rate": 0.9444444444444444,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "status_counts": {
+        "MATCH": 0,
+        "CONTRADICTION": 0,
+        "INDETERMINATE": 0
+      }
+    },
+    {
+      "alpha": 0.3,
+      "target_coverage": 0.7,
+      "q_hat": 0.33066727154396464,
+      "overall": {
+        "alpha": 0.3,
+        "target_coverage": 0.7,
+        "empirical_coverage": 0.8611111111111112,
+        "sample_count": 216,
+        "singleton_count": 190,
+        "singleton_rate": 0.8796296296296297,
+        "selective_accuracy": 0.9789473684210527,
+        "empty_count": 26,
+        "empty_rate": 0.12037037037037036,
+        "both_classes_count": 0,
+        "both_classes_rate": 0.0,
+        "abstention_count": 26,
+        "abstention_rate": 0.12037037037037036,
+        "average_set_size": 0.8796296296296297,
+        "per_class": {
+          "MATCH": {
+            "sample_count": 108,
+            "coverage": 0.8888888888888888,
+            "singleton_rate": 0.8888888888888888,
+            "selective_accuracy": 1.0
+          },
+          "CONTRADICTION": {
+            "sample_count": 108,
+            "coverage": 0.8333333333333334,
+            "singleton_rate": 0.8703703703703703,
+            "selective_accuracy": 0.9574468085106383
+          }
+        },
+        "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+      },
+      "per_camera": {
+        "cam_circle_green": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 24,
+          "singleton_count": 21,
+          "singleton_rate": 0.875,
+          "selective_accuracy": 0.9523809523809523,
+          "empty_count": 3,
+          "empty_rate": 0.125,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 3,
+          "abstention_rate": 0.125,
+          "average_set_size": 0.875,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 0.75,
+              "selective_accuracy": 0.8888888888888888
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_green": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_blue": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 24,
+          "singleton_count": 20,
+          "singleton_rate": 0.8333333333333334,
+          "selective_accuracy": 1.0,
+          "empty_count": 4,
+          "empty_rate": 0.16666666666666666,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 4,
+          "abstention_rate": 0.16666666666666666,
+          "average_set_size": 0.8333333333333334,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 0.6666666666666666,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_red": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.4166666666666667,
+          "sample_count": 24,
+          "singleton_count": 10,
+          "singleton_rate": 0.4166666666666667,
+          "selective_accuracy": 1.0,
+          "empty_count": 14,
+          "empty_rate": 0.5833333333333334,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 14,
+          "abstention_rate": 0.5833333333333334,
+          "average_set_size": 0.4166666666666667,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 0.0,
+              "singleton_rate": 0.0,
+              "selective_accuracy": null
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.8333333333333334,
+              "singleton_rate": 0.8333333333333334,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_green": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_red": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_circle_blue": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.7916666666666666,
+          "sample_count": 24,
+          "singleton_count": 20,
+          "singleton_rate": 0.8333333333333334,
+          "selective_accuracy": 0.95,
+          "empty_count": 4,
+          "empty_rate": 0.16666666666666666,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 4,
+          "abstention_rate": 0.16666666666666666,
+          "average_set_size": 0.8333333333333334,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.5833333333333334,
+              "singleton_rate": 0.6666666666666666,
+              "selective_accuracy": 0.875
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_square_red": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 1.0,
+          "sample_count": 24,
+          "singleton_count": 24,
+          "singleton_rate": 1.0,
+          "selective_accuracy": 1.0,
+          "empty_count": 0,
+          "empty_rate": 0.0,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 0,
+          "abstention_rate": 0.0,
+          "average_set_size": 1.0,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "cam_triangle_blue": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.875,
+          "sample_count": 24,
+          "singleton_count": 23,
+          "singleton_rate": 0.9583333333333334,
+          "selective_accuracy": 0.9130434782608695,
+          "empty_count": 1,
+          "empty_rate": 0.041666666666666664,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 1,
+          "abstention_rate": 0.041666666666666664,
+          "average_set_size": 0.9583333333333334,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 12,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 12,
+              "coverage": 0.75,
+              "singleton_rate": 0.9166666666666666,
+              "selective_accuracy": 0.8181818181818182
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "per_environment": {
+        "env_green": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.9444444444444444,
+          "sample_count": 72,
+          "singleton_count": 69,
+          "singleton_rate": 0.9583333333333334,
+          "selective_accuracy": 0.9855072463768116,
+          "empty_count": 3,
+          "empty_rate": 0.041666666666666664,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 3,
+          "abstention_rate": 0.041666666666666664,
+          "average_set_size": 0.9583333333333334,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.8888888888888888,
+              "singleton_rate": 0.9166666666666666,
+              "selective_accuracy": 0.9696969696969697
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_blue": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.8333333333333334,
+          "sample_count": 72,
+          "singleton_count": 63,
+          "singleton_rate": 0.875,
+          "selective_accuracy": 0.9523809523809523,
+          "empty_count": 9,
+          "empty_rate": 0.125,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 9,
+          "abstention_rate": 0.125,
+          "average_set_size": 0.875,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 1.0,
+              "singleton_rate": 1.0,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 0.75,
+              "selective_accuracy": 0.8888888888888888
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        },
+        "env_red": {
+          "alpha": 0.3,
+          "target_coverage": 0.7,
+          "empirical_coverage": 0.8055555555555556,
+          "sample_count": 72,
+          "singleton_count": 58,
+          "singleton_rate": 0.8055555555555556,
+          "selective_accuracy": 1.0,
+          "empty_count": 14,
+          "empty_rate": 0.19444444444444445,
+          "both_classes_count": 0,
+          "both_classes_rate": 0.0,
+          "abstention_count": 14,
+          "abstention_rate": 0.19444444444444445,
+          "average_set_size": 0.8055555555555556,
+          "per_class": {
+            "MATCH": {
+              "sample_count": 36,
+              "coverage": 0.6666666666666666,
+              "singleton_rate": 0.6666666666666666,
+              "selective_accuracy": 1.0
+            },
+            "CONTRADICTION": {
+              "sample_count": 36,
+              "coverage": 0.9444444444444444,
+              "singleton_rate": 0.9444444444444444,
+              "selective_accuracy": 1.0
+            }
+          },
+          "note": "The theoretical guarantee is marginal coverage under exchangeability. Selective accuracy and abstention are empirical. Per-group coverage can fall below target."
+        }
+      },
+      "status_counts": {
+        "MATCH": 0,
+        "CONTRADICTION": 0,
+        "INDETERMINATE": 0
+      }
+    }
+  ],
+  "note": "The conformal coverage guarantee is marginal and distribution-free under exchangeability of calibration and test examples. It is NOT class-conditional, NOT a per-case correctness guarantee, and NOT an abstention-rate guarantee. Selective accuracy is the fraction of singleton predictions that are correct. A small test set does not formally verify the guarantee; divergence between empirical and target coverage suggests exchangeability may not hold for that group."
+}

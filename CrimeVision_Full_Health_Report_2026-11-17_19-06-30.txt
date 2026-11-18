@@ -1,0 +1,1683 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261117190630
+Username: VENU\vdadi
+RunAs User: VENU\vdadi
+Configuration Name: 
+Machine: VENU (Microsoft Windows NT 10.0.26300.0)
+Host Application: C:\windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File .\CrimeVision_Full_Health_Check.ps1
+Process ID: 20932
+PSVersion: 5.1.26100.9818
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9818
+BuildVersion: 10.0.26100.9818
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+CRIMEVISION AI - COMPREHENSIVE PROJECT HEALTH REPORT
+Generated: 2026-11-17 19:06:30 +05:30
+Repository root: C:\Capstone-Project\CrimeVision-AI - Copy
+Report file: C:\Capstone-Project\CrimeVision-AI - Copy\CrimeVision_Full_Health_Report_2026-11-17_19-06-30.txt
+Safety: no package installation, Docker image rebuild, container restart, or evidence submission. The frontend build refreshes .next.
+
+========================================================================================
+ 1. PROJECT STRUCTURE AND EXPECTED FILES
+========================================================================================
+[PASS] docker-compose.yml found.
+[PASS] .env.example exists.
+[PASS] .env exists.
+[PASS] docker-compose.yml exists.
+[PASS] .github\workflows\ci.yml exists.
+[PASS] frontend-web\package.json exists.
+[PASS] frontend-web\package-lock.json exists.
+[PASS] frontend-web\Dockerfile exists.
+[PASS] frontend-web\src exists.
+[PASS] frontend-web\tests exists.
+[PASS] frontend-web\vitest.config.js exists.
+[PASS] research-engine\main.py exists.
+[PASS] research-engine\Dockerfile exists.
+[PASS] research-engine\requirements.txt exists.
+[PASS] research-engine\requirements.in exists.
+[PASS] research-engine\src\inference.py exists.
+[PASS] research-engine\src\conformal.py exists.
+[PASS] research-engine\src\evidential_fusion.py exists.
+[PASS] research-engine\tests exists.
+[PASS] research-engine\train_evidential_head.py exists.
+[PASS] research-engine\calibrate_conformal.py exists.
+[PASS] research-engine\reports\group_v3\ablation_artifacts\all_three.json exists.
+[INFO] No separate backend/ directory; the FastAPI backend is research-engine/ in this repository.
+[INFO] No frontend/ directory; the Next.js app is frontend-web/ in this repository.
+
+Top-level entries:
+
+Mode   Name                                                   Length  LastWriteTime      
+----   ----                                                   ------  -------------      
+d----- .cursor                                                        15-11-2026 11:39:10
+darh-- .git                                                           15-11-2026 15:59:55
+d----- .github                                                        15-11-2026 08:17:44
+dar--- frontend-web                                                   17-11-2026 12:06:25
+dar--- research-engine                                                17-11-2026 15:56:56
+-a---- .env                                                   895     17-11-2026 17:34:42
+-a---- .env.example                                           901     17-11-2026 17:34:24
+-a---- .gitignore                                             3480    15-11-2026 08:25:20
+-a---- CrimeVision_Full_Health_Check.ps1                      35757   17-11-2026 19:00:14
+-a---- CrimeVision_Full_Health_Report_2026-11-17_19-06-30.txt 654     17-11-2026 19:06:30
+-a---- CRIMEVISION_SRS_DOCUMENTATION.md                       31406   15-11-2026 08:25:20
+-a---- digest.txt                                             1491525 15-11-2026 00:29:16
+-a---- docker-compose.yml                                     3094    15-11-2026 08:25:20
+-a---- LICENSE                                                1087    15-11-2026 08:25:20
+-a---- map_everything.py                                      1457    15-11-2026 08:25:20
+-a---- Outputs.txt                                            7476    15-11-2026 08:25:20
+-a---- README.md                                              9407    15-11-2026 08:25:20
+-a---- REMEDIATION_CHANGELOG.md                               2467    15-11-2026 08:25:19
+-a---- RESEARCH_PROTOCOL.md                                   10665   15-11-2026 08:25:19
+-a---- SECURITY_BOUNDARY.md                                   2612    15-11-2026 08:25:19
+-a---- submission-audit-20261116-204937.txt                   30438   17-11-2026 00:07:49
+-a---- submission-audit-20261116-205017.txt                   28413   17-11-2026 00:07:49
+-a---- submission-audit-20261116-205412.txt                   24429   17-11-2026 00:07:49
+-a---- VALIDATION_STATUS.md                                   2240    15-11-2026 08:25:19
+
+========================================================================================
+ 2. WINDOWS / POWERSHELL / RUNTIME VERSIONS
+========================================================================================
+Windows: Microsoft Windows NT 10.0.26300.0
+PowerShell: 5.1.26100.9818 (Desktop)
+Current directory: C:\Capstone-Project\CrimeVision-AI - Copy
+[PASS] git found at C:\Program Files\Git\cmd\git.exe
+[PASS] docker found at C:\Users\vdadi\AppData\Local\Programs\DockerDesktop\resources\bin\docker.exe
+[PASS] node found at C:\nvm4w\nodejs\node.exe
+[PASS] npm found at C:\nvm4w\nodejs\npm.cmd
+[PASS] python found at C:\Users\vdadi\AppData\Local\Microsoft\WindowsApps\python.exe
+[PASS] py found at C:\Users\vdadi\AppData\Local\Programs\Python\Launcher\py.exe
+[PASS] wsl found at C:\windows\system32\wsl.exe
+
+========================================================================================
+ NODE VERSION
+========================================================================================
+COMMAND: node --version
+v20.19.6
+EXIT CODE: 0
+[PASS] NODE VERSION completed successfully.
+
+========================================================================================
+ NPM VERSION
+========================================================================================
+COMMAND: npm --version
+10.8.2
+EXIT CODE: 0
+[PASS] NPM VERSION completed successfully.
+
+========================================================================================
+ PYTHON VERSION
+========================================================================================
+COMMAND: python --version
+Python 3.13.14
+EXIT CODE: 0
+[PASS] PYTHON VERSION completed successfully.
+
+========================================================================================
+ PY LAUNCHER VERSION
+========================================================================================
+COMMAND: py --version
+Python 3.13.13
+EXIT CODE: 0
+[PASS] PY LAUNCHER VERSION completed successfully.
+
+========================================================================================
+ 3A. GIT STATUS
+========================================================================================
+COMMAND: git status --short --branch
+## main...origin/main
+ M .cursor/skills.md
+ M .env.example
+ M .gitignore
+ M CRIMEVISION_SRS_DOCUMENTATION.md
+ M README.md
+ D backend/.env.example
+ D backend/Dockerfile
+ D backend/app/__init__.py
+ D backend/app/api/__init__.py
+ D backend/app/api/analysis.py
+ D backend/app/api/auth.py
+ D backend/app/api/cases.py
+ D backend/app/api/evidence.py
+ D backend/app/core/config.py
+ D backend/app/core/database.py
+ D backend/app/main.py
+ D backend/app/models/user.py
+ D backend/app/services/auth_service.py
+ D backend/requirements.txt
+ M docker-compose.yml
+ M frontend-web/Dockerfile
+ M frontend-web/package-lock.json
+ M frontend-web/package.json
+ M frontend-web/src/components/CreateCaseModal.jsx
+ M frontend-web/src/components/CrossCaseModal.jsx
+ M frontend-web/src/components/EditCaseModal.jsx
+ M frontend-web/src/components/EvidenceModal.jsx
+ M frontend-web/src/components/EvidenceTable.jsx
+ M frontend-web/src/components/GraphView.jsx
+ M frontend-web/src/components/Heatmap.jsx
+ M frontend-web/src/components/IngestionZone.jsx
+ M frontend-web/src/components/LLMAnalysisPanel.jsx
+ M frontend-web/src/pages/index.js
+ M frontend-web/src/pages/login.js
+ D research-engine/benchmark_tests.py
+ D research-engine/cctv_clip_embeddings.npy
+ D research-engine/cctv_degraded.mp4
+ D "research-engine/cctv_frames/image 1.jpg"
+ D "research-engine/cctv_frames/image 2.jpg"
+ D "research-engine/cctv_frames/image 3.jpg"
+ D "research-engine/cctv_frames/image 4.jpg"
+ D research-engine/cctv_sample.mp4
+ D research-engine/chroma_vault/d5e85f73-507e-4164-aa2a-b2d6a137f543/data_level0.bin
+ D research-engine/chroma_vault/d5e85f73-507e-4164-aa2a-b2d6a137f543/header.bin
+ D research-engine/chroma_vault/d5e85f73-507e-4164-aa2a-b2d6a137f543/length.bin
+ D research-engine/chroma_vault/d5e85f73-507e-4164-aa2a-b2d6a137f543/link_lists.bin
+ D research-engine/clip_extractor.py
+ D research-engine/clip_search.py
+ D research-engine/degrade_evidence.py
+ D research-engine/local_evidence_vault/cctv_degraded.mp4
+ D research-engine/local_evidence_vault/cctv_sample.mp4
+ D research-engine/local_evidence_vault/statement.txt
+ D research-engine/local_evidence_vault/statement2.txt
+ D research-engine/local_llm.py
+ M research-engine/main.py
+ D research-engine/make_video.py
+ D research-engine/multimodal_fusion.py
+ M research-engine/neo4j_connector.py
+ D research-engine/notebooks/phase1_sandbox.ipynb
+ D research-engine/notebooks/review_1_heatmap_demo.png
+ M research-engine/requirements.txt
+ M research-engine/src/__init__.py
+ M research-engine/src/evidential_fusion.py
+ M research-engine/src/inference.py
+ D research-engine/test_clip_calib.py
+ D research-engine/thesis_benchmark_results.png
+?? .github/
+?? CrimeVision_Full_Health_Check.ps1
+?? CrimeVision_Full_Health_Report_2026-11-17_19-06-30.txt
+?? Outputs.txt
+?? REMEDIATION_CHANGELOG.md
+?? RESEARCH_PROTOCOL.md
+?? SECURITY_BOUNDARY.md
+?? VALIDATION_STATUS.md
+?? frontend-web/src/components/LocalDemoBanner.jsx
+?? frontend-web/src/hooks/
+?? frontend-web/src/lib/
+?? frontend-web/tests/
+?? frontend-web/vitest.config.js
+?? map_everything.py
+?? research-engine/-Path
+?? research-engine/.dockerignore
+?? research-engine/.env.example
+?? research-engine/.github/
+?? research-engine/CONFORMAL_ARTIFACT_MIGRATION.md
+?? research-engine/Dockerfile
+?? research-engine/LOCKFILE_GUIDE.md
+?? research-engine/Test_Results.txt
+?? research-engine/ablate_conformal_scores.py
+?? research-engine/ablate_degradation_sensitivity.py
+?? research-engine/ablate_full_vs_partial_ot.py
+?? research-engine/ablate_full_vs_partial_ot_updated.py
+?? research-engine/ablation_log.txt
+?? research-engine/api_security.py
+?? research-engine/calibrate_conformal.py
+?? research-engine/calibrate_decision_threshold.py
+?? research-engine/datasets/
+?? research-engine/demo_frame.jpg
+?? research-engine/docs/
+?? research-engine/evaluate_image_robustness.py
+?? research-engine/evaluate_image_robustness_bootstrap.py
+?? research-engine/evaluate_research_engine.py
+?? research-engine/evaluate_research_engine.py.backup
+?? research-engine/evaluate_research_engine_validated.py
+?? research-engine/evidence_store.py
+?? research-engine/experiment_utils.py
+?? research-engine/logging_config.py
+?? research-engine/memory_snapshot.py
+?? research-engine/pyproject.toml
+?? research-engine/reports/
+?? research-engine/requirements.in
+?? research-engine/src/conformal.py
+?? research-engine/src/data_utils.py
+?? research-engine/src/image_quality.py
+?? research-engine/tests/
+?? research-engine/train_evidential_head.py
+?? submission-audit-20261116-204937.txt
+?? submission-audit-20261116-205017.txt
+?? submission-audit-20261116-205412.txt
+EXIT CODE: 0
+[PASS] 3A. GIT STATUS completed successfully.
+
+========================================================================================
+ 3B. RECENT GIT COMMITS
+========================================================================================
+COMMAND: git log -5 --oneline --decorate
+03498f1 (HEAD -> main, origin/main, origin/HEAD) Merge pull request #11 from CaptainShyamal/main
+47df961 docs: add Software Requirements Specification (SRS) documentation
+489bf8e Fixed the errors in the main.py file and checked the backend process
+7aab5e4 Merge pull request #10 from CaptainShyamal/main
+531f8c8 Merge branch 'main' into main
+EXIT CODE: 0
+[PASS] 3B. RECENT GIT COMMITS completed successfully.
+
+========================================================================================
+ 3C. WHITESPACE / PATCH VALIDATION
+========================================================================================
+COMMAND: git diff --check
+warning: in the working copy of '.cursor/skills.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CRIMEVISION_SRS_DOCUMENTATION.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docker-compose.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/CreateCaseModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/CrossCaseModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/EditCaseModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/EvidenceModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/EvidenceTable.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/GraphView.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/Heatmap.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/IngestionZone.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/LLMAnalysisPanel.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/pages/index.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/pages/login.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/main.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/neo4j_connector.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/requirements.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/src/evidential_fusion.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/src/inference.py', LF will be replaced by CRLF the next time Git touches it
+CRIMEVISION_SRS_DOCUMENTATION.md:4: trailing whitespace.
++**Document version:** 1.1.0 (implementation-aligned revision)
+CRIMEVISION_SRS_DOCUMENTATION.md:5: trailing whitespace.
++**Project type:** B.Tech capstone research prototype
+CRIMEVISION_SRS_DOCUMENTATION.md:6: trailing whitespace.
++**Development team:** Shyamal, Moukthika, Venu, Niteesha
+CRIMEVISION_SRS_DOCUMENTATION.md:7: trailing whitespace.
++**Status:** Prototype implementation; empirical forensic validation pending
+README.md:45: trailing whitespace.
++CrimeVision-AI/
+README.md:46: trailing whitespace.
++Γö£ΓöÇΓöÇ frontend-web/            # Next.js investigator dashboard
+README.md:47: trailing whitespace.
++Γö£ΓöÇΓöÇ research-engine/         # **CLIP**, partial-OT, split-conformal and graph **API**
+README.md:48: trailing whitespace.
++Γöé   Γö£ΓöÇΓöÇ src/                 # conformal.py, inference.py, evidential_fusion.py, etc.
+README.md:49: trailing whitespace.
++Γöé   Γö£ΓöÇΓöÇ tests/               # Pytest suite (math, conformal, **API**, Neo4j)
+README.md:50: trailing whitespace.
++Γöé   Γö£ΓöÇΓöÇ datasets/            # **UCA** adapter and dataset preparation scripts
+README.md:51: trailing whitespace.
++Γöé   Γö£ΓöÇΓöÇ calibrate_conformal.py
+README.md:52: trailing whitespace.
++Γöé   Γö£ΓöÇΓöÇ evaluate_research_engine.py
+README.md:53: trailing whitespace.
++Γöé   Γö£ΓöÇΓöÇ main.py
+README.md:54: trailing whitespace.
++Γöé   ΓööΓöÇΓöÇ neo4j_connector.py
+README.md:55: trailing whitespace.
++Γö£ΓöÇΓöÇ docker-compose.yml       # Neo4j, research-engine and frontend definitions
+README.md:56: trailing whitespace.
++Γö£ΓöÇΓöÇ .env.example
+README.md:57: trailing whitespace.
++ΓööΓöÇΓöÇ README.md
+README.md:60: trailing whitespace.
++## Requirements
+README.md:68: trailing whitespace.
++## Configuration and secrets
+README.md:81: trailing whitespace.
++docker compose up -d neo4j
+README.md:88: trailing whitespace.
++py -m venv .venv
+README.md:91: trailing whitespace.
++py -m pip install -r requirements.txt
+README.md:97: trailing whitespace.
++$env:NEO4J_URI = *bolt://localhost:**7687***
+README.md:98: trailing whitespace.
++$env:NEO4J_USER = *neo4j*
+README.md:99: trailing whitespace.
++$env:NEO4J_PASSWORD = <REDACTED>
+README.md:100: trailing whitespace.
++$env:CORS_ALLOWED_ORIGINS = *[http://localhost:**3000**,http://**127**.0.0.1:**3000***](http://localhost:**3000**,http://**127**.0.0.1:**3000***)
+README.md:103: trailing whitespace.
++py -m uvicorn main:app --host **127**.0.0.1 --port **8001** --reload
+README.md:106: trailing whitespace.
++## Start the frontend
+README.md:110: trailing whitespace.
++cd frontend-web
+README.md:111: trailing whitespace.
++npm install
+README.md:117: trailing whitespace.
++env NEXT_PUBLIC_RESEARCH_API_URL=[http://**127**.0.0.1:**8001**](http://**127**.0.0.1:**8001**)
+README.md:123: trailing whitespace.
++npm run dev
+README.md:128: trailing whitespace.
++## Research workflow (Split-Conformal)
+README.md:131: trailing whitespace.
++## Dataset format
+README.md:136: trailing whitespace.
++image_path,statement,label,camera_id,environment_id,source_recording_id
+README.md:177: trailing whitespace.
++## Tests
+README.md:182: trailing whitespace.
++python -m pytest -q
+README.md:186: trailing whitespace.
++## Important research interpretation rules
+README.md:194: trailing whitespace.
++## Future Work:
+README.md:200: trailing whitespace.
++### Team
+EXIT CODE: 2
+[WARN] 3C. WHITESPACE / PATCH VALIDATION returned exit code 2.
+
+========================================================================================
+ 3D. GIT CHANGE SUMMARY AND SECRET-FILE TRACKING
+========================================================================================
+warning: in the working copy of '.cursor/skills.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CRIMEVISION_SRS_DOCUMENTATION.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docker-compose.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/CreateCaseModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/CrossCaseModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/EditCaseModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/EvidenceModal.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/EvidenceTable.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/GraphView.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/Heatmap.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/IngestionZone.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/components/LLMAnalysisPanel.jsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/pages/index.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend-web/src/pages/login.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/main.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/neo4j_connector.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/requirements.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/src/evidential_fusion.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'research-engine/src/inference.py', LF will be replaced by CRLF the next time Git touches it
+ .cursor/skills.md                                  |    2 +-
+ .env.example                                       |   54 +-
+ .gitignore                                         |   96 +-
+ CRIMEVISION_SRS_DOCUMENTATION.md                   |  974 +--
+ README.md                                          |  251 +-
+ backend/.env.example                               |   11 -
+ backend/Dockerfile                                 |   22 -
+ backend/app/__init__.py                            |    1 -
+ backend/app/api/__init__.py                        |    1 -
+ backend/app/api/analysis.py                        |   39 -
+ backend/app/api/auth.py                            |   32 -
+ backend/app/api/cases.py                           |   42 -
+ backend/app/api/evidence.py                        |   28 -
+ backend/app/core/config.py                         |   24 -
+ backend/app/core/database.py                       |   38 -
+ backend/app/main.py                                |   39 -
+ backend/app/models/user.py                         |   12 -
+ backend/app/services/auth_service.py               |   25 -
+ backend/requirements.txt                           |   10 -
+ docker-compose.yml                                 |   99 +-
+ frontend-web/Dockerfile                            |    4 +
+ frontend-web/package-lock.json                     | 8608 ++++++++++++++++----
+ frontend-web/package.json                          |   13 +-
+ frontend-web/src/components/CreateCaseModal.jsx    |  206 +-
+ frontend-web/src/components/CrossCaseModal.jsx     |  535 +-
+ frontend-web/src/components/EditCaseModal.jsx      |   17 +-
+ frontend-web/src/components/EvidenceModal.jsx      |  173 +-
+ frontend-web/src/components/EvidenceTable.jsx      |  274 +-
+ frontend-web/src/components/GraphView.jsx          |  766 +-
+ frontend-web/src/components/Heatmap.jsx            |  156 +-
+ frontend-web/src/components/IngestionZone.jsx      |  753 +-
+ frontend-web/src/components/LLMAnalysisPanel.jsx   |  327 +-
+ frontend-web/src/pages/index.js                    |  757 +-
+ frontend-web/src/pages/login.js                    |  122 +-
+ research-engine/benchmark_tests.py                 |  107 -
+ research-engine/cctv_clip_embeddings.npy           |  Bin 8320 -> 0 bytes
+ research-engine/cctv_degraded.mp4                  |  Bin 10525383 -> 0 bytes
+ research-engine/cctv_frames/image 1.jpg            |  Bin 43074 -> 0 bytes
+ research-engine/cctv_frames/image 2.jpg            |  Bin 29942 -> 0 bytes
+ research-engine/cctv_frames/image 3.jpg            |  Bin 32951 -> 0 bytes
+ research-engine/cctv_frames/image 4.jpg            |  Bin 44095 -> 0 bytes
+ research-engine/cctv_sample.mp4                    |  Bin 156595 -> 0 bytes
+ .../data_level0.bin                                |  Bin 167600 -> 0 bytes
+ .../header.bin                                     |  Bin 100 -> 0 bytes
+ .../length.bin                                     |  Bin 400 -> 0 bytes
+ .../link_lists.bin                                 |    0
+ research-engine/clip_extractor.py                  |   36 -
+ research-engine/clip_search.py                     |   55 -
+ research-engine/degrade_evidence.py                |   57 -
+ .../local_evidence_vault/cctv_degraded.mp4         |  Bin 10525383 -> 0 bytes
+ .../local_evidence_vault/cctv_sample.mp4           |  Bin 156595 -> 0 bytes
+ research-engine/local_evidence_vault/statement.txt |    1 -
+ .../local_evidence_vault/statement2.txt            |    1 -
+ research-engine/local_llm.py                       |   42 -
+ research-engine/main.py                            | 1515 ++--
+ research-engine/make_video.py                      |   22 -
+ research-engine/multimodal_fusion.py               |   82 -
+ research-engine/neo4j_connector.py                 | 2016 +++--
+ research-engine/notebooks/phase1_sandbox.ipynb     |  155 -
+ .../notebooks/review_1_heatmap_demo.png            |  Bin 501796 -> 0 bytes
+ research-engine/requirements.txt                   |   29 +-
+ research-engine/src/__init__.py                    |    1 -
+ research-engine/src/evidential_fusion.py           |  572 +-
+ research-engine/src/inference.py                   |  641 +-
+ research-engine/test_clip_calib.py                 |   39 -
+ research-engine/thesis_benchmark_results.png       |  Bin 154263 -> 0 bytes
+ 66 files changed, 12765 insertions(+), 7117 deletions(-)
+[PASS] No root .env / frontend-web/.env.local / research-engine/.env file is listed as a tracked Git file.
+Ignore rules (paths only):
+.gitignore:51:.env	.env
+.gitignore:52:.env.*	frontend-web/.env.local
+.gitignore:51:.env	research-engine/.env
+
+========================================================================================
+ 4. ENVIRONMENT CONFIGURATION (SECRET VALUES ARE NOT DISPLAYED)
+========================================================================================
+[PASS] Root .env exists. Its contents are intentionally not printed.
+[PASS] .env.example exists.
+[WARN] EVIDENTIAL_HEAD_PATH is EMPTY in current process/root .env. Empty decision-artifact configuration can cause INDETERMINATE-only behaviour.
+[WARN] EVIDENTIAL_CALIBRATION_PATH is EMPTY in current process/root .env. Empty decision-artifact configuration can cause INDETERMINATE-only behaviour.
+CONFORMAL_ARTIFACT_PATH = /app/models/uca_conformal_v3.json
+[WARN] CONFORMAL_ARTIFACT_PATH is configured, but this path is not found on the host. It may be a container-only path or named-volume path.
+DEFAULT_DEVICE = auto
+CLIP_MODEL_NAME = openai/clip-vit-base-patch32
+CLIP_MODEL_REVISION = 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268
+TRUST_MODE = heterogeneity
+[INFO] frontend-web\.env.local exists; contents not displayed.
+[INFO] research-engine\.env.example exists; contents not displayed.
+
+========================================================================================
+ 5A. FRONTEND PACKAGE METADATA
+========================================================================================
+Package: crimevision-frontend
+Version: 1.0.0
+Scripts:
+  dev: next dev
+  build: next build
+  start: next start
+  lint: next lint
+  test: vitest run
+  test:watch: vitest
+[PASS] frontend-web/node_modules exists.
+
+========================================================================================
+ 5B. FRONTEND DEPENDENCY TREE
+========================================================================================
+COMMAND: npm ls --depth=0
+crimevision-frontend@1.0.0 C:\Capstone-Project\CrimeVision-AI - Copy\frontend-web
++-- @testing-library/jest-dom@6.9.1
++-- @testing-library/react@14.3.1
++-- @vitejs/plugin-react@4.7.0
++-- autoprefixer@10.4.15
++-- axios@1.20.0
++-- jsdom@24.1.3
++-- lucide-react@0.274.0
++-- next@13.5.11
++-- postcss@8.4.29
++-- react-dom@18.2.0
++-- react-dropzone@19.3.0
++-- react@18.2.0
++-- reactflow@11.11.4
++-- recharts@2.15.4
++-- tailwindcss@3.3.3
+`-- vitest@1.6.1
+
+EXIT CODE: 0
+[PASS] 5B. FRONTEND DEPENDENCY TREE completed successfully.
+
+========================================================================================
+ 5C. FRONTEND UNIT TESTS (VITEST)
+========================================================================================
+COMMAND: npm test -- --reporter=verbose
+
+> crimevision-frontend@1.0.0 test
+> vitest run --reporter=verbose
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mC:/Capstone-Project/CrimeVision-AI - Copy/frontend-web[39m
+
+ [32mΓ£ô[39m tests/config.test.js[2m > [22mvalidateResearchApiUrl[2m > [22mrejects an empty value with an actionable message
+ [32mΓ£ô[39m tests/config.test.js[2m > [22mvalidateResearchApiUrl[2m > [22mrejects a non-URL value
+ [32mΓ£ô[39m tests/config.test.js[2m > [22mvalidateResearchApiUrl[2m > [22mrejects a non-http scheme
+ [32mΓ£ô[39m tests/config.test.js[2m > [22mvalidateResearchApiUrl[2m > [22maccepts a valid URL and strips a trailing slash
+ [32mΓ£ô[39m tests/Heatmap.test.jsx[2m > [22mHeatmap[2m > [22mrenders empty state when no matrix is available
+ [32mΓ£ô[39m tests/Heatmap.test.jsx[2m > [22mHeatmap[2m > [22mrenders tokens, patches, and classifier assessment when matrix present
+ [32mΓ£ô[39m tests/Heatmap.test.jsx[2m > [22mHeatmap[2m > [22mrenders INDETERMINATE for unknown status
+ [32mΓ£ô[39m tests/IngestionZone.test.jsx[2m > [22mIngestionZone[2m > [22mrefuses to attach evidence when no case is selected
+ [32mΓ£ô[39m tests/IngestionZone.test.jsx[2m > [22mIngestionZone[2m > [22mdisables analysis until a statement is provided
+ [32mΓ£ô[39m tests/IngestionZone.test.jsx[2m > [22mIngestionZone[2m > [22muploads and reports INDETERMINATE when the API succeeds
+ [32mΓ£ô[39m tests/GraphView.test.jsx[2m > [22mGraphView[2m > [22mupdates a statement node when its assessment changes while the id is stable
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m11 passed[39m[22m[90m (11)[39m
+[2m   Start at [22m 19:06:53
+[2m   Duration [22m 24.35s[2m (transform 723ms, setup 12.94s, collect 18.33s, tests 455ms, environment 50.82s, prepare 4.48s)[22m
+
+EXIT CODE: 0
+[PASS] 5C. FRONTEND UNIT TESTS (VITEST) completed successfully.
+
+========================================================================================
+ 5D. FRONTEND PRODUCTION BUILD
+========================================================================================
+COMMAND: npm run build
+
+> crimevision-frontend@1.0.0 build
+> next build
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/4) ...
+
+   Generating static pages (1/4)
+
+   Generating static pages (2/4)
+
+   Generating static pages (3/4)
+
+ Γ£ô Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                              Size     First Load JS
+Γöî Γùï / (469 ms)                             104 kB          183 kB
+Γö£   Γöö css/a275cc2b185e04f8.css             1.55 kB
+Γö£   /_app                                  0 B            79.4 kB
+Γö£ Γùï /404                                   180 B          79.6 kB
+Γöö Γùï /login                                 1.84 kB        81.2 kB
++ First Load JS shared by all              86.5 kB
+  Γö£ chunks/framework-0c7baedefba6b077.js   45.4 kB
+  Γö£ chunks/main-5232346dfb644e31.js        32.9 kB
+  Γö£ chunks/pages/_app-9acf648ca847d82b.js  309 B
+  Γö£ chunks/webpack-fa99431b15635937.js     836 B
+  Γöö css/667933de0e0f330c.css               7.11 kB
+
+Γùï  (Static)  automatically rendered as static HTML (uses no initial props)
+
+EXIT CODE: 0
+[PASS] 5D. FRONTEND PRODUCTION BUILD completed successfully.
+
+========================================================================================
+ 5E. FRONTEND LINT
+========================================================================================
+[INFO] No ESLint configuration/binary detected in the project snapshot; skipped to avoid Next.js interactive setup prompts.
+
+========================================================================================
+ 5F. NPM SECURITY AUDIT
+========================================================================================
+[INFO] Skipped by default; rerun with -RunSecurityAudits to query npm advisories (network required).
+
+========================================================================================
+ 6A. RESEARCH ENGINE PYTHON INTERPRETER
+========================================================================================
+Selected Python: C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe
+[PASS] Python interpreter found.
+
+========================================================================================
+ 6B. RESEARCH ENGINE PYTHON VERSION
+========================================================================================
+COMMAND: C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe --version
+Python 3.13.14
+EXIT CODE: 0
+[PASS] 6B. RESEARCH ENGINE PYTHON VERSION completed successfully.
+
+========================================================================================
+ 6C. RESEARCH ENGINE PIP DEPENDENCY CONSISTENCY
+========================================================================================
+COMMAND: C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe -m pip check
+No broken requirements found.
+EXIT CODE: 0
+[PASS] 6C. RESEARCH ENGINE PIP DEPENDENCY CONSISTENCY completed successfully.
+
+========================================================================================
+ 6D. RESEARCH ENGINE SOURCE SYNTAX CHECK (AST; NO BYTECODE FILES WRITTEN)
+========================================================================================
+
+========================================================================================
+ PYTHON AST SYNTAX CHECK
+========================================================================================
+COMMAND: C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe -c import ast, pathlib, sys
+skip={".venv","venv","__pycache__","node_modules",".pytest_cache",".git"}
+files=[p for p in pathlib.Path(".").rglob("*.py") if not any(x in skip for x in p.parts)]
+errors=[]
+for p in files:
+ try: ast.parse(p.read_text(encoding="utf-8"), filename=str(p))
+ except Exception as e: errors.append((str(p), str(e)))
+print(f"Parsed {len(files)} Python files")
+for p,e in errors: print(f"SYNTAX ERROR: {p}: {e}")
+sys.exit(1 if errors else 0)
+  File "<string>", line 2
+    skip={.venv,venv,__pycache__,node_modules,.pytest_cache,.git}
+          ^
+SyntaxError: invalid syntax
+EXIT CODE: 1
+[FAIL] PYTHON AST SYNTAX CHECK returned exit code 1.
+
+========================================================================================
+ 6E. RESEARCH ENGINE FULL PYTEST SUITE
+========================================================================================
+COMMAND: C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe -m pytest -v --tb=short --durations=15
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe: No module named pytest
+EXIT CODE: 1
+[FAIL] 6E. RESEARCH ENGINE FULL PYTEST SUITE returned exit code 1.
+
+========================================================================================
+ 6F. KEY PYTHON LIBRARY IMPORT / VERSION PROBE
+========================================================================================
+
+========================================================================================
+ PYTHON IMPORT PROBE
+========================================================================================
+COMMAND: C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\venv\Scripts\python.exe -c import importlib, importlib.metadata as m
+names=['torch','torchvision','transformers','numpy','scipy','cv2','Pillow','fastapi','uvicorn','python-multipart','neo4j','python-dotenv']
+aliases={'cv2':'cv2','Pillow':'PIL','python-multipart':'multipart','python-dotenv':'dotenv'}
+for n in names:
+ try:
+  mod=importlib.import_module(aliases.get(n,n))
+  v=getattr(mod,'__version__',None) or m.version(n)
+  print(f'{n}: OK ({v})')
+ except Exception as e:
+  print(f'{n}: IMPORT ERROR ({type(e).__name__}: {e})')
+torch: IMPORT ERROR (ModuleNotFoundError: No module named 'torch')
+torchvision: IMPORT ERROR (ModuleNotFoundError: No module named 'torchvision')
+transformers: IMPORT ERROR (ModuleNotFoundError: No module named 'transformers')
+numpy: IMPORT ERROR (ModuleNotFoundError: No module named 'numpy')
+scipy: IMPORT ERROR (ModuleNotFoundError: No module named 'scipy')
+cv2: IMPORT ERROR (ModuleNotFoundError: No module named 'cv2')
+Pillow: IMPORT ERROR (ModuleNotFoundError: No module named 'PIL')
+fastapi: IMPORT ERROR (ModuleNotFoundError: No module named 'fastapi')
+uvicorn: IMPORT ERROR (ModuleNotFoundError: No module named 'uvicorn')
+python-multipart: IMPORT ERROR (ModuleNotFoundError: No module named 'multipart')
+neo4j: IMPORT ERROR (ModuleNotFoundError: No module named 'neo4j')
+python-dotenv: IMPORT ERROR (ModuleNotFoundError: No module named 'dotenv')
+EXIT CODE: 0
+[PASS] PYTHON IMPORT PROBE completed successfully.
+
+========================================================================================
+ 6G. PIP SECURITY AUDIT
+========================================================================================
+[INFO] Skipped by default; rerun with -RunSecurityAudits if pip-audit is installed.
+
+========================================================================================
+ 7. RESEARCH SCRIPTS, TESTS, ARTIFACTS AND API ROUTES
+========================================================================================
+research-engine\tests: 50 files, 0.55 MB
+
+FullName                                                                                                                                Length LastWriteTim
+                                                                                                                                               e           
+--------                                                                                                                                ------ ------------
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_adapt_uca.cpython-313.pyc                                2892 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_adapt_uca.cpython-313-pytest-9.1.1.pyc                   6211 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_adapt_uca.cpython-313-pytest-9.2.0.pyc                   6211 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_api_integration.cpython-313-pytest-9.1.1.pyc            10464 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_api_integration.cpython-313-pytest-9.2.0.pyc            10464 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_api_security.cpython-313-pytest-9.1.1.pyc               13780 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_api_security.cpython-313-pytest-9.2.0.pyc               13780 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_calibration_logic.cpython-313-pytest-9.1.1.pyc          13851 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_calibration_logic.cpython-313-pytest-9.2.0.pyc          13851 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_conformal.cpython-313-pytest-9.1.1.pyc                  57843 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_conformal.cpython-313-pytest-9.2.0.pyc                  57843 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_data_utils.cpython-313.pyc                               6304 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_data_utils.cpython-313-pytest-9.1.1.pyc                  8883 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_data_utils.cpython-313-pytest-9.2.0.pyc                  8883 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_degradation_sensitivity.cpython-313-pytest-9.1.1.pyc     3241 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_degradation_sensitivity.cpython-313-pytest-9.2.0.pyc     3241 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_evidence_store.cpython-313-pytest-9.1.1.pyc             17844 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_evidence_store.cpython-313-pytest-9.2.0.pyc             17844 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_evidential_fusion.cpython-313-pytest-9.1.1.pyc          39617 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_evidential_fusion.cpython-313-pytest-9.2.0.pyc          39617 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_experiment_utils.cpython-313-pytest-9.1.1.pyc           10052 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_experiment_utils.cpython-313-pytest-9.2.0.pyc           10052 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_inference_features.cpython-313-pytest-9.1.1.pyc         20305 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_inference_features.cpython-313-pytest-9.2.0.pyc         20305 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_local_deployment_security.cpython-313-pytest-9.1.1.pyc   7102 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_local_deployment_security.cpython-313-pytest-9.2.0.pyc   7102 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_logging_config.cpython-313-pytest-9.1.1.pyc              5987 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_logging_config.cpython-313-pytest-9.2.0.pyc              5987 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_memory_snapshot.cpython-313-pytest-9.1.1.pyc             9451 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_memory_snapshot.cpython-313-pytest-9.2.0.pyc             9451 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_neo4j_connector.cpython-313-pytest-9.1.1.pyc            25494 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_neo4j_connector.cpython-313-pytest-9.2.0.pyc            25494 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_neo4j_integration.cpython-313-pytest-9.1.1.pyc           4389 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\__pycache__\test_neo4j_integration.cpython-313-pytest-9.2.0.pyc           4389 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_adapt_uca.py                                                         1831 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_api_integration.py                                                   3261 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_api_security.py                                                      2864 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_calibration_logic.py                                                 3698 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_conformal.py                                                        12072 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_data_utils.py                                                        6154 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_degradation_sensitivity.py                                            967 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_evidence_store.py                                                    3843 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_evidential_fusion.py                                                 6157 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_experiment_utils.py                                                  2824 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_inference_features.py                                                5693 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_local_deployment_security.py                                         1198 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_logging_config.py                                                    1021 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_memory_snapshot.py                                                   2303 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_neo4j_connector.py                                                   7073 15-11-202...
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\tests\test_neo4j_integration.py                                                 1492 15-11-202...
+research-engine\src: 12 files, 0.22 MB
+
+FullName                                                                                                    Length LastWriteTime      
+--------                                                                                                    ------ -------------      
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__init__.py                                        0 15-11-2026 08:24:19
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__pycache__\__init__.cpython-313.pyc             170 15-11-2026 08:39:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__pycache__\conformal.cpython-313.pyc          40286 15-11-2026 08:56:26
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__pycache__\data_utils.cpython-313.pyc         21319 15-11-2026 14:51:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__pycache__\evidential_fusion.cpython-313.pyc  28940 15-11-2026 08:56:30
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__pycache__\image_quality.cpython-313.pyc       3833 15-11-2026 08:56:30
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\__pycache__\inference.cpython-313.pyc          35799 15-11-2026 08:56:27
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\conformal.py                                   30425 15-11-2026 08:24:19
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\data_utils.py                                  17179 15-11-2026 14:50:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\evidential_fusion.py                           20633 15-11-2026 08:24:19
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\image_quality.py                                2236 15-11-2026 08:24:19
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\src\inference.py                                   31147 15-11-2026 08:24:19
+research-engine\models: 4 files, 0.10 MB
+
+FullName                                                                                           Length LastWriteTime      
+--------                                                                                           ------ -------------      
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\models\smoke_conformal.json                5193 15-11-2026 08:23:16
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\models\uca_conformal_v1_exploratory.json   3873 15-11-2026 08:23:16
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\models\uca_conformal_v2.json              41655 15-11-2026 08:23:16
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\models\uca_conformal_v3.json              49535 17-11-2026 17:28:19
+research-engine\reports\group_v3\ablation_artifacts: 6 files, 0.28 MB
+
+FullName                                                                                                               Length LastWriteTime      
+--------                                                                                                               ------ -------------      
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\reports\group_v3\ablation_artifacts\all_three.json            49535 15-11-2026 09:11:18
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\reports\group_v3\ablation_artifacts\clip_only.json            48840 15-11-2026 09:11:18
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\reports\group_v3\ablation_artifacts\discarded_only.json       48805 15-11-2026 09:11:18
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\reports\group_v3\ablation_artifacts\discarded_plus_clip.json  49116 15-11-2026 09:11:18
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\reports\group_v3\ablation_artifacts\sinkhorn_only.json        48821 15-11-2026 09:11:18
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\reports\group_v3\ablation_artifacts\sinkhorn_plus_clip.json   49135 15-11-2026 09:11:18
+research-engine\datasets: 231 files, 2.94 MB
+
+FullName                                                                                                            Length LastWriteTime      
+--------                                                                                                            ------ -------------      
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\__pycache__\adapt_uca.cpython-313.pyc             12570 15-11-2026 14:42:16
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\adapt_uca.py                                       9045 15-11-2026 08:21:09
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\inspect_uca.py                                    10764 15-11-2026 08:21:09
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\prepare_smoke_test.py                              5473 15-11-2026 08:21:09
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\prepare_ucf_crime_proxy.py                         7728 15-11-2026 08:21:09
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\README.md                                          2377 12-11-2026 09:24:44
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\calibration.csv                             33060 15-11-2026 08:21:35
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_000.png       1251 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_001.png       1251 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_002.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_003.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_004.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_005.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_006.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_007.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_008.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_009.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_010.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_blue_011.png       1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_000.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_001.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_002.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_003.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_004.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_005.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_006.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_007.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_008.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_009.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_010.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_green_011.png      1251 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_000.png        1248 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_001.png        1248 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_002.png        1248 15-11-2026 08:21:51
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_003.png        1248 15-11-2026 08:21:52
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_004.png        1248 15-11-2026 08:21:52
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_005.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_006.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_007.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_008.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_009.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_010.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_circle_red_011.png        1248 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_000.png        705 15-11-2026 08:21:53
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_001.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_002.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_003.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_004.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_005.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_006.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_007.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_008.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_009.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_010.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_blue_011.png        705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_000.png       705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_001.png       705 15-11-2026 08:21:54
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_002.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_003.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_004.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_005.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_006.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_007.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_008.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_009.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_010.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_green_011.png       705 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_000.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_001.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_002.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_003.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_004.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_005.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_006.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_007.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_008.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_009.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_010.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_square_red_011.png         703 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_000.png     1183 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_001.png     1183 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_002.png     1183 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_003.png     1183 15-11-2026 08:21:55
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_004.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_005.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_006.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_007.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_008.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_009.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_010.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_blue_011.png     1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_000.png    1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_001.png    1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_002.png    1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_003.png    1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_004.png    1183 15-11-2026 08:21:56
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_005.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_006.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_007.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_008.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_009.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_010.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_green_011.png    1183 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_000.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_001.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_002.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_003.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_004.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_005.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_006.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_007.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_008.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_009.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_010.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\calibration_triangle_red_011.png      1181 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_000.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_001.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_002.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_003.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_004.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_005.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_006.png              1251 15-11-2026 08:21:57
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_007.png              1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_008.png              1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_009.png              1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_010.png              1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_blue_011.png              1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_000.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_001.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_002.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_003.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_004.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_005.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_006.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_007.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_008.png             1251 15-11-2026 08:21:58
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_009.png             1251 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_010.png             1251 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_green_011.png             1251 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_000.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_001.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_002.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_003.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_004.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_005.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_006.png               1248 15-11-2026 08:21:59
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_007.png               1248 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_008.png               1248 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_009.png               1248 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_010.png               1248 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_circle_red_011.png               1248 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_000.png               705 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_001.png               705 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_002.png               705 15-11-2026 08:22:00
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_003.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_004.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_005.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_006.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_007.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_008.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_009.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_010.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_blue_011.png               705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_000.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_001.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_002.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_003.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_004.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_005.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_006.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_007.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_008.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_009.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_010.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_green_011.png              705 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_000.png                703 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_001.png                703 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_002.png                703 15-11-2026 08:22:01
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_003.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_004.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_005.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_006.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_007.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_008.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_009.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_010.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_square_red_011.png                703 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_000.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_001.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_002.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_003.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_004.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_005.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_006.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_007.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_008.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_009.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_010.png            1183 15-11-2026 08:22:02
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_blue_011.png            1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_000.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_001.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_002.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_003.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_004.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_005.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_006.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_007.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_008.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_009.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_010.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_green_011.png           1183 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_000.png             1181 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_001.png             1181 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_002.png             1181 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_003.png             1181 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_004.png             1181 15-11-2026 08:22:03
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_005.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_006.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_007.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_008.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_009.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_010.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\images\test_triangle_red_011.png             1181 15-11-2026 08:22:04
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\smoke\test.csv                                    30021 15-11-2026 08:21:35
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca\calibration.csv                               53468 15-11-2026 08:21:20
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca\fit.csv                                     1215328 15-11-2026 08:21:20
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca\test.csv                                      53729 15-11-2026 08:21:20
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca_group_v3\calibration.csv                      58190 15-11-2026 08:39:21
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca_group_v3\fit.csv                            1303065 15-11-2026 08:39:21
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca_group_v3\test.csv                             56536 15-11-2026 08:39:21
+C:\Capstone-Project\CrimeVision-AI - Copy\research-engine\datasets\uca_group_v3\uca_pairing_manifest.json             1541 15-11-2026 08:39:21
+
+FastAPI route decorators found in main.py:
+Line 257: @app.get("/health", tags=["Health"])
+Line 262: @app.get("/ready", tags=["Health"])
+Line 410: @app.get("/cases")
+Line 415: @app.post("/cases")
+Line 435: @app.put("/cases/{case_id}")
+Line 457: @app.delete("/cases/{case_id}")
+Line 468: @app.get("/graph/all")
+Line 469: @app.get("/graph/multi/all")
+Line 474: @app.post("/cross_case_relation")
+Line 497: @app.get("/cross_case_relations")
+Line 502: @app.get("/cross_case_suggestions")
+Line 555: @app.get("/graph/{case_id}")
+Line 562: @app.post("/clear/{case_id}")
+Line 582: @app.get("/evidence/{case_id}")
+Line 599: @app.get("/evidence/{case_id}/manifest")
+Line 629: @app.get("/evidence/{case_id}/{sha256}/file")
+Line 659: @app.post("/evidence/{case_id}/verify")
+Line 724: @app.post("/analyze_evidence/")
+Line 1005: @app.get("/admin/memory", tags=["Admin"])
+Line 1023: @app.post("/admin/memory/flush", tags=["Admin"])
+[PASS] all_three.json exists and parses as JSON.
+Artifact top-level keys: schema_version, method, alpha, q_hat, feature_names, class_to_index, density_match, density_contradiction, fit_sample_count, fit_class_counts, calibration_sample_count, calibration_class_counts, calibration_scores, inference_config, fit_csv_sha256, calibration_csv_sha256, cli_model_revision, feature_schema_version, calibration_unit, calibration_group_count, fit_group_ids, calibration_group_ids, coverage_guarantee, coverage_scope, warning
+[PASS] CLIP model cache directory found: C:\Users\vdadi\.cache\huggingface\hub\models--openai--clip-vit-base-patch32
+
+========================================================================================
+ 8A. DOCKER CLIENT VERSION
+========================================================================================
+COMMAND: docker --version
+Docker version 29.7.2, build a7dcaa6
+EXIT CODE: 0
+[PASS] 8A. DOCKER CLIENT VERSION completed successfully.
+
+========================================================================================
+ 8B. DOCKER COMPOSE VERSION
+========================================================================================
+COMMAND: docker compose version
+Docker Compose version v5.3.1
+EXIT CODE: 0
+[PASS] 8B. DOCKER COMPOSE VERSION completed successfully.
+
+========================================================================================
+ 8C. DOCKER SERVER INFO (SUMMARY)
+========================================================================================
+COMMAND: docker info --format Server={{.ServerVersion}} OS={{.OSType}} Arch={{.Architecture}} Containers={{.Containers}} Running={{.ContainersRunning}} Images={{.Images}}
+Server=29.7.2 OS=linux Arch=x86_64 Containers=9 Running=3 Images=10
+EXIT CODE: 0
+[PASS] 8C. DOCKER SERVER INFO (SUMMARY) completed successfully.
+
+========================================================================================
+ 8D. COMPOSE CONFIG VALIDATION (QUIET; DOES NOT PRINT SECRETS)
+========================================================================================
+COMMAND: docker compose config --quiet
+EXIT CODE: 0
+[PASS] 8D. COMPOSE CONFIG VALIDATION (QUIET; DOES NOT PRINT SECRETS) completed successfully.
+
+========================================================================================
+ 8E. COMPOSE SERVICE LIST
+========================================================================================
+COMMAND: docker compose config --services
+neo4j
+research-engine
+frontend-web
+EXIT CODE: 0
+[PASS] 8E. COMPOSE SERVICE LIST completed successfully.
+
+========================================================================================
+ 8F. COMPOSE CONTAINER STATUS
+========================================================================================
+COMMAND: docker compose ps -a
+NAME                          IMAGE                                 COMMAND                  SERVICE           CREATED         STATUS                 PORTS
+crimevision-frontend          crimevision-ai-copy-frontend-web      "docker-entrypoint.sΓÇª"   frontend-web      9 minutes ago   Up 9 minutes           127.0.0.1:3000->3000/tcp
+crimevision-neo4j             neo4j:5.11-community                  "tini -g -- /startupΓÇª"   neo4j             22 hours ago    Up 9 hours (healthy)   127.0.0.1:7474->7474/tcp, 127.0.0.1:7687->7687/tcp
+crimevision-research-engine   crimevision-ai-copy-research-engine   "uvicorn main:app --ΓÇª"   research-engine   9 minutes ago   Up 9 minutes           127.0.0.1:8001->8001/tcp
+EXIT CODE: 0
+[PASS] 8F. COMPOSE CONTAINER STATUS completed successfully.
+
+========================================================================================
+ 8G. COMPOSE IMAGES
+========================================================================================
+COMMAND: docker compose images
+CONTAINER                     REPOSITORY                            TAG                 PLATFORM            IMAGE ID            SIZE                CREATED
+crimevision-frontend          crimevision-ai-copy-frontend-web      latest              linux/amd64         d80035c6291b        445MB               About an hour ago
+crimevision-neo4j             neo4j                                 5.11-community      linux/amd64         eb36a96ef2d6        294MB               3 years ago
+crimevision-research-engine   crimevision-ai-copy-research-engine   latest              linux/amd64         696014781f53        3.48GB              7 hours ago
+EXIT CODE: 0
+[PASS] 8G. COMPOSE IMAGES completed successfully.
+
+========================================================================================
+ 8H. DOCKER DISK USAGE
+========================================================================================
+COMMAND: docker system df
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          10        8         29.89GB   1.039GB (3%)
+Containers      9         3         881.6MB   125.1MB (14%)
+Local Volumes   19        11        1.465GB   1.73MB (0%)
+Build Cache     90        0         34.83GB   17.42GB
+EXIT CODE: 0
+[PASS] 8H. DOCKER DISK USAGE completed successfully.
+
+========================================================================================
+ 8I. DOCKER CONTAINER HEALTH DETAILS (NO ENVIRONMENT VARIABLES)
+========================================================================================
+/crimevision-neo4j | status=running | restarts=11 | health=healthy | ports={"7474/tcp":[{"HostIp":"127.0.0.1","HostPort":"7474"}],"7687/tcp":[{"HostIp":"127.0.0.1","HostPort":"7687"}]}
+/crimevision-research-engine | status=running | restarts=0 | health=no-healthcheck | ports={"8001/tcp":[{"HostIp":"127.0.0.1","HostPort":"8001"}]}
+/crimevision-frontend | status=running | restarts=0 | health=no-healthcheck | ports={"3000/tcp":[{"HostIp":"127.0.0.1","HostPort":"3000"}]}
+
+========================================================================================
+ 8J. DOCKER NETWORK LIST
+========================================================================================
+COMMAND: docker network ls
+NETWORK ID     NAME                          DRIVER    SCOPE
+1df7bc6f647d   bridge                        bridge    local
+b27fddd279f9   crimevision-ai-copy_default   bridge    local
+4994d0249922   crimevision-ai_default        bridge    local
+46a26e907e1b   host                          host      local
+4b2667ad01e4   none                          null      local
+EXIT CODE: 0
+[PASS] 8J. DOCKER NETWORK LIST completed successfully.
+
+========================================================================================
+ 8K. DOCKER VOLUME LIST
+========================================================================================
+COMMAND: docker volume ls
+DRIVER    VOLUME NAME
+local     5b0da708774d0c293dbf133f2be9efe5905186e244207fe47b9459c1295eeb7e
+local     6d10f3b433d49a3faca7b5ce19f1cd67e6ba532f99840cd6aff06c40243d8571
+local     70e8778a1620e146c28e89d2f7a4bad98f4018f2eb2c8491f82a8a2682df3a94
+local     9895c2ff3dee326dd59ca9726c74fd242e5f5b55bead0b1449154114d261988e
+local     89571e2f73df7db484c143d5bd5409e107d84724f6fbd34c8c012b499067522e
+local     662708747a851d507906fb65f2470b4100853201581cba2ca7c7cb459e4ec203
+local     b3ddab28d1f6ecee5fc7644efc894a8693e7c5cce6d59c5ff73c1b55b1a8dc62
+local     b50cf5c773d9b5b0c4f755f442cf107f5e0d1092f8dd06fc4c0ad7599adb6da4
+local     bf19e0dd18d9180ca1fd16ba24a376badb5a48c3c3e7209baf2dd49c64f62e83
+local     crimevision-ai-copy_neo4j_data
+local     crimevision-ai-copy_research_evidence
+local     crimevision-ai-copy_research_models
+local     crimevision-ai-copy_research_snapshot
+local     crimevision-ai_mongo_data
+local     crimevision-ai_neo4j_data
+local     crimevision-ai_shared_uploads
+local     d3329e3c66c2fef2e41f79ffc6f366f702a94ae597a5da050478f36d7dc06731
+local     d44935b6802688bf12647245ee1aba93ddeb708ee822ed50919a8cdde12e3d2a
+local     ee0598587577e5fc4de384ede2c0070954df8015315e1f684aa0e8bcb3670e96
+EXIT CODE: 0
+[PASS] 8K. DOCKER VOLUME LIST completed successfully.
+
+========================================================================================
+ 9. EFFECTIVE DECISION-ARTIFACT SETTINGS INSIDE RUNNING RESEARCH CONTAINER
+========================================================================================
+
+========================================================================================
+ CONTAINER DECISION-ARTIFACT ENV / FILE CHECK
+========================================================================================
+COMMAND: docker exec crimevision-research-engine python -c import os,pathlib
+keys=['EVIDENTIAL_HEAD_PATH','EVIDENTIAL_CALIBRATION_PATH','CONFORMAL_ARTIFACT_PATH']
+for k in keys:
+ v=os.getenv(k,'')
+ print(k+'='+('EMPTY' if not v else v))
+ print('  exists_in_container='+str(pathlib.Path(v).exists()) if v else '  exists_in_container=NO_PATH_CONFIGURED')
+EVIDENTIAL_HEAD_PATH=EMPTY
+  exists_in_container=NO_PATH_CONFIGURED
+EVIDENTIAL_CALIBRATION_PATH=EMPTY
+  exists_in_container=NO_PATH_CONFIGURED
+CONFORMAL_ARTIFACT_PATH=/app/models/uca_conformal_v3.json
+  exists_in_container=False
+EXIT CODE: 0
+[PASS] CONTAINER DECISION-ARTIFACT ENV / FILE CHECK completed successfully.
+
+========================================================================================
+ CONTAINER HUGGING FACE CLIP CACHE CHECK
+========================================================================================
+COMMAND: docker exec crimevision-research-engine python -c import os,pathlib
+home=pathlib.Path.home()
+candidates=[os.getenv('HF_HOME'),os.getenv('HUGGINGFACE_HUB_CACHE'),str(home/'.cache'/'huggingface'/'hub')]
+for raw in candidates:
+ if raw:
+  p=pathlib.Path(raw)
+  print(str(p)+' exists='+str(p.exists())+' clip_cached='+str((p/'models--openai--clip-vit-base-patch32').exists()))
+/root/.cache/huggingface/hub exists=True clip_cached=True
+EXIT CODE: 0
+[PASS] CONTAINER HUGGING FACE CLIP CACHE CHECK completed successfully.
+
+========================================================================================
+ 10A. ALL COMPOSE SERVICE LOGS (LAST 300 LINES; REDACTION APPLIED)
+========================================================================================
+COMMAND: docker compose logs --no-color --tail=300
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | 2026-11-16 15:25:14.850+0000 INFO  Starting...
+crimevision-neo4j            | 2026-11-16 15:25:15.747+0000 INFO  This instance is ServerId{43521dc3} (43521dc3-5fd1-42c3-ae98-0728475055be)
+crimevision-neo4j            | 2026-11-16 15:25:16.501+0000 INFO  ======== Neo4j 5.11.0 ========
+crimevision-neo4j            | 2026-11-16 15:25:22.915+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.Server - jetty-10.0.15; built: 2023-04-11T17:25:14.480Z; git: 68017dbd00236bb7e187330d7585a059610f661d; jvm 17.0.8.1+1
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@49d52df2{/,null,AVAILABLE}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7aa45a14{/db,null,AVAILABLE}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.webapp.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.eclipse.jetty.jsp.JettyJspServlet
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@57b03187{/browser,jar:file:/var/lib/neo4j/lib/neo4j-browser-5.11.0.jar!/browser,AVAILABLE}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@140b395c{/,null,AVAILABLE}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.AbstractConnector - Started http@438fc55e{HTTP/1.1, (http/1.1)}{0.0.0.0:7474}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.Server - Started Server@718d339f{STARTING}[10.0.15,sto=0] @9807ms
+crimevision-neo4j            | 2026-11-16 15:25:23.767+0000 INFO  Remote interface available at http://localhost:7474/
+crimevision-neo4j            | 2026-11-16 15:25:23.770+0000 INFO  id: EA8DC34A483EFB19701EA50D6C77518841C5C0F7298916299C8A085CBCF112C9
+crimevision-neo4j            | 2026-11-16 15:25:23.771+0000 INFO  name: system
+crimevision-neo4j            | 2026-11-16 15:25:23.772+0000 INFO  creationDate: 2026-11-16T15:25:17.322Z
+crimevision-neo4j            | 2026-11-16 15:25:23.772+0000 INFO  Started.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-research-engine  | {"ts": "2026-11-17T13:28:27+0000", "level": "INFO", "logger": "neo4j_connector", "msg": "Connected to Neo4j Knowledge Graph"}
+crimevision-frontend         |
+crimevision-frontend         | > crimevision-frontend@1.0.0 start
+crimevision-frontend         | > next start
+crimevision-frontend         |
+crimevision-frontend         |   Γû▓ Next.js 13.5.11
+crimevision-frontend         |   - Local:        http://localhost:3000
+crimevision-frontend         |
+crimevision-frontend         |  Γ£ô Ready in 2.2s
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | Neo4j is already running (pid:7).
+crimevision-neo4j            | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j            | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j            | Applying default values for plugin apoc to neo4j.conf
+crimevision-research-engine  | INFO:     Started server process [1]
+crimevision-research-engine  | INFO:     Waiting for application startup.
+crimevision-research-engine  | {"ts": "2026-11-17T13:28:27+0000", "level": "INFO", "logger": "crimevision.research_api", "msg": "Initializing CrimeVision AI CLIP and Evidential OT engine on cpu"}
+crimevision-research-engine  | Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+crimevision-research-engine  | ERROR:    Traceback (most recent call last):
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 661, in lifespan
+crimevision-neo4j            | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j            | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-research-engine  |     async with self.lifespan_context(app) as maybe_state:
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 273, in __aenter__
+crimevision-research-engine  |     await self._router._startup()
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 6480, in _startup
+crimevision-research-engine  |     await handler()
+crimevision-research-engine  |   File "/app/main.py", line 247, in load_ai_models
+crimevision-neo4j            | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j            | 2026-11-17 04:43:58.999+0000 INFO  Starting...
+crimevision-neo4j            | 2026-11-17 04:44:00.068+0000 INFO  This instance is ServerId{43521dc3} (43521dc3-5fd1-42c3-ae98-0728475055be)
+crimevision-neo4j            | 2026-11-17 04:44:01.753+0000 INFO  ======== Neo4j 5.11.0 ========
+crimevision-neo4j            | 2026-11-17 04:44:07.653+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.Server - jetty-10.0.15; built: 2023-04-11T17:25:14.480Z; git: 68017dbd00236bb7e187330d7585a059610f661d; jvm 17.0.8.1+1
+crimevision-research-engine  |     get_inference_engine()
+crimevision-research-engine  |   File "/app/main.py", line 202, in get_inference_engine
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@143211f1{/,null,AVAILABLE}
+crimevision-research-engine  |     inference_engine = EvidentialInferenceEngine(
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@37a8202{/db,null,AVAILABLE}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.webapp.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.eclipse.jetty.jsp.JettyJspServlet
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@7ffb99da{/browser,jar:file:/var/lib/neo4j/lib/neo4j-browser-5.11.0.jar!/browser,AVAILABLE}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@14cb5250{/,null,AVAILABLE}
+crimevision-research-engine  |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.AbstractConnector - Started http@7393a461{HTTP/1.1, (http/1.1)}{0.0.0.0:7474}
+crimevision-neo4j            | [main] INFO org.eclipse.jetty.server.Server - Started Server@68f2ccb2{STARTING}[10.0.15,sto=0] @14509ms
+crimevision-research-engine  |   File "/app/src/inference.py", line 129, in __init__
+crimevision-neo4j            | 2026-11-17 04:44:12.424+0000 INFO  Remote interface available at http://localhost:7474/
+crimevision-research-engine  |     artifact = ConformalArtifact.load(Path(conformal_artifact_path))
+crimevision-neo4j            | 2026-11-17 04:44:12.713+0000 INFO  id: EA8DC34A483EFB19701EA50D6C77518841C5C0F7298916299C8A085CBCF112C9
+crimevision-research-engine  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-neo4j            | 2026-11-17 04:44:12.714+0000 INFO  name: system
+crimevision-neo4j            | 2026-11-17 04:44:12.714+0000 INFO  creationDate: 2026-11-16T15:25:17.322Z
+crimevision-research-engine  |   File "/app/src/conformal.py", line 350, in load
+crimevision-neo4j            | 2026-11-17 04:44:12.714+0000 INFO  Started.
+crimevision-research-engine  |     with Path(path).open("r", encoding="utf-8") as handle:
+crimevision-research-engine  |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/pathlib.py", line 1044, in open
+crimevision-research-engine  |     return io.open(self, mode, buffering, encoding, errors, newline)
+crimevision-research-engine  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-research-engine  | FileNotFoundError: [Errno 2] No such file or directory: '/app/models/uca_conformal_v3.json'
+crimevision-research-engine  |
+crimevision-research-engine  | ERROR:    Application startup failed. Exiting.
+EXIT CODE: 0
+[PASS] 10A. ALL COMPOSE SERVICE LOGS (LAST 300 LINES; REDACTION APPLIED) completed successfully.
+
+========================================================================================
+ 10B. RESEARCH-ENGINE LOGS (LAST 500 LINES; REDACTION APPLIED)
+========================================================================================
+COMMAND: docker compose logs --no-color --tail=500 research-engine
+crimevision-research-engine  | {"ts": "2026-11-17T13:28:27+0000", "level": "INFO", "logger": "neo4j_connector", "msg": "Connected to Neo4j Knowledge Graph"}
+crimevision-research-engine  | INFO:     Started server process [1]
+crimevision-research-engine  | INFO:     Waiting for application startup.
+crimevision-research-engine  | {"ts": "2026-11-17T13:28:27+0000", "level": "INFO", "logger": "crimevision.research_api", "msg": "Initializing CrimeVision AI CLIP and Evidential OT engine on cpu"}
+crimevision-research-engine  | Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+crimevision-research-engine  | ERROR:    Traceback (most recent call last):
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 661, in lifespan
+crimevision-research-engine  |     async with self.lifespan_context(app) as maybe_state:
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 273, in __aenter__
+crimevision-research-engine  |     await self._router._startup()
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 6480, in _startup
+crimevision-research-engine  |     await handler()
+crimevision-research-engine  |   File "/app/main.py", line 247, in load_ai_models
+crimevision-research-engine  |     get_inference_engine()
+crimevision-research-engine  |   File "/app/main.py", line 202, in get_inference_engine
+crimevision-research-engine  |     inference_engine = EvidentialInferenceEngine(
+crimevision-research-engine  |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-research-engine  |   File "/app/src/inference.py", line 129, in __init__
+crimevision-research-engine  |     artifact = ConformalArtifact.load(Path(conformal_artifact_path))
+crimevision-research-engine  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-research-engine  |   File "/app/src/conformal.py", line 350, in load
+crimevision-research-engine  |     with Path(path).open("r", encoding="utf-8") as handle:
+crimevision-research-engine  |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-research-engine  |   File "/usr/local/lib/python3.11/pathlib.py", line 1044, in open
+crimevision-research-engine  |     return io.open(self, mode, buffering, encoding, errors, newline)
+crimevision-research-engine  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+crimevision-research-engine  | FileNotFoundError: [Errno 2] No such file or directory: '/app/models/uca_conformal_v3.json'
+crimevision-research-engine  |
+crimevision-research-engine  | ERROR:    Application startup failed. Exiting.
+EXIT CODE: 0
+[PASS] 10B. RESEARCH-ENGINE LOGS (LAST 500 LINES; REDACTION APPLIED) completed successfully.
+
+========================================================================================
+ 10C. FRONTEND LOGS (LAST 250 LINES; REDACTION APPLIED)
+========================================================================================
+COMMAND: docker compose logs --no-color --tail=250 frontend-web
+crimevision-frontend  |
+crimevision-frontend  | > crimevision-frontend@1.0.0 start
+crimevision-frontend  | > next start
+crimevision-frontend  |
+crimevision-frontend  |   Γû▓ Next.js 13.5.11
+crimevision-frontend  |   - Local:        http://localhost:3000
+crimevision-frontend  |
+crimevision-frontend  |  Γ£ô Ready in 2.2s
+EXIT CODE: 0
+[PASS] 10C. FRONTEND LOGS (LAST 250 LINES; REDACTION APPLIED) completed successfully.
+
+========================================================================================
+ 10D. NEO4J LOGS (LAST 250 LINES; REDACTION APPLIED)
+========================================================================================
+COMMAND: docker compose logs --no-color --tail=250 neo4j
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | 2026-11-16 15:25:14.850+0000 INFO  Starting...
+crimevision-neo4j  | 2026-11-16 15:25:15.747+0000 INFO  This instance is ServerId{43521dc3} (43521dc3-5fd1-42c3-ae98-0728475055be)
+crimevision-neo4j  | 2026-11-16 15:25:16.501+0000 INFO  ======== Neo4j 5.11.0 ========
+crimevision-neo4j  | 2026-11-16 15:25:22.915+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.Server - jetty-10.0.15; built: 2023-04-11T17:25:14.480Z; git: 68017dbd00236bb7e187330d7585a059610f661d; jvm 17.0.8.1+1
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@49d52df2{/,null,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7aa45a14{/db,null,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.webapp.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.eclipse.jetty.jsp.JettyJspServlet
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@57b03187{/browser,jar:file:/var/lib/neo4j/lib/neo4j-browser-5.11.0.jar!/browser,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@140b395c{/,null,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.AbstractConnector - Started http@438fc55e{HTTP/1.1, (http/1.1)}{0.0.0.0:7474}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.Server - Started Server@718d339f{STARTING}[10.0.15,sto=0] @9807ms
+crimevision-neo4j  | 2026-11-16 15:25:23.767+0000 INFO  Remote interface available at http://localhost:7474/
+crimevision-neo4j  | 2026-11-16 15:25:23.770+0000 INFO  id: EA8DC34A483EFB19701EA50D6C77518841C5C0F7298916299C8A085CBCF112C9
+crimevision-neo4j  | 2026-11-16 15:25:23.771+0000 INFO  name: system
+crimevision-neo4j  | 2026-11-16 15:25:23.772+0000 INFO  creationDate: 2026-11-16T15:25:17.322Z
+crimevision-neo4j  | 2026-11-16 15:25:23.772+0000 INFO  Started.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | Neo4j is already running (pid:7).
+crimevision-neo4j  | Run with '--verbose' for a more detailed error message.
+crimevision-neo4j  | Installing Plugin 'apoc' from /var/lib/neo4j/labs/apoc-*-core.jar to /var/lib/neo4j/plugins/apoc.jar
+crimevision-neo4j  | Applying default values for plugin apoc to neo4j.conf
+crimevision-neo4j  | Skipping dbms.security.procedures.unrestricted for plugin apoc because it is already set.
+crimevision-neo4j  | You may need to add apoc.* to the dbms.security.procedures.unrestricted setting in your configuration file.
+crimevision-neo4j  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+crimevision-neo4j  | 2026-11-17 04:43:58.999+0000 INFO  Starting...
+crimevision-neo4j  | 2026-11-17 04:44:00.068+0000 INFO  This instance is ServerId{43521dc3} (43521dc3-5fd1-42c3-ae98-0728475055be)
+crimevision-neo4j  | 2026-11-17 04:44:01.753+0000 INFO  ======== Neo4j 5.11.0 ========
+crimevision-neo4j  | 2026-11-17 04:44:07.653+0000 INFO  Bolt enabled on 0.0.0.0:7687.
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.Server - jetty-10.0.15; built: 2023-04-11T17:25:14.480Z; git: 68017dbd00236bb7e187330d7585a059610f661d; jvm 17.0.8.1+1
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.h.MovedContextHandler@143211f1{/,null,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.session.DefaultSessionIdManager - Session workerName=node0
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@37a8202{/db,null,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.webapp.StandardDescriptorProcessor - NO JSP Support for /browser, did not find org.eclipse.jetty.jsp.JettyJspServlet
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.w.WebAppContext@7ffb99da{/browser,jar:file:/var/lib/neo4j/lib/neo4j-browser-5.11.0.jar!/browser,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@14cb5250{/,null,AVAILABLE}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.AbstractConnector - Started http@7393a461{HTTP/1.1, (http/1.1)}{0.0.0.0:7474}
+crimevision-neo4j  | [main] INFO org.eclipse.jetty.server.Server - Started Server@68f2ccb2{STARTING}[10.0.15,sto=0] @14509ms
+crimevision-neo4j  | 2026-11-17 04:44:12.424+0000 INFO  Remote interface available at http://localhost:7474/
+crimevision-neo4j  | 2026-11-17 04:44:12.713+0000 INFO  id: EA8DC34A483EFB19701EA50D6C77518841C5C0F7298916299C8A085CBCF112C9
+crimevision-neo4j  | 2026-11-17 04:44:12.714+0000 INFO  name: system
+crimevision-neo4j  | 2026-11-17 04:44:12.714+0000 INFO  creationDate: 2026-11-16T15:25:17.322Z
+crimevision-neo4j  | 2026-11-17 04:44:12.714+0000 INFO  Started.
+EXIT CODE: 0
+[PASS] 10D. NEO4J LOGS (LAST 250 LINES; REDACTION APPLIED) completed successfully.
+
+========================================================================================
+ 11. WINDOWS RESOURCE / DOCKER DESKTOP PROCESS CHECK
+========================================================================================
+Physical memory total: 15.65 GB
+Physical memory free:  1.18 GB
+[WARN] Less than 2 GB physical memory is currently free.
+System drive C: free 107.96 GB / total 475.57 GB
+[PASS] System drive free space is at least 10 GB.
+
+ProcessName           Id         CPU Memory_MB
+-----------           --         --- ---------
+com.docker.backend 21984 1506.796875       198
+com.docker.backend 23060    52.15625        26
+com.docker.build   25988    4.859375        20
+Docker Desktop      2084      3.3125         8
+Docker Desktop      4528  193.953125        60
+Docker Desktop      5976      1441.5        78
+Docker Desktop      6316    3.203125        13
+Docker Desktop     10792    0.078125         2
+Docker Desktop     15424    0.046875         3
+docker-agent       14180    3.015625        16
+vmmemWSL           13752                  3641
+wsl                16704    0.078125         6
+wsl                20568    0.015625         4
+wsl                25544  306.140625         4
+wsl                25876    0.046875         4
+wslhost            29232      0.0625         3
+wslhost            29284    0.015625         2
+wslhost            29332      0.0625         2
+wslhost            29352     0.03125         2
+wslrelay           29020    0.078125         3
+wslservice          6368                    11
+
+========================================================================================
+ 12A. LOCAL TCP PORT CHECKS
+========================================================================================
+[PASS] 127.0.0.1:3000 accepts TCP connections.
+[PASS] 127.0.0.1:8001 accepts TCP connections.
+[PASS] 127.0.0.1:7474 accepts TCP connections.
+[PASS] 127.0.0.1:7687 accepts TCP connections.
+
+========================================================================================
+ 12B. LOCAL HTTP ENDPOINT CHECKS (READ-ONLY GET REQUESTS)
+========================================================================================
+
+URL: http://127.0.0.1:3000/
+HTTP STATUS: 200
+CONTENT TYPE: text/html; charset=utf-8
+BODY PREVIEW: <!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="/_next/static/css/667933de0e0f330c.css" as="style" crossorigin=""/><link rel="stylesheet" href="/_next/static/css/667933de0e0f330c.css" crossorigin="" data-n-g=""/><link rel="preload" href="/_next/static/css/a275cc2b185e04f8.css" as="style" crossorigin=""/><link rel="stylesheet" href="/_next/static/css/a275cc2b185e04f8.css" crossorigin="" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" crossorigin="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-fa99431b15635937.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/framework-0c7baedefba6b077.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/main-5232346dfb644e31.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/pages/_app-9acf648ca847d82b.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/971df74e-5e6fe3286c6ddbd5.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/184-96f2717f45...[preview truncated]
+[PASS] http://127.0.0.1:3000/ responded with HTTP 200.
+
+URL: http://127.0.0.1:3000/login
+HTTP STATUS: 200
+CONTENT TYPE: text/html; charset=utf-8
+BODY PREVIEW: <!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="/_next/static/css/667933de0e0f330c.css" as="style" crossorigin=""/><link rel="stylesheet" href="/_next/static/css/667933de0e0f330c.css" crossorigin="" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" crossorigin="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-fa99431b15635937.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/framework-0c7baedefba6b077.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/main-5232346dfb644e31.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/pages/_app-9acf648ca847d82b.js" defer="" crossorigin=""></script><script src="/_next/static/chunks/pages/login-c325c0f618d3c33b.js" defer="" crossorigin=""></script><script src="/_next/static/3FrIwoX7lY8vkG9ONWOlV/_buildManifest.js" defer="" crossorigin=""></script><script src="/_next/static/3FrIwoX7lY8vkG9ONWOlV/_ssgManifest.js" defer="" crossorigin=""></script></head><body><div id="__next"><div ...[preview truncated]
+[PASS] http://127.0.0.1:3000/login responded with HTTP 200.
+
+URL: http://127.0.0.1:8001/health
+PS>TerminatingError(Invoke-WebRequest): "The underlying connection was closed: The connection was closed unexpectedly."
+RESULT: NO RESPONSE
+DETAIL: The underlying connection was closed: The connection was closed unexpectedly.
+[WARN] http://127.0.0.1:8001/health did not return a successful HTTP response (NO RESPONSE).
+
+URL: http://127.0.0.1:8001/ready
+PS>TerminatingError(Invoke-WebRequest): "The underlying connection was closed: The connection was closed unexpectedly."
+RESULT: NO RESPONSE
+DETAIL: The underlying connection was closed: The connection was closed unexpectedly.
+[WARN] http://127.0.0.1:8001/ready did not return a successful HTTP response (NO RESPONSE).
+
+URL: http://127.0.0.1:8001/docs
+PS>TerminatingError(Invoke-WebRequest): "The underlying connection was closed: The connection was closed unexpectedly."
+RESULT: NO RESPONSE
+DETAIL: The underlying connection was closed: The connection was closed unexpectedly.
+[WARN] http://127.0.0.1:8001/docs did not return a successful HTTP response (NO RESPONSE).
+
+URL: http://127.0.0.1:8001/openapi.json
+PS>TerminatingError(Invoke-WebRequest): "The underlying connection was closed: The connection was closed unexpectedly."
+RESULT: NO RESPONSE
+DETAIL: The underlying connection was closed: The connection was closed unexpectedly.
+[WARN] http://127.0.0.1:8001/openapi.json did not return a successful HTTP response (NO RESPONSE).
+[INFO] Port 8000 is not included: docker-compose.yml defines research-engine on host port 8001.
+
+========================================================================================
+ 13. CI WORKFLOW / TEST COVERAGE INVENTORY
+========================================================================================
+CI workflow commands and setup lines:
+working-directory: research-engine
+python-version: "3.11"
+python -m pip install --upgrade pip
+python -m pip install \
+"pytest>=7.4,<10"
+run: python -m compileall -q .
+run: python -m pytest -q
+working-directory: frontend-web
+node-version: "18"
+- run: npm ci
+- run: npm test
+- run: npm run build
+[PASS] CI workflow file found.
+Frontend test files: 4
+Research-engine test files: 16
+[INFO] Unit tests do not establish model accuracy, calibrated coverage on arbitrary uploads, camera generalisation, or forensic validity.
+
+========================================================================================
+ 14. TESTS NOT AUTOMATED BY THIS HEALTH CHECK
+========================================================================================
+[INFO] No live evidence-upload POST was sent. That would create application/evidence state and requires a user-selected test video and statement.
+[INFO] No full CLIP model download or fresh model inference was forced. It may require network access, cache space, and substantial CPU/GPU time.
+[INFO] No Docker image rebuild was started. The research-engine dependency set can pull very large PyTorch/CUDA wheels; rebuild should be a deliberate separate step.
+[INFO] No browser-driven end-to-end test was run unless such a test is explicitly configured in the project; Vitest is the frontend unit/component test suite.
+[INFO] No database data was deleted, no volumes were pruned, and no containers were restarted.
+[INFO] Health endpoints and green tests confirm service/test execution, not the correctness of a specific MATCH/CONTRADICTION decision.
+
+========================================================================================
+ 15. FINAL SUMMARY
+========================================================================================
+PASS: 72
+WARN: 9
+FAIL: 2
+INFO: 15
+Finished: 2026-11-17 19:08:33 +05:30
+Report: C:\Capstone-Project\CrimeVision-AI - Copy\CrimeVision_Full_Health_Report_2026-11-17_19-06-30.txt
+[WARN] Review every [FAIL] entry. Some failures may be expected when a service/dependency is not running.
+**********************
+Windows PowerShell transcript end
+End time: 20261117190833
+**********************

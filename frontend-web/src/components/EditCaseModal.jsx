@@ -6,12 +6,14 @@ export default function EditCaseModal({ isOpen, onClose, caseItem, onSaveCase })
   const [category, setCategory] = useState("Surveillance & Robbery");
   const [description, setDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     if (caseItem) {
       setCaseName(caseItem.name || `Case ${caseItem.id}`);
       setCategory(caseItem.category || "General Forensics");
       setDescription(caseItem.description || "");
+      setFormError('');
     }
   }, [caseItem, isOpen]);
 
@@ -23,14 +25,19 @@ export default function EditCaseModal({ isOpen, onClose, caseItem, onSaveCase })
 
     setIsSubmitting(true);
     try {
-      await onSaveCase(caseItem.id, {
+      const result = await onSaveCase(caseItem.id, {
         name: caseName.trim(),
         category: category.trim(),
         description: description.trim()
       });
+      if (!result || result.success !== true) {
+        setFormError(result?.error || 'The case update was not confirmed by the API.');
+        return;
+      }
       onClose();
     } catch (err) {
       console.error("Error updating case:", err);
+      setFormError(err?.message || 'The case could not be updated.');
     } finally {
       setIsSubmitting(false);
     }
@@ -105,6 +112,12 @@ export default function EditCaseModal({ isOpen, onClose, caseItem, onSaveCase })
               className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-300 focus:outline-none focus:border-blue-500 resize-none"
             />
           </div>
+
+          {formError && (
+            <div role="alert" className="rounded-xl border border-red-800 bg-red-950/40 px-3 py-2 text-xs text-red-300">
+              {formError}
+            </div>
+          )}
 
           <div className="flex items-center justify-end gap-2 pt-2">
             <button

@@ -1,250 +1,123 @@
-import React, { useState, useMemo } from 'react';
-import { Database, FileVideo, FileImage, AlertTriangle, CheckCircle2, Search, Filter, Eye, Sparkles, Download, Layers } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { Database, FileVideo, FileImage, AlertTriangle, CheckCircle2, HelpCircle, Search, Download, Eye } from 'lucide-react';
 import EvidenceModal from './EvidenceModal';
 
-export default function EvidenceTable({ evidenceList, onSelectEvidence, selectedIndex }) {
-  const [filter, setFilter] = useState('ALL'); // 'ALL' | 'CONTRADICTIONS' | 'CONGRUENT'
+// Legacy records were produced by the retired uncalibrated 1.15 rule.
+// Do not reinterpret their old boolean flag as a validated classifier result.
+// Unknown / lowercase / malformed status values fail closed to INDETERMINATE.
+const VALID_STATUSES = new Set(['MATCH', 'CONTRADICTION', 'INDETERMINATE']);
+
+const getStatus = (item) => {
+  const status = String(item?.assessment_status || '').toUpperCase();
+  return VALID_STATUSES.has(status) ? status : 'INDETERMINATE';
+};
+
+export default function EvidenceTable({ evidenceList = [], onSelectEvidence, selectedIndex }) {
+  const [filter, setFilter] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [modalEvidence, setModalEvidence] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredList = useMemo(() => {
-    if (!evidenceList) return [];
-    return evidenceList.filter(item => {
-      const isContradiction = item.is_contradiction || item.sinkhorn_cost > 1.15;
-      if (filter === 'CONTRADICTIONS' && !isContradiction) return false;
-      if (filter === 'CONGRUENT' && isContradiction) return false;
-
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase();
-        const matchesFile = item.evidence_filename?.toLowerCase().includes(query);
-        const matchesStmt = item.statement_text?.toLowerCase().includes(query);
-        return matchesFile || matchesStmt;
-      }
-      return true;
+    return evidenceList.filter((item) => {
+      const status = getStatus(item);
+      if (filter !== 'ALL' && status !== filter) return false;
+      if (!searchQuery.trim()) return true;
+      const query = searchQuery.toLowerCase();
+      return item.evidence_filename?.toLowerCase().includes(query) || item.statement_text?.toLowerCase().includes(query);
     });
   }, [evidenceList, filter, searchQuery]);
 
-  const openDossier = (item) => {
+  const openDossier = (event, item) => {
+    event.stopPropagation();
     setModalEvidence(item);
     setIsModalOpen(true);
   };
 
   const exportEvidenceJSON = () => {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(evidenceList, null, 2));
-    const downloadAnchor = document.createElement('a');
-    downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", `crimevision_case_evidence_${Date.now()}.json`);
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
+    const blob = new Blob([JSON.stringify(evidenceList, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `crimevision_case_evidence_${Date.now()}.json`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
   };
+
+  const countFor = (status) => evidenceList.filter((item) => getStatus(item) === status).length;
 
   return (
     <div className="bg-slate-800/95 backdrop-blur-md p-6 rounded-2xl border border-slate-700/80 shadow-2xl flex flex-col space-y-4">
-      {/* Top Header & Search Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-slate-700/60">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-xl text-blue-400">
-            <Database size={22} />
-          </div>
+          <div className="p-2 bg-blue-500/10 border border-blue-500/30 rounded-xl text-blue-400"><Database size={22} /></div>
           <div>
-            <h3 className="text-lg font-black text-slate-100 flex items-center gap-2">
-              Ingested Evidence Repository & Neo4j Relations
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-900/60 text-blue-300 border border-blue-700 font-mono">
-                {evidenceList.length} Total
-              </span>
-            </h3>
-            <p className="text-xs text-slate-400">
-              Live multi-modal evidence synchronized with Neo4j Knowledge Graph & LLM Audit Engine
-            </p>
+            <h3 className="text-lg font-black text-slate-100">Ingested Evidence Repository</h3>
+            <p className="text-xs text-slate-400">Analysis results associated with the current case</p>
           </div>
         </div>
 
-        {/* Action Controls: Search, Filter, Export */}
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Search Bar */}
           <div className="relative">
             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search file or statement..."
-              className="bg-slate-900/90 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 w-44 md:w-56"
-            />
+            <input type="text" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search file or statement…" className="bg-slate-900/90 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 w-44 md:w-56" />
           </div>
-
-          {/* Filter Pills */}
-          <div className="flex items-center bg-slate-900/90 p-1 rounded-lg border border-slate-700">
-            <button
-              onClick={() => setFilter('ALL')}
-              className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-colors ${
-                filter === 'ALL' ? 'bg-blue-600 text-white shadow' : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              All ({evidenceList.length})
-            </button>
-            <button
-              onClick={() => setFilter('CONTRADICTIONS')}
-              className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-colors ${
-                filter === 'CONTRADICTIONS' ? 'bg-red-600 text-white shadow' : 'text-slate-400 hover:text-red-400'
-              }`}
-            >
-              Contradictions ({evidenceList.filter(e => e.is_contradiction || e.sinkhorn_cost > 1.15).length})
-            </button>
-            <button
-              onClick={() => setFilter('CONGRUENT')}
-              className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-colors ${
-                filter === 'CONGRUENT' ? 'bg-emerald-600 text-white shadow' : 'text-slate-400 hover:text-emerald-400'
-              }`}
-            >
-              Congruent ({evidenceList.filter(e => !e.is_contradiction && e.sinkhorn_cost <= 1.15).length})
-            </button>
-          </div>
-
-          {/* Export JSON Button */}
-          <button
-            onClick={exportEvidenceJSON}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors"
-            title="Download full case data in JSON"
-          >
+          <select value={filter} onChange={(event) => setFilter(event.target.value)} className="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200">
+            <option value="ALL">All ({evidenceList.length})</option>
+            <option value="MATCH">Matches ({countFor('MATCH')})</option>
+            <option value="CONTRADICTION">Contradictions ({countFor('CONTRADICTION')})</option>
+            <option value="INDETERMINATE">Indeterminate ({countFor('INDETERMINATE')})</option>
+          </select>
+          <button type="button" onClick={exportEvidenceJSON} className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-700 text-slate-300 border border-slate-700">
             <Download size={13} /> Export JSON
           </button>
         </div>
       </div>
 
-      {/* Table Content */}
       {filteredList.length === 0 ? (
         <div className="py-12 text-center text-slate-500">
           <Database size={36} className="mx-auto mb-2 opacity-50" />
           <p className="text-sm font-medium">No matching evidence records found.</p>
-          <p className="text-xs text-slate-500 mt-1">Try changing your search query or filter criteria.</p>
         </div>
       ) : (
         <div className="overflow-x-auto rounded-xl border border-slate-700/80 bg-slate-900/60">
           <table className="w-full text-left text-xs text-slate-300">
             <thead className="bg-slate-950/90 uppercase font-mono text-[11px] text-slate-400 border-b border-slate-700">
               <tr>
-                <th className="py-3.5 px-4">#</th>
-                <th className="py-3.5 px-4">Case File</th>
-                <th className="py-3.5 px-4">Evidence Target</th>
-                <th className="py-3.5 px-4">Witness Statement</th>
-                <th className="py-3.5 px-4 text-center">Sinkhorn Cost</th>
-                <th className="py-3.5 px-4 text-center">AI Verdict</th>
-                <th className="py-3.5 px-4">Timestamp</th>
-                <th className="py-3.5 px-4 text-right">Investigation Actions</th>
+                <th className="py-3 px-4">#</th>
+                <th className="py-3 px-4">Case</th>
+                <th className="py-3 px-4">Evidence</th>
+                <th className="py-3 px-4">Witness Statement</th>
+                <th className="py-3 px-4 text-center">Sinkhorn Divergence</th>
+                <th className="py-3 px-4 text-center">Classifier Assessment</th>
+                <th className="py-3 px-4">Timestamp</th>
+                <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800">
               {filteredList.map((item, idx) => {
-                const isVideo = item.evidence_filename?.toLowerCase().endsWith('.mp4');
-                const isContradiction = item.is_contradiction || item.sinkhorn_cost > 1.15;
-                const isSelected = selectedIndex === idx;
-
+                const status = getStatus(item);
+                const isSelected = selectedIndex === evidenceList.indexOf(item);
+                const isVideo = /\.(mp4|avi|mov|mkv)$/i.test(item.evidence_filename || '');
                 return (
-                  <tr 
-                    key={idx}
-                    onClick={() => onSelectEvidence && onSelectEvidence(idx)}
-                    className={`transition-colors cursor-pointer group ${
-                      isSelected 
-                        ? 'bg-blue-950/50 border-l-4 border-l-blue-500' 
-                        : 'hover:bg-slate-800/60'
-                    }`}
-                  >
-                    <td className="py-3.5 px-4 font-mono text-slate-500">{idx + 1}</td>
-                    
-                    {/* Case ID Badge */}
-                    <td className="py-3.5 px-4 font-mono">
-                      <span className="px-2 py-0.5 rounded-lg bg-blue-950/80 text-blue-300 border border-blue-800 text-[10px] font-bold">
-                        #{item.case_id || 'CASE-001'}
-                      </span>
-                    </td>
-
-                    {/* File Media */}
-                    <td className="py-3.5 px-4 font-medium text-slate-100">
-                      <div className="flex items-center gap-2">
-                        {isVideo ? (
-                          <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                            <FileVideo size={15} />
-                          </span>
-                        ) : (
-                          <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                            <FileImage size={15} />
-                          </span>
-                        )}
-                        <div>
-                          <p className="font-semibold text-xs text-white truncate max-w-[150px]" title={item.evidence_filename}>
-                            {item.evidence_filename}
-                          </p>
-                          <span className="text-[10px] text-slate-400 font-mono">
-                            {isVideo ? 'CCTV Video' : 'Crime Scene Image'}
-                          </span>
-                        </div>
-                      </div>
-                    </td>
-
-                    {/* Witness Statement */}
-                    <td className="py-3.5 px-4 text-slate-300">
-                      <p className="truncate max-w-[280px] text-xs" title={item.statement_text}>
-                        "{item.statement_text}"
-                      </p>
-                    </td>
-
-                    {/* Mathematical Cost */}
-                    <td className="py-3.5 px-4 text-center font-mono font-bold text-xs">
-                      <span className={`px-2 py-0.5 rounded ${
-                        isContradiction 
-                          ? 'bg-red-950/60 text-red-400 border border-red-800/80' 
-                          : 'bg-emerald-950/60 text-emerald-400 border border-emerald-800/80'
-                      }`}>
-                        {typeof item.sinkhorn_cost === 'number' ? item.sinkhorn_cost.toFixed(4) : item.sinkhorn_cost}
-                      </span>
-                    </td>
-
-                    {/* Verdict */}
-                    <td className="py-3.5 px-4 text-center">
-                      {isContradiction ? (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-red-950 text-red-300 border border-red-800">
-                          <AlertTriangle size={12} className="text-red-400" /> Contradiction
-                        </span>
+                  <tr key={`${item.case_id}-${item.evidence_filename}-${idx}`} onClick={() => onSelectEvidence?.(evidenceList.indexOf(item))} className={`transition-colors cursor-pointer ${isSelected ? 'bg-blue-950/50 border-l-4 border-l-blue-500' : 'hover:bg-slate-800/60'}`}>
+                    <td className="py-3 px-4 font-mono text-slate-500">{idx + 1}</td>
+                    <td className="py-3 px-4 font-mono"><span className="px-2 py-0.5 rounded-lg bg-blue-950/80 text-blue-300 border border-blue-800 text-[10px]">{item.case_id || 'Unassigned'}</span></td>
+                    <td className="py-3 px-4 font-medium text-slate-100"><div className="flex items-center gap-2">{isVideo ? <FileVideo size={15} className="text-blue-400" /> : <FileImage size={15} className="text-purple-400" />}<span className="truncate max-w-[150px]" title={item.evidence_filename}>{item.evidence_filename || 'Unnamed evidence'}</span></div></td>
+                    <td className="py-3 px-4 text-slate-300"><p className="truncate max-w-[280px]" title={item.statement_text}>{item.statement_text || 'No statement'}</p></td>
+                    <td className="py-3 px-4 text-center font-mono font-bold text-blue-300">{typeof item.sinkhorn_cost === 'number' ? item.sinkhorn_cost.toFixed(6) : 'N/A'}</td>
+                    <td className="py-3 px-4 text-center">
+                      {status === 'CONTRADICTION' ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] bg-red-950 text-red-300 border border-red-800"><AlertTriangle size={12} /> Contradiction</span>
+                      ) : status === 'MATCH' ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] bg-emerald-950 text-emerald-300 border border-emerald-800"><CheckCircle2 size={12} /> Match</span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800">
-                          <CheckCircle2 size={12} className="text-emerald-400" /> Congruent
-                        </span>
-                      )}
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] bg-slate-900 text-slate-300 border border-slate-700"><HelpCircle size={12} /> Indeterminate</span>)}
                     </td>
-
-                    {/* Timestamp */}
-                    <td className="py-3.5 px-4 text-[11px] font-mono text-slate-400">
-                      {item.timestamp || 'Recorded'}
-                    </td>
-
-                    {/* Action Buttons */}
-                    <td className="py-3.5 px-4 text-right">
-                      <div className="flex items-center justify-end gap-1.5">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            onSelectEvidence && onSelectEvidence(idx);
-                          }}
-                          className="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 hover:bg-blue-600 hover:text-white text-blue-300 border border-slate-700 transition-colors flex items-center gap-1"
-                          title="View OT Matrix for this item"
-                        >
-                          <Layers size={12} /> Heatmap
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            openDossier(item);
-                          }}
-                          className="px-2.5 py-1 text-[11px] font-semibold rounded bg-blue-600/20 hover:bg-blue-600 hover:text-white text-blue-300 border border-blue-500/30 transition-colors flex items-center gap-1"
-                          title="Open Full Forensic Audit Dossier"
-                        >
-                          <Eye size={12} /> Dossier
-                        </button>
-                      </div>
-                    </td>
+                    <td className="py-3 px-4 text-[11px] font-mono text-slate-400">{item.timestamp || 'Recorded'}</td>
+                    <td className="py-3 px-4 text-right"><button type="button" onClick={(event) => openDossier(event, item)} className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300"><Eye size={13} /> Inspect</button></td>
                   </tr>
                 );
               })}
@@ -253,12 +126,7 @@ export default function EvidenceTable({ evidenceList, onSelectEvidence, selected
         </div>
       )}
 
-      {/* Modal for Deep Investigation */}
-      <EvidenceModal 
-        evidence={modalEvidence} 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
+      <EvidenceModal evidence={modalEvidence} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

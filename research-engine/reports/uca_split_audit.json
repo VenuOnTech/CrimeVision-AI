@@ -1,0 +1,113 @@
+{
+  "report_schema_version": 1,
+  "source": "UCA split CSV metadata included in the supplied project ZIP",
+  "splits": {
+    "fit": {
+      "csv_sha256": "b3d0e762b2665a57aae63cddae69233482f89246108b18afbd5bc6f179dd5b1e",
+      "sample_count": 3136,
+      "class_counts": {
+        "MATCH": 1568,
+        "CONTRADICTION": 1568
+      },
+      "recording_count": 1568,
+      "camera_id_count": 1568,
+      "environment_category_count": 14,
+      "statement_source_provenance_available": false
+    },
+    "calibration": {
+      "csv_sha256": "8742f64994a7acb3aaec8312a71406aaba78cfbda1f10e0ec7fea298fc9981de",
+      "sample_count": 140,
+      "class_counts": {
+        "CONTRADICTION": 70,
+        "MATCH": 70
+      },
+      "recording_count": 70,
+      "camera_id_count": 70,
+      "environment_category_count": 13,
+      "statement_source_provenance_available": false
+    },
+    "test": {
+      "csv_sha256": "962dbecee492e40d0e55446832bb3ce372e90bff216775a17f0d8bc799a97e6d",
+      "sample_count": 140,
+      "class_counts": {
+        "CONTRADICTION": 70,
+        "MATCH": 70
+      },
+      "recording_count": 70,
+      "camera_id_count": 70,
+      "environment_category_count": 11,
+      "statement_source_provenance_available": false
+    }
+  },
+  "split_audit": {
+    "split_names": [
+      "fit",
+      "calibration",
+      "test"
+    ],
+    "splits": {
+      "fit": {
+        "sample_count": 3136,
+        "class_counts": {
+          "MATCH": 1568,
+          "CONTRADICTION": 1568
+        },
+        "source_recording_count": 1568,
+        "camera_id_count": 1568,
+        "environment_category_count": 14
+      },
+      "calibration": {
+        "sample_count": 140,
+        "class_counts": {
+          "MATCH": 70,
+          "CONTRADICTION": 70
+        },
+        "source_recording_count": 70,
+        "camera_id_count": 70,
+        "environment_category_count": 13
+      },
+      "test": {
+        "sample_count": 140,
+        "class_counts": {
+          "MATCH": 70,
+          "CONTRADICTION": 70
+        },
+        "source_recording_count": 70,
+        "camera_id_count": 70,
+        "environment_category_count": 11
+      }
+    },
+    "pairwise_group_overlap_counts": {
+      "source_recording_id": {
+        "fit__calibration": 0,
+        "fit__test": 0,
+        "calibration__test": 0
+      },
+      "camera_id": {
+        "fit__calibration": 0,
+        "fit__test": 0,
+        "calibration__test": 0
+      },
+      "environment_id": {
+        "fit__calibration": 13,
+        "fit__test": 11,
+        "calibration__test": 11
+      }
+    },
+    "source_recording_disjoint": true,
+    "camera_id_is_recording_alias": true,
+    "camera_generalization_claim_supported": false,
+    "physical_camera_identity_verified": false,
+    "environment_ids_are_activity_categories": true,
+    "statement_source_provenance_available": false,
+    "environment_disjointness_required": false,
+    "note": "Source-recording IDs are disjoint. In the current UCA adapter, camera_id is derived from source_recording_id and is not an independently verified physical camera ID; environment_id represents an activity category and may overlap across splits."
+  },
+  "limitations": [
+    "Image files referenced by image_path were not included in the supplied ZIP; CLIP inference and the reported model experiments could not be independently rerun.",
+    "The supplied split CSVs do not contain statement_source_recording_id or statement_source_environment_id, so legacy negative-pair annotation provenance and cross-split statement-source leakage cannot be audited from these files.",
+    "camera_id is derived from source_recording_id and is not a verified physical camera identifier.",
+    "environment_id is the UCF-Crime activity category and overlaps across splits; this is not an unseen-environment evaluation.",
+    "The current legacy CSVs were not regenerated using the updated adapter because source UCA images/annotations are absent from the archive."
+  ]
+}

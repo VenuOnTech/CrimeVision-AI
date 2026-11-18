@@ -1,146 +1,97 @@
-import React from 'react';
-import { X, ShieldAlert, CheckCircle2, AlertTriangle, FileVideo, FileImage, Cpu, GitFork, Sparkles, Copy, Check } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, FileVideo, FileImage, Cpu, Copy, Check, AlertTriangle, CheckCircle2, HelpCircle, Info } from 'lucide-react';
+
+const VALID_ASSESSMENTS = new Set(['MATCH', 'CONTRADICTION', 'INDETERMINATE']);
 
 export default function EvidenceModal({ evidence, isOpen, onClose }) {
-  const [copied, setCopied] = React.useState(false);
-
+  const [copied, setCopied] = useState(false);
   if (!isOpen || !evidence) return null;
 
-  const isContradiction = evidence.is_contradiction || evidence.sinkhorn_cost > 1.15;
-  const isVideo = evidence.evidence_filename?.toLowerCase().endsWith('.mp4');
+  // Legacy records have no calibrated assessment status; fail closed.
+  const rawAssessment = String(evidence.assessment_status || '').toUpperCase();
+  const assessmentStatus = VALID_ASSESSMENTS.has(rawAssessment)
+    ? rawAssessment
+    : 'INDETERMINATE';
+  const isVideo = /\.(mp4|avi|mov|mkv)$/i.test(evidence.evidence_filename || '');
+  const statusLabel = assessmentStatus;
 
-  const copyDossier = () => {
-    const text = `CRIMEVISION AI - FORENSIC AUDIT DOSSIER
-Case ID: ${evidence.case_id || 'CASE-2026-001'}
-Evidence Media: ${evidence.evidence_filename}
-Witness Statement: "${evidence.statement_text}"
-Sinkhorn OT Cost: ${evidence.sinkhorn_cost} (Threshold: 1.15)
-AI Verdict: ${isContradiction ? 'CONTRADICTION DETECTED' : 'VERIFIED CONGRUENT'}
-Timestamp: ${evidence.timestamp || 'Recorded'}
-LLM Forensic Summary:
-${evidence.audit_report || 'Optimal Transport alignment computed.'}
---------------------------------------------------`;
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyDossier = async () => {
+    const report = [
+      'CRIMEVISION AI - RESEARCH ANALYSIS RECORD',
+      `Case ID: ${evidence.case_id || 'Unassigned'}`,
+      `Evidence: ${evidence.evidence_filename || 'N/A'}`,
+      `Witness statement: ${evidence.statement_text || 'N/A'}`,
+      `Classifier assessment: ${assessmentStatus}`,
+      `Debiased Sinkhorn divergence (diagnostic): ${typeof evidence.sinkhorn_cost === 'number' ? evidence.sinkhorn_cost.toFixed(6) : 'N/A'}`,
+      `Model epistemic uncertainty: ${typeof evidence.model_epistemic_uncertainty === 'number' ? evidence.model_epistemic_uncertainty.toFixed(6) : 'Unavailable'}`,
+      `Timestamp: ${evidence.timestamp || 'Recorded'}`,
+      '',
+      'Analysis report:',
+      evidence.audit_report || 'No report was stored.',
+      '',
+      'This is an automated research output, not an independently verified physical finding or legal conclusion.',
+    ].join('\n');
+
+    try {
+      await navigator.clipboard.writeText(report);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch (error) {
+      console.error('Could not copy evidence record:', error);
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-      <div 
-        className="bg-slate-900 border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Header */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+      <div className="bg-slate-900 border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]" onClick={(event) => event.stopPropagation()}>
         <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
           <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${isContradiction ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'}`}>
-              {isContradiction ? <AlertTriangle size={20} /> : <CheckCircle2 size={20} />}
+            <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-200">
+              {assessmentStatus === 'CONTRADICTION' ? <AlertTriangle size={20} /> : assessmentStatus === 'MATCH' ? <CheckCircle2 size={20} /> : <HelpCircle size={20} />}
             </div>
             <div>
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                Forensic Evidence Dossier
-                <span className={`text-xs px-2 py-0.5 rounded-full font-mono ${isContradiction ? 'bg-red-950 text-red-300 border border-red-800' : 'bg-emerald-950 text-emerald-300 border border-emerald-800'}`}>
-                  {isContradiction ? 'CONTRADICTION' : 'CONGRUENT'}
-                </span>
-              </h3>
-              <p className="text-xs text-slate-400 font-mono">Case: #{evidence.case_id || 'CASE-2026-001'}</p>
+              <h3 className="text-base font-bold text-white">Evidence Analysis Record</h3>
+              <span className="text-xs font-mono text-slate-300">{statusLabel}</span>
+              <p className="text-xs text-slate-400 font-mono">Case: {evidence.case_id || 'Unassigned'}</p>
             </div>
           </div>
-          <button 
-            onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            <X size={18} />
-          </button>
+          <button type="button" onClick={onClose} className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"><X size={18} /></button>
         </div>
 
-        {/* Content Body */}
-        <div className="p-6 overflow-y-auto space-y-5 text-sm">
-          {/* Media & Statement Section */}
+        <div className="p-6 overflow-y-auto space-y-4 text-sm">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/60 space-y-1.5">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                {isVideo ? <FileVideo size={14} className="text-blue-400" /> : <FileImage size={14} className="text-purple-400" />}
-                Visual Evidence Target
-              </span>
-              <p className="font-mono text-sm text-slate-100 font-bold truncate" title={evidence.evidence_filename}>
-                {evidence.evidence_filename}
-              </p>
-              <p className="text-xs text-slate-400">Processed through CLIP Vision Projection Head (512D $\to$ 256D)</p>
+              <span className="text-xs font-semibold text-slate-400 uppercase flex items-center gap-1.5">{isVideo ? <FileVideo size={14} /> : <FileImage size={14} />} Evidence media</span>
+              <p className="font-mono text-sm text-slate-100 font-bold break-all">{evidence.evidence_filename || 'Unavailable'}</p>
             </div>
-
             <div className="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/60 space-y-1.5">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Cpu size={14} className="text-emerald-400" />
-                Evidential Sinkhorn Metrics
-              </span>
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-300">OT Cost:</span>
-                <span className={`font-mono font-bold text-sm ${isContradiction ? 'text-red-400' : 'text-emerald-400'}`}>
-                  {typeof evidence.sinkhorn_cost === 'number' ? evidence.sinkhorn_cost.toFixed(4) : evidence.sinkhorn_cost}
-                </span>
-              </div>
-              <div className="flex items-center justify-between text-xs text-slate-400">
-                <span>Threshold: &gt; 1.15</span>
-                <span>Visual Doubt: {(Math.random() * 0.3 + 0.5).toFixed(2)}</span>
-              </div>
+              <span className="text-xs font-semibold text-slate-400 uppercase flex items-center gap-1.5"><Cpu size={14} /> OT diagnostic</span>
+              <p className="text-xs text-slate-400">Debiased Sinkhorn divergence (not a verdict threshold)</p>
+              <p className="font-mono font-bold text-blue-300 text-lg">{typeof evidence.sinkhorn_cost === 'number' ? evidence.sinkhorn_cost.toFixed(6) : 'Unavailable'}</p>
             </div>
           </div>
 
-          {/* Witness Statement */}
           <div className="bg-slate-800/60 p-4 rounded-xl border border-slate-700/80">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1.5">
-              Witness Statement Transcript
-            </span>
-            <blockquote className="text-slate-200 italic bg-slate-900/80 p-3 rounded-lg border-l-2 border-blue-500 font-serif text-sm">
-              "{evidence.statement_text}"
-            </blockquote>
+            <span className="text-xs font-semibold text-slate-400 uppercase block mb-1.5">Witness statement</span>
+            <blockquote className="text-slate-200 italic bg-slate-900/80 p-3 rounded-lg border-l-2 border-blue-500">{evidence.statement_text || 'No statement recorded.'}</blockquote>
           </div>
 
-          {/* Local LLM / GraphRAG Forensic Audit Report */}
-          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 shadow-inner space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-blue-400 flex items-center gap-1.5 font-mono uppercase tracking-wider">
-                <Sparkles size={14} /> Local Llama-3 GraphRAG Audit Output:
-              </span>
-              <span className="text-[11px] text-slate-500 font-mono">Zero-Cloud Airgapped</span>
-            </div>
-            <p className="text-xs text-slate-300 leading-relaxed font-sans bg-slate-900/90 p-3 rounded-lg border border-slate-800">
-              {evidence.audit_report || (
-                isContradiction 
-                  ? `[HIGH SEVERITY AUDIT] Evidential Optimal Transport cost (${evidence.sinkhorn_cost}) exceeds the 1.15 contradiction boundary. Cross-referencing visual patches against witness statement tokens indicates severe spatial-temporal mismatch.`
-                  : `[VERIFIED CONGRUENT AUDIT] Evidential alignment cost (${evidence.sinkhorn_cost}) confirms strong semantic concordance between witness statement and keyframe visual features.`
-              )}
-            </p>
+          <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <span className="text-xs font-bold text-blue-300 uppercase">Research analysis report</span>
+            <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-wrap">{evidence.audit_report || 'No report is stored for this record. The interface does not infer a verdict from the divergence score.'}</p>
           </div>
 
-          {/* Neo4j Cypher Schema Preview */}
-          <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-[11px] font-mono text-slate-400 space-y-1">
-            <div className="flex items-center gap-1.5 text-purple-400 font-bold">
-              <GitFork size={13} /> Neo4j Cypher Knowledge Path:
-            </div>
-            <p className="text-slate-400 truncate">
-              (:Case &#123;id: "{evidence.case_id || 'CASE-2026-001'}"&#125;)-[:CONTAINS]-&gt;(:WitnessStatement)-[:CORRELATES_TO &#123;cost: {evidence.sinkhorn_cost}&#125;]-&gt;(:VisualEvidence)
-            </p>
+          <div className="bg-amber-950/20 p-3 rounded-xl border border-amber-800/60 flex items-start gap-2 text-xs text-amber-200">
+            <Info size={15} className="mt-0.5 shrink-0" />
+            <p>Image-quality diagnostics and model epistemic uncertainty are separate measures. An automated research assessment is not proof of what physically occurred or a legal conclusion.</p>
           </div>
         </div>
 
-        {/* Footer Actions */}
         <div className="px-6 py-3.5 border-t border-slate-800 bg-slate-950/60 flex items-center justify-between">
-          <button
-            onClick={copyDossier}
-            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
-          >
-            {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
-            {copied ? "Copied to Clipboard" : "Copy Forensic Dossier"}
+          <button type="button" onClick={copyDossier} className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700">
+            {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}{copied ? 'Copied' : 'Copy Analysis Record'}
           </button>
-          <button
-            onClick={onClose}
-            className="text-xs font-semibold px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-colors"
-          >
-            Close Dossier
-          </button>
+          <button type="button" onClick={onClose} className="text-xs font-semibold px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white">Close</button>
         </div>
       </div>
     </div>

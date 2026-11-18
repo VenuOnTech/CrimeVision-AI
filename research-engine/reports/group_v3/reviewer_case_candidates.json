@@ -1,0 +1,2688 @@
+{
+  "model_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+  "artifact": "C:\\Capstone-Project\\CrimeVision-AI - Copy\\research-engine\\models\\uca_conformal_v3.json",
+  "test_csv": "C:\\Capstone-Project\\CrimeVision-AI - Copy\\research-engine\\datasets\\uca_group_v3\\test.csv",
+  "sample_count": 140,
+  "status_counts": {
+    "MATCH": 28,
+    "INDETERMINATE": 98,
+    "CONTRADICTION": 14
+  },
+  "reviewer_candidates": {
+    "MATCH": {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts an act of arson committed by an individual on a bus.  It starts with a man seated in the last row covertly taking out a lighter and deliberately igniting the newspaper beside him.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson016_x264_0.png",
+      "source_recording_id": "Arson016_x264",
+      "camera_id": "cam_Arson016_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.13961157031577007,
+      "discarded_mass": 0.8095844359633989,
+      "global_clip_similarity": 0.3341628313064575,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    "CONTRADICTION": {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "I am sorry, but I can neither view nor analyze video content.  If you provide a description of the video, I can help you interpret the events based on that description.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting033_x264_0.png",
+      "source_recording_id": "Shoplifting033_x264",
+      "camera_id": "cam_Shoplifting033_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.22955728152914445,
+      "discarded_mass": 0.7075584812512163,
+      "global_clip_similarity": 0.19747167825698853,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    "INDETERMINATE": {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the video appears to depict a series of events involving a fat man in black who is engaged in suspicious and potentially criminal behavior.  The abnormal part of the video occurs when the \"fat man in black\" is seen",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting008_x264_0.png",
+      "source_recording_id": "Shooting008_x264",
+      "camera_id": "cam_Shooting008_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.22244569894133684,
+      "discarded_mass": 0.7084147989888439,
+      "global_clip_similarity": 0.2850133776664734,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    }
+  },
+  "all_predictions": [
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts an act of arson committed by an individual on a bus.  It starts with a man seated in the last row covertly taking out a lighter and deliberately igniting the newspaper beside him.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson016_x264_0.png",
+      "source_recording_id": "Arson016_x264",
+      "camera_id": "cam_Arson016_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.13961157031577007,
+      "discarded_mass": 0.8095844359633989,
+      "global_clip_similarity": 0.3341628313064575,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the video appears to depict a series of events involving a fat man in black who is engaged in suspicious and potentially criminal behavior.  The abnormal part of the video occurs when the \"fat man in black\" is seen",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting008_x264_0.png",
+      "source_recording_id": "Shooting008_x264",
+      "camera_id": "cam_Shooting008_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.22244569894133684,
+      "discarded_mass": 0.7084147989888439,
+      "global_clip_similarity": 0.2850133776664734,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an apparent criminal act of tampering with and attempting to destroy a cash machine, a crime likely involving theft or vandalism.  In the footage, a man donning a hat and bicolored coat acts as a lookout while conversing on his phon",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arrest\\Arrest030_x264_0.png",
+      "source_recording_id": "Arrest030_x264",
+      "camera_id": "cam_Arrest030_x264",
+      "environment_id": "Arrest",
+      "sinkhorn_divergence": 0.260192762772067,
+      "discarded_mass": 0.6464741694358804,
+      "global_clip_similarity": 0.2749185264110565,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video that is related to the crime appears to be a burglary in progress.  The video shows two individuals coordinating an illicit act of burglary inside what seems to be a bar or establishment serving alcohol.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary037_x264_0.png",
+      "source_recording_id": "Burglary037_x264",
+      "camera_id": "cam_Burglary037_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.13112919788586264,
+      "discarded_mass": 0.8274299210778254,
+      "global_clip_similarity": 0.2841973602771759,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "From the description provided, the video appears to capture a sequence of events where a man repeatedly enters a room, jumps onto a counter, and interacts with a drawer within a small cabinet on the counter.  The aberrant behavior indicating a crime",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents125_x264_0.png",
+      "source_recording_id": "RoadAccidents125_x264",
+      "camera_id": "cam_RoadAccidents125_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.23482359471742975,
+      "discarded_mass": 0.6854520504549657,
+      "global_clip_similarity": 0.22167721390724182,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, a red SUV is seen driving and then stopping at a zebra crossing, followed by a black car that also comes to a stop on the road.  The situation becomes abnormal and potentially criminal when a person exits the black car and people on the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary032_x264_0.png",
+      "source_recording_id": "Burglary032_x264",
+      "camera_id": "cam_Burglary032_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.14106497525150224,
+      "discarded_mass": 0.8094874404003126,
+      "global_clip_similarity": 0.24506863951683044,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a sequence of events that culminate in an act of violence suggestive of a crime.  An individual in a white car enters a garage, which subsequently begins to close.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson041_x264_0.png",
+      "source_recording_id": "Arson041_x264",
+      "camera_id": "cam_Arson041_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.23061547161280516,
+      "discarded_mass": 0.7017407395075319,
+      "global_clip_similarity": 0.2992272675037384,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, a red SUV is seen driving and then stopping at a zebra crossing, followed by a black car that also comes to a stop on the road.  The situation becomes abnormal and potentially criminal when a person exits the black car and people on the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting034_x264_0.png",
+      "source_recording_id": "Shooting034_x264",
+      "camera_id": "cam_Shooting034_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.19481119521545415,
+      "discarded_mass": 0.7412994710443359,
+      "global_clip_similarity": 0.2945144772529602,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a series of events following a hit-and-run accident.  Initially, a white car is seen hitting a motorcycle that a man in black, wearing a hat, is starting.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Vandalism\\Vandalism036_x264_0.png",
+      "source_recording_id": "Vandalism036_x264",
+      "camera_id": "cam_Vandalism036_x264",
+      "environment_id": "Vandalism",
+      "sinkhorn_divergence": 0.14422303154362764,
+      "discarded_mass": 0.806973752842874,
+      "global_clip_similarity": 0.2453586906194687,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts an apparent burglary at a residential property.  Initially, a white car pulls up to the house, from which a yellow-haired white man exits and approaches the property.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Robbery\\Robbery102_x264_0.png",
+      "source_recording_id": "Robbery102_x264",
+      "camera_id": "cam_Robbery102_x264",
+      "environment_id": "Robbery",
+      "sinkhorn_divergence": 0.1414131671481827,
+      "discarded_mass": 0.8120374516549518,
+      "global_clip_similarity": 0.30597689747810364,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "I am sorry, but I can neither view nor analyze video content.  If you provide a description of the video, I can help you interpret the events based on that description.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting033_x264_0.png",
+      "source_recording_id": "Shoplifting033_x264",
+      "camera_id": "cam_Shoplifting033_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.22955728152914445,
+      "discarded_mass": 0.7075584812512163,
+      "global_clip_similarity": 0.19747167825698853,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a traffic incident that resulted in a collision between a white car and a motorcycle, likely indicating a vehicular violation or accident.  The abnormality related to the crime is evidenced by the car\u2019s interaction with the motorcyc",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary024_x264_0.png",
+      "source_recording_id": "Burglary024_x264",
+      "camera_id": "cam_Burglary024_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.15015692846469483,
+      "discarded_mass": 0.808263622532175,
+      "global_clip_similarity": 0.26681870222091675,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts what appears to be a public transportation platform with pedestrians going about their business.  Initially, individuals, including a man in gray, a man in blue, and two women, are seen engaging in normal commuting behavior.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting003_x264_0.png",
+      "source_recording_id": "Fighting003_x264",
+      "camera_id": "cam_Fighting003_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.28799875901566985,
+      "discarded_mass": 0.6158271636921041,
+      "global_clip_similarity": 0.3301931917667389,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal portion of the video that suggests involvement in a crime is the behavior of the individuals who appear to be firefighters.  Typically, in such a situation, one would expect firefighters to approach and attempt to extinguish a fire.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary017_x264_0.png",
+      "source_recording_id": "Burglary017_x264",
+      "camera_id": "cam_Burglary017_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.252391050494989,
+      "discarded_mass": 0.6699843028742747,
+      "global_clip_similarity": 0.2828018069267273,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video provided, we observe an individual engaged in acts of vandalism.  The person, a man wearing a hat and carrying a black bag, initially appears to be casually walking and talking on the phone while approaching various cars parked on the st",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Vandalism\\Vandalism007_x264_0.png",
+      "source_recording_id": "Vandalism007_x264",
+      "camera_id": "cam_Vandalism007_x264",
+      "environment_id": "Vandalism",
+      "sinkhorn_divergence": 0.23894970937895776,
+      "discarded_mass": 0.676276107915524,
+      "global_clip_similarity": 0.2664351761341095,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video suggesting a crime consists of scenes where a man dressed in a white hoodie and shorts is seen attempting to open a window from the outside.  Despite not having keys or seemingly any legitimate access, he manages to ope",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents128_x264_0.png",
+      "source_recording_id": "RoadAccidents128_x264",
+      "camera_id": "cam_RoadAccidents128_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.7984600326112447,
+      "discarded_mass": 0.0,
+      "global_clip_similarity": 0.24253009259700775,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "In the video, a truck is seen reversing at high speed and crashing into the door of a store, which is an abnormal and potentially criminal behavior indicating a forceful break-in or ram-raid burglary.  After the collision, two men get out of the truc",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary021_x264_0.png",
+      "source_recording_id": "Burglary021_x264",
+      "camera_id": "cam_Burglary021_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.12513203389240807,
+      "discarded_mass": 0.8277351779223315,
+      "global_clip_similarity": 0.3181455433368683,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video provided, the abnormal part related to a crime unfolds when a man in black enters a space, presumably a public area with a counter, and subsequently steps back to draw two guns, an action that suggests an intent to commit an armed offens",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents022_x264_0.png",
+      "source_recording_id": "RoadAccidents022_x264",
+      "camera_id": "cam_RoadAccidents022_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.24711449925934464,
+      "discarded_mass": 0.6639322886456891,
+      "global_clip_similarity": 0.27033543586730957,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video portrays an act of arson, where a man dressed in black enters a property without permission, exhibiting suspicious behavior as he paces around, scanning his surroundings.  His intentions become clear when he approaches a Christmas tree situ",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents021_x264_0.png",
+      "source_recording_id": "RoadAccidents021_x264",
+      "camera_id": "cam_RoadAccidents021_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.22329026465984528,
+      "discarded_mass": 0.707003823131437,
+      "global_clip_similarity": 0.24223428964614868,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video shows potential criminal activity involving two individuals conspiring to commit theft in a store.  Initially, both men enter the store separately, wearing down jackets, one black and one green.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting033_x264_0.png",
+      "source_recording_id": "Fighting033_x264",
+      "camera_id": "cam_Fighting033_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.14652019898246504,
+      "discarded_mass": 0.8047961396395227,
+      "global_clip_similarity": 0.28849759697914124,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video describes an apparent burglary in progress.  Two men are involved in the criminal activity, as they unlawfully enter a room by jumping through a window instead of using the legitimate entrance.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson018_x264_0.png",
+      "source_recording_id": "Arson018_x264",
+      "camera_id": "cam_Arson018_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.1507347420305407,
+      "discarded_mass": 0.8067828402428541,
+      "global_clip_similarity": 0.27905789017677307,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a series of abnormal events that suggest a disturbance in a store involving criminal behavior.  The initial abnormality is the presence of a naked man entering the store, which itself could constitute indecent exposure, a criminal o",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Vandalism\\Vandalism036_x264_0.png",
+      "source_recording_id": "Vandalism036_x264",
+      "camera_id": "cam_Vandalism036_x264",
+      "environment_id": "Vandalism",
+      "sinkhorn_divergence": 0.14204569757634156,
+      "discarded_mass": 0.8069737614718195,
+      "global_clip_similarity": 0.2924712598323822,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the video depicts a vehicular altercation escalating into violence with the use of firearms, which is the abnormal part related to the crime.  The video begins with one man entering a car, followed by another approa",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Stealing\\Stealing079_x264_0.png",
+      "source_recording_id": "Stealing079_x264",
+      "camera_id": "cam_Stealing079_x264",
+      "environment_id": "Stealing",
+      "sinkhorn_divergence": 0.38479161304858644,
+      "discarded_mass": 0.48911316249474013,
+      "global_clip_similarity": 0.2421453893184662,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "In this video, we observe an instance of street crime followed by an act of self-defense.  Initially, a man commits theft by snatching a mobile phone from a woman who is engaged with her device and standing by a wall.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion004_x264_0.png",
+      "source_recording_id": "Explosion004_x264",
+      "camera_id": "cam_Explosion004_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.15756107347105502,
+      "discarded_mass": 0.78187181746248,
+      "global_clip_similarity": 0.3053957223892212,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "Based on the video description provided, the abnormal part related to a potential crime is the actions of the boy and the girl, who appear to be shoplifting.  The boy initially takes a box of snacks from the shelf and conceals it in his clothes, indi",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents133_x264_0.png",
+      "source_recording_id": "RoadAccidents133_x264",
+      "camera_id": "cam_RoadAccidents133_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.17137583547708057,
+      "discarded_mass": 0.7616774053006401,
+      "global_clip_similarity": 0.22443583607673645,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, a man dressed in a hat and white clothes is seen loitering near a white van, suggesting a sense of aimlessness or possible surveillance of the area.  His behavior becomes suspicious when he actively engages in arson by throwing a piece",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson009_x264_0.png",
+      "source_recording_id": "Arson009_x264",
+      "camera_id": "cam_Arson009_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.21034023684351316,
+      "discarded_mass": 0.7198504110372774,
+      "global_clip_similarity": 0.29592686891555786,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a series of events following a hit-and-run accident.  Initially, a white car is seen hitting a motorcycle that a man in black, wearing a hat, is starting.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Robbery\\Robbery137_x264_0.png",
+      "source_recording_id": "Robbery137_x264",
+      "camera_id": "cam_Robbery137_x264",
+      "environment_id": "Robbery",
+      "sinkhorn_divergence": 0.26608756557427216,
+      "discarded_mass": 0.6425063563465039,
+      "global_clip_similarity": 0.24164406955242157,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a series of events following a hit-and-run accident.  Initially, a white car is seen hitting a motorcycle that a man in black, wearing a hat, is starting.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents020_x264_0.png",
+      "source_recording_id": "RoadAccidents020_x264",
+      "camera_id": "cam_RoadAccidents020_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.19133153728632657,
+      "discarded_mass": 0.7491747704226959,
+      "global_clip_similarity": 0.3090350031852722,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an apparent theft in a retail environment.  Initially, a man in a blue shirt is observed casually examining a watch on a table.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting033_x264_0.png",
+      "source_recording_id": "Shoplifting033_x264",
+      "camera_id": "cam_Shoplifting033_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.22245278337883437,
+      "discarded_mass": 0.7075584839747902,
+      "global_clip_similarity": 0.28934726119041443,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a sequence of events that culminate in an act of violence suggestive of a crime.  An individual in a white car enters a garage, which subsequently begins to close.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting010_x264_0.png",
+      "source_recording_id": "Shoplifting010_x264",
+      "camera_id": "cam_Shoplifting010_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.06182342157415949,
+      "discarded_mass": 0.9169309878120645,
+      "global_clip_similarity": 0.21407751739025116,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video captures a traffic incident that potentially involves a criminal act.  A white car is shown making a turn, during which a motorcycle, moving hastily, appears and is involved in a collision.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents132_x264_0.png",
+      "source_recording_id": "RoadAccidents132_x264",
+      "camera_id": "cam_RoadAccidents132_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.18072765664532692,
+      "discarded_mass": 0.7679744928624881,
+      "global_clip_similarity": 0.2858068346977234,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a violent incident within a private yard, beginning with a seemingly innocuous moment where a black car enters and the gate closes behind it.  The arrival of a motorcycle with two individuals outside the closed gate suggests a poten",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion022_x264_0.png",
+      "source_recording_id": "Explosion022_x264",
+      "camera_id": "cam_Explosion022_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.23559105247376183,
+      "discarded_mass": 0.6816941302478313,
+      "global_clip_similarity": 0.2575579285621643,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video provided, the abnormal part related to a crime unfolds when a man in black enters a space, presumably a public area with a counter, and subsequently steps back to draw two guns, an action that suggests an intent to commit an armed offens",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting019_x264_0.png",
+      "source_recording_id": "Shooting019_x264",
+      "camera_id": "cam_Shooting019_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.13729287138461663,
+      "discarded_mass": 0.8163131150053906,
+      "global_clip_similarity": 0.28868943452835083,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video, which indicates potential criminal behavior, involves a man entering the elevator and continuously igniting a lighter in close proximity to the elevator's camera.  His actions seem to be an attempt to either damage the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting022_x264_0.png",
+      "source_recording_id": "Shoplifting022_x264",
+      "camera_id": "cam_Shoplifting022_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.33432373797240916,
+      "discarded_mass": 0.5433502384713913,
+      "global_clip_similarity": 0.23442384600639343,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video in question appears to depict a crime in progress and the subsequent response by law enforcement.  Initially, the scene is benign, with individuals engaged in conversation by the counter.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting011_x264_0.png",
+      "source_recording_id": "Shooting011_x264",
+      "camera_id": "cam_Shooting011_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.308782009327634,
+      "discarded_mass": 0.5920089980515039,
+      "global_clip_similarity": 0.3007681667804718,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an unfolding disaster or accident scene, where an oil tanker is seen driving down the road on the left side of the frame.  While it appears to be moving without issue, a sudden and violent explosion occurs at a house in the distance",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Abuse\\Abuse028_x264_0.png",
+      "source_recording_id": "Abuse028_x264",
+      "camera_id": "cam_Abuse028_x264",
+      "environment_id": "Abuse",
+      "sinkhorn_divergence": 0.23022358694685555,
+      "discarded_mass": 0.6973632939749224,
+      "global_clip_similarity": 0.2451590597629547,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video portrays an act of arson, where a man dressed in black enters a property without permission, exhibiting suspicious behavior as he paces around, scanning his surroundings.  His intentions become clear when he approaches a Christmas tree situ",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson022_x264_0.png",
+      "source_recording_id": "Arson022_x264",
+      "camera_id": "cam_Arson022_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.2787244917055043,
+      "discarded_mass": 0.6171710377088503,
+      "global_clip_similarity": 0.2914156913757324,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The abnormal part of the video suggesting a crime consists of scenes where a man dressed in a white hoodie and shorts is seen attempting to open a window from the outside.  Despite not having keys or seemingly any legitimate access, he manages to ope",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary035_x264_0.png",
+      "source_recording_id": "Burglary035_x264",
+      "camera_id": "cam_Burglary035_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.12861362252357939,
+      "discarded_mass": 0.8261544163438959,
+      "global_clip_similarity": 0.2978251576423645,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video related to the crime is as follows: The man, who is seen dressed distinctly in black pants with white spots, a yellow jacket with black bottoms, and with his head covered by a black cloth, is observed engaging in suspic",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Vandalism\\Vandalism017_x264_0.png",
+      "source_recording_id": "Vandalism017_x264",
+      "camera_id": "cam_Vandalism017_x264",
+      "environment_id": "Vandalism",
+      "sinkhorn_divergence": 0.23918515604074814,
+      "discarded_mass": 0.6837935722156882,
+      "global_clip_similarity": 0.2534540295600891,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video captures a traffic incident potentially involving reckless driving or vehicular assault.  A black car is seen hitting two moving motorcycles, indicating either a severe lack of attention to road safety or an intentional act to harm.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion011_x264_0.png",
+      "source_recording_id": "Explosion011_x264",
+      "camera_id": "cam_Explosion011_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.23087431564145766,
+      "discarded_mass": 0.6816837799486378,
+      "global_clip_similarity": 0.27847740054130554,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an unfolding disaster or accident scene, where an oil tanker is seen driving down the road on the left side of the frame.  While it appears to be moving without issue, a sudden and violent explosion occurs at a house in the distance",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion033_x264_0.png",
+      "source_recording_id": "Explosion033_x264",
+      "camera_id": "cam_Explosion033_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.2359798653187859,
+      "discarded_mass": 0.687016464314987,
+      "global_clip_similarity": 0.2783052325248718,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "Based on the video description provided, the abnormal part related to a potential crime is the actions of the boy and the girl, who appear to be shoplifting.  The boy initially takes a box of snacks from the shelf and conceals it in his clothes, indi",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting022_x264_0.png",
+      "source_recording_id": "Shoplifting022_x264",
+      "camera_id": "cam_Shoplifting022_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.33121423977591374,
+      "discarded_mass": 0.5433502325173558,
+      "global_clip_similarity": 0.3045848608016968,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video indicative of a crime involves the red bus driver's actions.  Driving a bus, the driver hit a parked white car and then collided with a pedestrian, a bald man in a black coat and white shirt, who was walking alongside t",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting001_x264_0.png",
+      "source_recording_id": "Shoplifting001_x264",
+      "camera_id": "cam_Shoplifting001_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.2698218345333204,
+      "discarded_mass": 0.6316143842906834,
+      "global_clip_similarity": 0.254321813583374,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of this video that is related to the crime starts when the man takes an object out of the box and plugs it in, subsequently removing parts from a machine and placing them into a bucket.  This behavior suggests he is dismantling the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arrest\\Arrest007_x264_0.png",
+      "source_recording_id": "Arrest007_x264",
+      "camera_id": "cam_Arrest007_x264",
+      "environment_id": "Arrest",
+      "sinkhorn_divergence": 0.22932578845477075,
+      "discarded_mass": 0.6987340517625056,
+      "global_clip_similarity": 0.23902557790279388,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video in question appears to depict a crime in progress and the subsequent response by law enforcement.  Initially, the scene is benign, with individuals engaged in conversation by the counter.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion028_x264_0.png",
+      "source_recording_id": "Explosion028_x264",
+      "camera_id": "cam_Explosion028_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.29964332522662945,
+      "discarded_mass": 0.6169008519867643,
+      "global_clip_similarity": 0.2647673487663269,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The abnormal part of the video related to crime indicates a seemingly coordinated theft.  The two men, one in an orange shirt and the other in a white shirt, are seen orchestrating a theft of laptops from the store.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting001_x264_0.png",
+      "source_recording_id": "Shoplifting001_x264",
+      "camera_id": "cam_Shoplifting001_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.27577602342374974,
+      "discarded_mass": 0.6316143760566231,
+      "global_clip_similarity": 0.3209357261657715,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a traffic incident that resulted in a collision between a white car and a motorcycle, likely indicating a vehicular violation or accident.  The abnormality related to the crime is evidenced by the car\u2019s interaction with the motorcyc",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents133_x264_0.png",
+      "source_recording_id": "RoadAccidents133_x264",
+      "camera_id": "cam_RoadAccidents133_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.16893949216905874,
+      "discarded_mass": 0.7616774053006402,
+      "global_clip_similarity": 0.27649930119514465,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "As the analyst, I am unable to provide a description of a video or its contents, including identifying any potential abnormal parts related to a crime, because this platform is text-based and does not allow me to view or analyze video content.  Moreo",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting037_x264_0.png",
+      "source_recording_id": "Shooting037_x264",
+      "camera_id": "cam_Shooting037_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.16501773007920628,
+      "discarded_mass": 0.7797589500302311,
+      "global_clip_similarity": 0.23348098993301392,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video presents an array of suspicious and potentially criminal activities involving a man dressed in yellow pants, a dark gray top, and a light gray hat.  His behavior is abnormal and indicative of car theft or tampering.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Stealing\\Stealing019_x264_0.png",
+      "source_recording_id": "Stealing019_x264",
+      "camera_id": "cam_Stealing019_x264",
+      "environment_id": "Stealing",
+      "sinkhorn_divergence": 0.11519056368070082,
+      "discarded_mass": 0.8561260657348055,
+      "global_clip_similarity": 0.2135545313358307,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a sequence of events that culminate in an act of violence suggestive of a crime.  An individual in a white car enters a garage, which subsequently begins to close.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting021_x264_0.png",
+      "source_recording_id": "Shooting021_x264",
+      "camera_id": "cam_Shooting021_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.19007073353378226,
+      "discarded_mass": 0.7550179940090922,
+      "global_clip_similarity": 0.29391178488731384,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video shows potential criminal activity involving two individuals conspiring to commit theft in a store.  Initially, both men enter the store separately, wearing down jackets, one black and one green.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting005_x264_0.png",
+      "source_recording_id": "Shoplifting005_x264",
+      "camera_id": "cam_Shoplifting005_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.11405738290032702,
+      "discarded_mass": 0.847483035209178,
+      "global_clip_similarity": 0.29052963852882385,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, a red SUV is seen driving and then stopping at a zebra crossing, followed by a black car that also comes to a stop on the road.  The situation becomes abnormal and potentially criminal when a person exits the black car and people on the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents121_x264_0.png",
+      "source_recording_id": "RoadAccidents121_x264",
+      "camera_id": "cam_RoadAccidents121_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.1986297530519752,
+      "discarded_mass": 0.728115072165032,
+      "global_clip_similarity": 0.2759515643119812,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the video depicts a traffic incident that could potentially involve a criminal offense.  As four pedestrians are crossing the road, an accident occurs at an intersection where a motorcycle, traveling straight ahead,",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arrest\\Arrest039_x264_0.png",
+      "source_recording_id": "Arrest039_x264",
+      "camera_id": "cam_Arrest039_x264",
+      "environment_id": "Arrest",
+      "sinkhorn_divergence": 0.14073152870461594,
+      "discarded_mass": 0.8173341866086087,
+      "global_clip_similarity": 0.23997074365615845,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the provided dense description, the video seems to capture a series of pedestrian and vehicular movements at night.  Without explicit information regarding specific criminal activity, any inference of abnormalities that might relate to a cri",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting019_x264_0.png",
+      "source_recording_id": "Shooting019_x264",
+      "camera_id": "cam_Shooting019_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.13791907552242294,
+      "discarded_mass": 0.8163131122682427,
+      "global_clip_similarity": 0.2910895049571991,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video captures a traffic incident that potentially involves a criminal act.  A white car is shown making a turn, during which a motorcycle, moving hastily, appears and is involved in a collision.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting002_x264_0.png",
+      "source_recording_id": "Shooting002_x264",
+      "camera_id": "cam_Shooting002_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.18859656862944935,
+      "discarded_mass": 0.7483255830375088,
+      "global_clip_similarity": 0.30408385396003723,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the video depicts a traffic incident that could potentially involve a criminal offense.  As four pedestrians are crossing the road, an accident occurs at an intersection where a motorcycle, traveling straight ahead,",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting018_x264_0.png",
+      "source_recording_id": "Fighting018_x264",
+      "camera_id": "cam_Fighting018_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.2647529968733237,
+      "discarded_mass": 0.6729796467903939,
+      "global_clip_similarity": 0.23875688016414642,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, an individual is seated with another person close-by.  The former is holding a mobile phone that suddenly combusts, emitting smoke, which is an abnormal and dangerous occurrence potentially indicative of a battery malfunction or possibl",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion027_x264_0.png",
+      "source_recording_id": "Explosion027_x264",
+      "camera_id": "cam_Explosion027_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.23004377588583932,
+      "discarded_mass": 0.6762941844030546,
+      "global_clip_similarity": 0.24582833051681519,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video that is related to the crime appears to be a burglary in progress.  The video shows two individuals coordinating an illicit act of burglary inside what seems to be a bar or establishment serving alcohol.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting034_x264_0.png",
+      "source_recording_id": "Shooting034_x264",
+      "camera_id": "cam_Shooting034_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.19588526142412782,
+      "discarded_mass": 0.7412994811635485,
+      "global_clip_similarity": 0.27151525020599365,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video describes an apparent burglary in progress.  Two men are involved in the criminal activity, as they unlawfully enter a room by jumping through a window instead of using the legitimate entrance.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary032_x264_0.png",
+      "source_recording_id": "Burglary032_x264",
+      "camera_id": "cam_Burglary032_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.13832448775836703,
+      "discarded_mass": 0.8094874457231719,
+      "global_clip_similarity": 0.3051517903804779,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video that is related to a potential crime shows a woman who entered the supermarket with a schoolbag.  After some time in the store, she discreetly took a few yellow items from a shelf and concealed them in her purple school",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting022_x264_0.png",
+      "source_recording_id": "Shooting022_x264",
+      "camera_id": "cam_Shooting022_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.18477360865743786,
+      "discarded_mass": 0.7479077190351613,
+      "global_clip_similarity": 0.2618546485900879,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an act of arson committed by an individual on a bus.  It starts with a man seated in the last row covertly taking out a lighter and deliberately igniting the newspaper beside him.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary061_x264_0.png",
+      "source_recording_id": "Burglary061_x264",
+      "camera_id": "cam_Burglary061_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.19060523700049872,
+      "discarded_mass": 0.7430927715166327,
+      "global_clip_similarity": 0.22883960604667664,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an intense and unlawful scenario where an armed crime is taking place.  In the scene, the abnormal and criminal act involves a man dressed in a blue hood forcefully entering the space and discharging a firearm at another individual,",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting048_x264_0.png",
+      "source_recording_id": "Shooting048_x264",
+      "camera_id": "cam_Shooting048_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.1859994747780224,
+      "discarded_mass": 0.7448255798555263,
+      "global_clip_similarity": 0.2583903670310974,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In this video, we observe an instance of street crime followed by an act of self-defense.  Initially, a man commits theft by snatching a mobile phone from a woman who is engaged with her device and standing by a wall.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting018_x264_0.png",
+      "source_recording_id": "Fighting018_x264",
+      "camera_id": "cam_Fighting018_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.2553433212536894,
+      "discarded_mass": 0.672979663236711,
+      "global_clip_similarity": 0.217759370803833,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the abnormal part of the video that is related to a crime is the explosion of a car on a busy road.  Such an event is out of the ordinary and suggests a violent incident that could be the result of a criminal act su",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting007_x264_0.png",
+      "source_recording_id": "Shoplifting007_x264",
+      "camera_id": "cam_Shoplifting007_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.25165071948632545,
+      "discarded_mass": 0.6566369703649351,
+      "global_clip_similarity": 0.23609618842601776,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an interaction between a store owner and a female customer trying on earrings.  The owner assists her, they converse, and she seems satisfied with the earrings after looking at them in the mirror.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting021_x264_0.png",
+      "source_recording_id": "Shoplifting021_x264",
+      "camera_id": "cam_Shoplifting021_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.22583984501602616,
+      "discarded_mass": 0.6915038778111917,
+      "global_clip_similarity": 0.2831920087337494,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "In this video, amidst the typical urban hustle with a stream of vehicles and a flow of pedestrians, an anomaly disrupts the routine when an individual seated on the back of a motorcycle commits a potentially criminal act.  As the motorcycle weaves th",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion011_x264_0.png",
+      "source_recording_id": "Explosion011_x264",
+      "camera_id": "cam_Explosion011_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.23341386714436144,
+      "discarded_mass": 0.6816837692762547,
+      "global_clip_similarity": 0.3095652461051941,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video captures a traffic incident at an intersection that culminates in a crime.  Initially, a man in a black shirt is seen passing by the frame, which may or may not be relevant to the following events.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents125_x264_0.png",
+      "source_recording_id": "RoadAccidents125_x264",
+      "camera_id": "cam_RoadAccidents125_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.23300652204673786,
+      "discarded_mass": 0.6854520451819448,
+      "global_clip_similarity": 0.31028249859809875,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an apparent theft in a retail environment.  Initially, a man in a blue shirt is observed casually examining a watch on a table.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting011_x264_0.png",
+      "source_recording_id": "Shooting011_x264",
+      "camera_id": "cam_Shooting011_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.2991442520905926,
+      "discarded_mass": 0.5920090094506405,
+      "global_clip_similarity": 0.2616051733493805,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video portrays a hit-and-run incident, constituting a serious crime.  Initially, we see a white car parked on the road, setting up an ostensibly innocuous scene.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary021_x264_0.png",
+      "source_recording_id": "Burglary021_x264",
+      "camera_id": "cam_Burglary021_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.12969042393768557,
+      "discarded_mass": 0.8277351824144867,
+      "global_clip_similarity": 0.27892324328422546,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video provided, the abnormal part related to a crime unfolds when a man in black enters a space, presumably a public area with a counter, and subsequently steps back to draw two guns, an action that suggests an intent to commit an armed offens",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents123_x264_0.png",
+      "source_recording_id": "RoadAccidents123_x264",
+      "camera_id": "cam_RoadAccidents123_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.031208487261775462,
+      "discarded_mass": 0.9638986880168123,
+      "global_clip_similarity": 0.26522165536880493,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Based on the description provided, the abnormal part of the video that is related to a crime is the explosion of a car on a busy road.  Such an event is out of the ordinary and suggests a violent incident that could be the result of a criminal act su",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion008_x264_0.png",
+      "source_recording_id": "Explosion008_x264",
+      "camera_id": "cam_Explosion008_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.31045329659753146,
+      "discarded_mass": 0.5950290111835681,
+      "global_clip_similarity": 0.23528389632701874,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts what appears to be a public transportation platform with pedestrians going about their business.  Initially, individuals, including a man in gray, a man in blue, and two women, are seen engaging in normal commuting behavior.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson009_x264_0.png",
+      "source_recording_id": "Arson009_x264",
+      "camera_id": "cam_Arson009_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.2132007476624165,
+      "discarded_mass": 0.719850414168193,
+      "global_clip_similarity": 0.18668735027313232,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an unfolding disaster or accident scene, where an oil tanker is seen driving down the road on the left side of the frame.  While it appears to be moving without issue, a sudden and violent explosion occurs at a house in the distance",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Stealing\\Stealing019_x264_0.png",
+      "source_recording_id": "Stealing019_x264",
+      "camera_id": "cam_Stealing019_x264",
+      "environment_id": "Stealing",
+      "sinkhorn_divergence": 0.11705871999190073,
+      "discarded_mass": 0.8561260732384163,
+      "global_clip_similarity": 0.2308061569929123,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video indicative of a crime involves the red bus driver's actions.  Driving a bus, the driver hit a parked white car and then collided with a pedestrian, a bald man in a black coat and white shirt, who was walking alongside t",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents010_x264_0.png",
+      "source_recording_id": "RoadAccidents010_x264",
+      "camera_id": "cam_RoadAccidents010_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.2842028301776658,
+      "discarded_mass": 0.6094179720388203,
+      "global_clip_similarity": 0.2709138095378876,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video, which indicates potential criminal behavior, involves a man entering the elevator and continuously igniting a lighter in close proximity to the elevator's camera.  His actions seem to be an attempt to either damage the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents010_x264_0.png",
+      "source_recording_id": "RoadAccidents010_x264",
+      "camera_id": "cam_RoadAccidents010_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.29191912994451874,
+      "discarded_mass": 0.6094179654911789,
+      "global_clip_similarity": 0.24012251198291779,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video related to the crime is as follows: The man, who is seen dressed distinctly in black pants with white spots, a yellow jacket with black bottoms, and with his head covered by a black cloth, is observed engaging in suspic",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion027_x264_0.png",
+      "source_recording_id": "Explosion027_x264",
+      "camera_id": "cam_Explosion027_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.2378952149697203,
+      "discarded_mass": 0.6762941753588181,
+      "global_clip_similarity": 0.2585119307041168,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a traffic incident that resulted in a collision between a white car and a motorcycle, likely indicating a vehicular violation or accident.  The abnormality related to the crime is evidenced by the car\u2019s interaction with the motorcyc",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting021_x264_0.png",
+      "source_recording_id": "Shooting021_x264",
+      "camera_id": "cam_Shooting021_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.1836264671447403,
+      "discarded_mass": 0.7550179867080596,
+      "global_clip_similarity": 0.25667786598205566,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a series of seemingly ordinary street scenes with vehicles and pedestrians passing by.  However, the abnormal part that points to a potential crime occurs when a man wearing a helmet and striped clothes suspiciously loiters outside",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Stealing\\Stealing079_x264_0.png",
+      "source_recording_id": "Stealing079_x264",
+      "camera_id": "cam_Stealing079_x264",
+      "environment_id": "Stealing",
+      "sinkhorn_divergence": 0.38644671516802825,
+      "discarded_mass": 0.4891131368015156,
+      "global_clip_similarity": 0.2281540185213089,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video captures a deliberate act of arson.  Initially, we see a man nonchalantly walking by with a bag in hand, giving no immediate cause for concern.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson007_x264_0.png",
+      "source_recording_id": "Arson007_x264",
+      "camera_id": "cam_Arson007_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.16776510494299832,
+      "discarded_mass": 0.7895656761397625,
+      "global_clip_similarity": 0.2732555568218231,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video describes a hit-and-run incident where a car strikes a motorcycle rider dressed in blue clothes and a black vest, causing them to fall into a yard beside the road.  After the collision, the driver of the offending vehicle does not stop to r",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents001_x264_0.png",
+      "source_recording_id": "RoadAccidents001_x264",
+      "camera_id": "cam_RoadAccidents001_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.17200628226411607,
+      "discarded_mass": 0.7656919623269434,
+      "global_clip_similarity": 0.28861749172210693,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an apparent criminal act of tampering with and attempting to destroy a cash machine, a crime likely involving theft or vandalism.  In the footage, a man donning a hat and bicolored coat acts as a lookout while conversing on his phon",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting005_x264_0.png",
+      "source_recording_id": "Shoplifting005_x264",
+      "camera_id": "cam_Shoplifting005_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.11249917255578756,
+      "discarded_mass": 0.8474830332205832,
+      "global_clip_similarity": 0.2545824646949768,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, a shirtless man engages in a suspicious and potentially criminal activity within an office environment.  The video depicts the man unlawfully entering a workstation and proceeding to search through the drawers and cabinets.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary024_x264_0.png",
+      "source_recording_id": "Burglary024_x264",
+      "camera_id": "cam_Burglary024_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.14713331150490763,
+      "discarded_mass": 0.8082636239607225,
+      "global_clip_similarity": 0.277103066444397,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a violent incident within a private yard, beginning with a seemingly innocuous moment where a black car enters and the gate closes behind it.  The arrival of a motorcycle with two individuals outside the closed gate suggests a poten",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents001_x264_0.png",
+      "source_recording_id": "RoadAccidents001_x264",
+      "camera_id": "cam_RoadAccidents001_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.17287716271108314,
+      "discarded_mass": 0.7656919732377615,
+      "global_clip_similarity": 0.3084147274494171,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an apparent burglary at a residential property.  Initially, a white car pulls up to the house, from which a yellow-haired white man exits and approaches the property.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary076_x264_0.png",
+      "source_recording_id": "Burglary076_x264",
+      "camera_id": "cam_Burglary076_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.1887742703400661,
+      "discarded_mass": 0.7556885313666505,
+      "global_clip_similarity": 0.2923154830932617,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The abnormal part of the video related to a crime involves theft committed by two women.  As the woman in green clothes briefly leaves the area, the two other women, dressed in orange and yellow, exploit her absence to steal clothes from the shelves.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting007_x264_0.png",
+      "source_recording_id": "Shoplifting007_x264",
+      "camera_id": "cam_Shoplifting007_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.2554640147511874,
+      "discarded_mass": 0.6566369901914022,
+      "global_clip_similarity": 0.32037079334259033,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video captures a traffic incident that potentially involves a criminal act.  A white car is shown making a turn, during which a motorcycle, moving hastily, appears and is involved in a collision.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion008_x264_0.png",
+      "source_recording_id": "Explosion008_x264",
+      "camera_id": "cam_Explosion008_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.31203061604431154,
+      "discarded_mass": 0.5950290209896922,
+      "global_clip_similarity": 0.24551795423030853,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part related to the crime in this video occurs when the man in white, who is also carrying a black bag, is struck by a gray car that was involved in a collision with another gray car.  The incident happens as the pedestrian is crossing t",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents012_x264_0.png",
+      "source_recording_id": "RoadAccidents012_x264",
+      "camera_id": "cam_RoadAccidents012_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.2082445923920905,
+      "discarded_mass": 0.7180497844572105,
+      "global_clip_similarity": 0.2809601426124573,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, the setting takes place in a room filled with machinery, suggesting an industrial or work environment.  A man is observed squatting behind a door in a secretive or possibly evasive manner; his behavior appears abnormal, as he repeatedly",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents020_x264_0.png",
+      "source_recording_id": "RoadAccidents020_x264",
+      "camera_id": "cam_RoadAccidents020_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.18386406656968513,
+      "discarded_mass": 0.7491747792994654,
+      "global_clip_similarity": 0.24033820629119873,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a potentially criminal incident involving an altercation between a couple and two other men.  The abnormal part of the video relevant to the crime begins when a couple walking by is greeted by a man in blue leaning against the wall.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting033_x264_0.png",
+      "source_recording_id": "Fighting033_x264",
+      "camera_id": "cam_Fighting033_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.14871636569128144,
+      "discarded_mass": 0.8047961505473882,
+      "global_clip_similarity": 0.33749163150787354,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a crime taking place in a small, seemingly unattended shop.  Initially, the shop appears calm with two tables and various items on the front desk but no people present.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary061_x264_0.png",
+      "source_recording_id": "Burglary061_x264",
+      "camera_id": "cam_Burglary061_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.19610564421130833,
+      "discarded_mass": 0.7430927691239977,
+      "global_clip_similarity": 0.30975043773651123,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video portrays a hit-and-run incident, constituting a serious crime.  Initially, we see a white car parked on the road, setting up an ostensibly innocuous scene.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents128_x264_0.png",
+      "source_recording_id": "RoadAccidents128_x264",
+      "camera_id": "cam_RoadAccidents128_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.8072977290146646,
+      "discarded_mass": 0.0,
+      "global_clip_similarity": 0.23279444873332977,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "I am sorry, but I can neither view nor analyze video content.  If you provide a description of the video, I can help you interpret the events based on that description.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents121_x264_0.png",
+      "source_recording_id": "RoadAccidents121_x264",
+      "camera_id": "cam_RoadAccidents121_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.20423711054141952,
+      "discarded_mass": 0.728115080267834,
+      "global_clip_similarity": 0.23772835731506348,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In this video, we observe an instance of street crime followed by an act of self-defense.  Initially, a man commits theft by snatching a mobile phone from a woman who is engaged with her device and standing by a wall.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Vandalism\\Vandalism007_x264_0.png",
+      "source_recording_id": "Vandalism007_x264",
+      "camera_id": "cam_Vandalism007_x264",
+      "environment_id": "Vandalism",
+      "sinkhorn_divergence": 0.23652376803169547,
+      "discarded_mass": 0.676276127813954,
+      "global_clip_similarity": 0.25208792090415955,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video provided, the abnormal part related to a crime unfolds when a man in black enters a space, presumably a public area with a counter, and subsequently steps back to draw two guns, an action that suggests an intent to commit an armed offens",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arrest\\Arrest039_x264_0.png",
+      "source_recording_id": "Arrest039_x264",
+      "camera_id": "cam_Arrest039_x264",
+      "environment_id": "Arrest",
+      "sinkhorn_divergence": 0.13782427450185755,
+      "discarded_mass": 0.8173341872890918,
+      "global_clip_similarity": 0.2645529508590698,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video captures a traffic incident potentially involving reckless driving or vehicular assault.  A black car is seen hitting two moving motorcycles, indicating either a severe lack of attention to road safety or an intentional act to harm.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents022_x264_0.png",
+      "source_recording_id": "RoadAccidents022_x264",
+      "camera_id": "cam_RoadAccidents022_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.24165491179468226,
+      "discarded_mass": 0.663932294905438,
+      "global_clip_similarity": 0.3038685917854309,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video shows potential criminal activity involving two individuals conspiring to commit theft in a store.  Initially, both men enter the store separately, wearing down jackets, one black and one green.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary076_x264_0.png",
+      "source_recording_id": "Burglary076_x264",
+      "camera_id": "cam_Burglary076_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.18446618799737952,
+      "discarded_mass": 0.7556885272710601,
+      "global_clip_similarity": 0.2563212513923645,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "Based on the description provided, the video depicts a vehicular altercation escalating into violence with the use of firearms, which is the abnormal part related to the crime.  The video begins with one man entering a car, followed by another approa",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting010_x264_0.png",
+      "source_recording_id": "Shooting010_x264",
+      "camera_id": "cam_Shooting010_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.13992220880836537,
+      "discarded_mass": 0.8158319332187041,
+      "global_clip_similarity": 0.32989341020584106,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "In the video, a truck is seen reversing at high speed and crashing into the door of a store, which is an abnormal and potentially criminal behavior indicating a forceful break-in or ram-raid burglary.  After the collision, two men get out of the truc",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting037_x264_0.png",
+      "source_recording_id": "Shooting037_x264",
+      "camera_id": "cam_Shooting037_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.16182369841338967,
+      "discarded_mass": 0.7797589352619176,
+      "global_clip_similarity": 0.3069828748703003,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a series of abnormal events that suggest a disturbance in a store involving criminal behavior.  The initial abnormality is the presence of a naked man entering the store, which itself could constitute indecent exposure, a criminal o",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson022_x264_0.png",
+      "source_recording_id": "Arson022_x264",
+      "camera_id": "cam_Arson022_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.2779246953130546,
+      "discarded_mass": 0.6171710612403083,
+      "global_clip_similarity": 0.25858795642852783,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a violent incident within a private yard, beginning with a seemingly innocuous moment where a black car enters and the gate closes behind it.  The arrival of a motorcycle with two individuals outside the closed gate suggests a poten",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Robbery\\Robbery102_x264_0.png",
+      "source_recording_id": "Robbery102_x264",
+      "camera_id": "cam_Robbery102_x264",
+      "environment_id": "Robbery",
+      "sinkhorn_divergence": 0.137782596470537,
+      "discarded_mass": 0.8120374590072097,
+      "global_clip_similarity": 0.2847853899002075,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video related to crime indicates a seemingly coordinated theft.  The two men, one in an orange shirt and the other in a white shirt, are seen orchestrating a theft of laptops from the store.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting003_x264_0.png",
+      "source_recording_id": "Fighting003_x264",
+      "camera_id": "cam_Fighting003_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.28572345078458616,
+      "discarded_mass": 0.6158271615453711,
+      "global_clip_similarity": 0.2924959361553192,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The abnormal portion of the video that suggests involvement in a crime is the behavior of the individuals who appear to be firefighters.  Typically, in such a situation, one would expect firefighters to approach and attempt to extinguish a fire.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion004_x264_0.png",
+      "source_recording_id": "Explosion004_x264",
+      "camera_id": "cam_Explosion004_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.16132386855612924,
+      "discarded_mass": 0.7818718052736178,
+      "global_clip_similarity": 0.29867199063301086,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal and concerning part of the video related to crime involves the gray-coated postman's aggressive actions towards the black dog.  The postman, ostensibly carrying out a routine task, places a letter into the mailbox at a residence.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Abuse\\Abuse028_x264_0.png",
+      "source_recording_id": "Abuse028_x264",
+      "camera_id": "cam_Abuse028_x264",
+      "environment_id": "Abuse",
+      "sinkhorn_divergence": 0.2205583760516938,
+      "discarded_mass": 0.6973632781911876,
+      "global_clip_similarity": 0.24428300559520721,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video related to a potential crime is the behavior of the young white man attempting to gain unauthorized access to a room or building.  His actions, including groping in front of the door, trying to open it, and peering into",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary033_x264_0.png",
+      "source_recording_id": "Burglary033_x264",
+      "camera_id": "cam_Burglary033_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.1073467621774007,
+      "discarded_mass": 0.860628718906221,
+      "global_clip_similarity": 0.2615337371826172,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "Given the provided dense description, the video captures an automotive collision between a white car and a black car.  Following this incident, two women\u2014one wearing black clothes with her hair tied up and the other in a black skirt with loose hair\u2014w",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents021_x264_0.png",
+      "source_recording_id": "RoadAccidents021_x264",
+      "camera_id": "cam_RoadAccidents021_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.2230647570536075,
+      "discarded_mass": 0.7070038378666301,
+      "global_clip_similarity": 0.2897104024887085,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts an act of arson, a serious crime that involves intentionally setting fire to property.  Initially, we observe a man dressed in black loitering suspiciously near a doorway, seemingly assessing the environment or possibly acting as a",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson041_x264_0.png",
+      "source_recording_id": "Arson041_x264",
+      "camera_id": "cam_Arson041_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.2183670324064961,
+      "discarded_mass": 0.7017407361742247,
+      "global_clip_similarity": 0.30814895033836365,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video in question depicts an individual, dressed in black, engaging in an act of arson\u2014a criminal offense\u2014by approaching a vehicle and deliberately pouring gasoline around it.  The man's act of bending down to ignite the fuel suggests his intenti",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson018_x264_0.png",
+      "source_recording_id": "Arson018_x264",
+      "camera_id": "cam_Arson018_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.14432165503879305,
+      "discarded_mass": 0.8067828460011742,
+      "global_clip_similarity": 0.26890936493873596,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video in question appears to depict a crime in progress and the subsequent response by law enforcement.  Initially, the scene is benign, with individuals engaged in conversation by the counter.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary033_x264_0.png",
+      "source_recording_id": "Burglary033_x264",
+      "camera_id": "cam_Burglary033_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.11175670169154085,
+      "discarded_mass": 0.8606287207234157,
+      "global_clip_similarity": 0.2589707374572754,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of this video that is related to the crime starts when the man takes an object out of the box and plugs it in, subsequently removing parts from a machine and placing them into a bucket.  This behavior suggests he is dismantling the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents012_x264_0.png",
+      "source_recording_id": "RoadAccidents012_x264",
+      "camera_id": "cam_RoadAccidents012_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.21131675155172336,
+      "discarded_mass": 0.7180498007375793,
+      "global_clip_similarity": 0.22212255001068115,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In this video, we observe an instance of street crime followed by an act of self-defense.  Initially, a man commits theft by snatching a mobile phone from a woman who is engaged with her device and standing by a wall.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary035_x264_0.png",
+      "source_recording_id": "Burglary035_x264",
+      "camera_id": "cam_Burglary035_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.12775023609265398,
+      "discarded_mass": 0.8261544163438959,
+      "global_clip_similarity": 0.27457720041275024,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video captures a peaceful urban scene with numerous cars parked along the roadside and pedestrians casually strolling by.  Abruptly, this tranquility is shattered when an explosion erupts from a building in the distance, sending a billow of smoke",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion028_x264_0.png",
+      "source_recording_id": "Explosion028_x264",
+      "camera_id": "cam_Explosion028_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.28327141596109556,
+      "discarded_mass": 0.6169008541274974,
+      "global_clip_similarity": 0.27630531787872314,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts what appears to be a public transportation platform with pedestrians going about their business.  Initially, individuals, including a man in gray, a man in blue, and two women, are seen engaging in normal commuting behavior.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arrest\\Arrest030_x264_0.png",
+      "source_recording_id": "Arrest030_x264",
+      "camera_id": "cam_Arrest030_x264",
+      "environment_id": "Arrest",
+      "sinkhorn_divergence": 0.26680851024965635,
+      "discarded_mass": 0.6464741740453326,
+      "global_clip_similarity": 0.2524645924568176,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video, the setting takes place in a room filled with machinery, suggesting an industrial or work environment.  A man is observed squatting behind a door in a secretive or possibly evasive manner; his behavior appears abnormal, as he repeatedly",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion022_x264_0.png",
+      "source_recording_id": "Explosion022_x264",
+      "camera_id": "cam_Explosion022_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.2303270134499832,
+      "discarded_mass": 0.681694127283377,
+      "global_clip_similarity": 0.2790604829788208,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video in question appears to depict a crime in progress and the subsequent response by law enforcement.  Initially, the scene is benign, with individuals engaged in conversation by the counter.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson016_x264_0.png",
+      "source_recording_id": "Arson016_x264",
+      "camera_id": "cam_Arson016_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.1477558779944674,
+      "discarded_mass": 0.8095844341900158,
+      "global_clip_similarity": 0.2840062379837036,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of this video that is related to the crime starts when the man takes an object out of the box and plugs it in, subsequently removing parts from a machine and placing them into a bucket.  This behavior suggests he is dismantling the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting047_x264_0.png",
+      "source_recording_id": "Fighting047_x264",
+      "camera_id": "cam_Fighting047_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.1951130079590854,
+      "discarded_mass": 0.7343526243935685,
+      "global_clip_similarity": 0.2579469084739685,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a potential theft taking place within a jewelry store setting.  In summary, the scene begins innocuously with a male individual examining a piece of jewelry laid out on the table.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting037_x264_0.png",
+      "source_recording_id": "Shoplifting037_x264",
+      "camera_id": "cam_Shoplifting037_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.29825394934815413,
+      "discarded_mass": 0.5917990177258775,
+      "global_clip_similarity": 0.30700308084487915,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The abnormal part of the video that is related to a potential crime shows a woman who entered the supermarket with a schoolbag.  After some time in the store, she discreetly took a few yellow items from a shelf and concealed them in her purple school",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting010_x264_0.png",
+      "source_recording_id": "Shoplifting010_x264",
+      "camera_id": "cam_Shoplifting010_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.05816796735834771,
+      "discarded_mass": 0.9169309854911432,
+      "global_clip_similarity": 0.2127525806427002,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "Based on the provided dense description, the video seems to capture a series of pedestrian and vehicular movements at night.  Without explicit information regarding specific criminal activity, any inference of abnormalities that might relate to a cri",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary005_x264_0.png",
+      "source_recording_id": "Burglary005_x264",
+      "camera_id": "cam_Burglary005_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.1594821909476397,
+      "discarded_mass": 0.7903025683850817,
+      "global_clip_similarity": 0.21617445349693298,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video in question appears to depict a crime in progress and the subsequent response by law enforcement.  Initially, the scene is benign, with individuals engaged in conversation by the counter.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson007_x264_0.png",
+      "source_recording_id": "Arson007_x264",
+      "camera_id": "cam_Arson007_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.16859378369063124,
+      "discarded_mass": 0.7895656773156559,
+      "global_clip_similarity": 0.26196277141571045,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The abnormal part of the video that is related to a potential crime shows a woman who entered the supermarket with a schoolbag.  After some time in the store, she discreetly took a few yellow items from a shelf and concealed them in her purple school",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents132_x264_0.png",
+      "source_recording_id": "RoadAccidents132_x264",
+      "camera_id": "cam_RoadAccidents132_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.1760596835463213,
+      "discarded_mass": 0.7679744876763139,
+      "global_clip_similarity": 0.22123651206493378,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts a crime in progress, specifically a burglary.  Initially, an African-American man in a white T-shirt is seen knocking on a glass door while using his mobile phone, intermittently continuing to knock as he speaks on the phone.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary005_x264_0.png",
+      "source_recording_id": "Burglary005_x264",
+      "camera_id": "cam_Burglary005_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.15889512389354227,
+      "discarded_mass": 0.7903025793216547,
+      "global_clip_similarity": 0.2767512798309326,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "As the analyst, I am unable to provide a description of a video or its contents, including identifying any potential abnormal parts related to a crime, because this platform is text-based and does not allow me to view or analyze video content.  Moreo",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting037_x264_0.png",
+      "source_recording_id": "Shoplifting037_x264",
+      "camera_id": "cam_Shoplifting037_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.29974886428507275,
+      "discarded_mass": 0.5917990298912147,
+      "global_clip_similarity": 0.21292276680469513,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "As the analyst, I am unable to provide a description of a video or its contents, including identifying any potential abnormal parts related to a crime, because this platform is text-based and does not allow me to view or analyze video content.  Moreo",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary037_x264_0.png",
+      "source_recording_id": "Burglary037_x264",
+      "camera_id": "cam_Burglary037_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.12961308502747398,
+      "discarded_mass": 0.8274299242921938,
+      "global_clip_similarity": 0.2387668639421463,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "From the description provided, the video appears to capture a sequence of events where a man repeatedly enters a room, jumps onto a counter, and interacts with a drawer within a small cabinet on the counter.  The aberrant behavior indicating a crime",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Burglary\\Burglary017_x264_0.png",
+      "source_recording_id": "Burglary017_x264",
+      "camera_id": "cam_Burglary017_x264",
+      "environment_id": "Burglary",
+      "sinkhorn_divergence": 0.25102302994075487,
+      "discarded_mass": 0.6699843176271256,
+      "global_clip_similarity": 0.311710000038147,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts an unfolding disaster or accident scene, where an oil tanker is seen driving down the road on the left side of the frame.  While it appears to be moving without issue, a sudden and violent explosion occurs at a house in the distance",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shoplifting\\Shoplifting021_x264_0.png",
+      "source_recording_id": "Shoplifting021_x264",
+      "camera_id": "cam_Shoplifting021_x264",
+      "environment_id": "Shoplifting",
+      "sinkhorn_divergence": 0.22966955494402258,
+      "discarded_mass": 0.6915038893035677,
+      "global_clip_similarity": 0.21798259019851685,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a crime in progress, specifically a robbery at what appears to be a retail location.  The two men dressed in black are the perpetrators, and their threatening demeanor towards the clerks suggests they are using intimidation to contr",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Robbery\\Robbery137_x264_0.png",
+      "source_recording_id": "Robbery137_x264",
+      "camera_id": "cam_Robbery137_x264",
+      "environment_id": "Robbery",
+      "sinkhorn_divergence": 0.26166189108431215,
+      "discarded_mass": 0.6425063503535495,
+      "global_clip_similarity": 0.31712836027145386,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video presents an array of suspicious and potentially criminal activities involving a man dressed in yellow pants, a dark gray top, and a light gray hat.  His behavior is abnormal and indicative of car theft or tampering.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Vandalism\\Vandalism017_x264_0.png",
+      "source_recording_id": "Vandalism017_x264",
+      "camera_id": "cam_Vandalism017_x264",
+      "environment_id": "Vandalism",
+      "sinkhorn_divergence": 0.23438061365629081,
+      "discarded_mass": 0.6837935651479236,
+      "global_clip_similarity": 0.2645414471626282,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In the video you described, the abnormal and crime-related part revolves around the explosion in the distance.  Explosions are generally not routine occurrences and can often be indicative of violent acts, whether intentional like a bomb detonation,",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion025_x264_0.png",
+      "source_recording_id": "Explosion025_x264",
+      "camera_id": "cam_Explosion025_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.0995238242792335,
+      "discarded_mass": 0.8675968905567197,
+      "global_clip_similarity": 0.23908768594264984,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "In this video, we commence with an innocuous scene where three men are seen engaged in an embrace, indicative of camaraderie or celebration.  While in conversation with a pair of men who have joined them within the frame, the group of five individual",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting002_x264_0.png",
+      "source_recording_id": "Shooting002_x264",
+      "camera_id": "cam_Shooting002_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.1931577855272047,
+      "discarded_mass": 0.7483255769433672,
+      "global_clip_similarity": 0.25422239303588867,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video captures a violent and criminal incident that takes place in a room equipped with benches, suggesting a public or communal setting.  Initially, we see a man clad in red attire, observing his mobile phone, before seating himself on the secon",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion033_x264_0.png",
+      "source_recording_id": "Explosion033_x264",
+      "camera_id": "cam_Explosion033_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.23151681747622344,
+      "discarded_mass": 0.6870164479916232,
+      "global_clip_similarity": 0.19242101907730103,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video shows potential criminal activity involving two individuals conspiring to commit theft in a store.  Initially, both men enter the store separately, wearing down jackets, one black and one green.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting048_x264_0.png",
+      "source_recording_id": "Shooting048_x264",
+      "camera_id": "cam_Shooting048_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.18392722407482034,
+      "discarded_mass": 0.7448255655965441,
+      "global_clip_similarity": 0.27276310324668884,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video depicts a traffic incident that resulted in a collision between a white car and a motorcycle, likely indicating a vehicular violation or accident.  The abnormality related to the crime is evidenced by the car\u2019s interaction with the motorcyc",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Explosion\\Explosion025_x264_0.png",
+      "source_recording_id": "Explosion025_x264",
+      "camera_id": "cam_Explosion025_x264",
+      "environment_id": "Explosion",
+      "sinkhorn_divergence": 0.10058272605947505,
+      "discarded_mass": 0.8675968895702397,
+      "global_clip_similarity": 0.22157151997089386,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The described video captures a chaotic and violent altercation involving multiple individuals in what appears to be an enclosed space such as a hallway or a room with a door that serves as an entry or exit point.  The abnormality and criminal aspect",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Fighting\\Fighting047_x264_0.png",
+      "source_recording_id": "Fighting047_x264",
+      "camera_id": "cam_Fighting047_x264",
+      "environment_id": "Fighting",
+      "sinkhorn_divergence": 0.19596893544330507,
+      "discarded_mass": 0.7343526268676024,
+      "global_clip_similarity": 0.24029259383678436,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video depicts an unfolding disaster or accident scene, where an oil tanker is seen driving down the road on the left side of the frame.  While it appears to be moving without issue, a sudden and violent explosion occurs at a house in the distance",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arrest\\Arrest007_x264_0.png",
+      "source_recording_id": "Arrest007_x264",
+      "camera_id": "cam_Arrest007_x264",
+      "environment_id": "Arrest",
+      "sinkhorn_divergence": 0.23234630618708324,
+      "discarded_mass": 0.6987340517625056,
+      "global_clip_similarity": 0.22179338335990906,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video presents an array of suspicious and potentially criminal activities involving a man dressed in yellow pants, a dark gray top, and a light gray hat.  His behavior is abnormal and indicative of car theft or tampering.",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson011_x264_0.png",
+      "source_recording_id": "Arson011_x264",
+      "camera_id": "cam_Arson011_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.1552592288020044,
+      "discarded_mass": 0.7910001662671615,
+      "global_clip_similarity": 0.20378442108631134,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "CONTRADICTION",
+      "prediction_set": [
+        1
+      ],
+      "indeterminate_reason": null,
+      "statement": "Based on the description provided, the video depicts a traffic incident that could potentially involve a criminal offense.  As four pedestrians are crossing the road, an accident occurs at an intersection where a motorcycle, traveling straight ahead,",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\RoadAccidents\\RoadAccidents123_x264_0.png",
+      "source_recording_id": "RoadAccidents123_x264",
+      "camera_id": "cam_RoadAccidents123_x264",
+      "environment_id": "RoadAccidents",
+      "sinkhorn_divergence": 0.031419325907756535,
+      "discarded_mass": 0.9638986878823244,
+      "global_clip_similarity": 0.22792364656925201,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "MATCH",
+      "prediction_set": [
+        0
+      ],
+      "indeterminate_reason": null,
+      "statement": "The video captures a violent and criminal incident that takes place in a room equipped with benches, suggesting a public or communal setting.  Initially, we see a man clad in red attire, observing his mobile phone, before seating himself on the secon",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting022_x264_0.png",
+      "source_recording_id": "Shooting022_x264",
+      "camera_id": "cam_Shooting022_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.18468980213065145,
+      "discarded_mass": 0.7479077204438367,
+      "global_clip_similarity": 0.3222487270832062,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The video portrays an act of arson, where a man dressed in black enters a property without permission, exhibiting suspicious behavior as he paces around, scanning his surroundings.  His intentions become clear when he approaches a Christmas tree situ",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting010_x264_0.png",
+      "source_recording_id": "Shooting010_x264",
+      "camera_id": "cam_Shooting010_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.13815463050772242,
+      "discarded_mass": 0.8158319239566305,
+      "global_clip_similarity": 0.2496701329946518,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "CONTRADICTION",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video related to a potential crime is the behavior of the young white man attempting to gain unauthorized access to a room or building.  His actions, including groping in front of the door, trying to open it, and peering into",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Shooting\\Shooting008_x264_0.png",
+      "source_recording_id": "Shooting008_x264",
+      "camera_id": "cam_Shooting008_x264",
+      "environment_id": "Shooting",
+      "sinkhorn_divergence": 0.21641632061076443,
+      "discarded_mass": 0.7084147821521309,
+      "global_clip_similarity": 0.2647949755191803,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    },
+    {
+      "ground_truth": "MATCH",
+      "prediction": "INDETERMINATE",
+      "prediction_set": [
+        0,
+        1
+      ],
+      "indeterminate_reason": "The conformal prediction set contains both MATCH and CONTRADICTION at the configured coverage level; the system abstains.",
+      "statement": "The abnormal part of the video, which indicates potential criminal behavior, involves a man entering the elevator and continuously igniting a lighter in close proximity to the elevator's camera.  His actions seem to be an attempt to either damage the",
+      "image_path": "C:\\Capstone-Project\\datasets\\UCA-dataset\\Test\\Arson\\Arson011_x264_0.png",
+      "source_recording_id": "Arson011_x264",
+      "camera_id": "cam_Arson011_x264",
+      "environment_id": "Arson",
+      "sinkhorn_divergence": 0.15387816601800683,
+      "discarded_mass": 0.7910001674350393,
+      "global_clip_similarity": 0.2502848207950592,
+      "alpha": 0.1,
+      "q_hat": 0.608633540278407
+    }
+  ]
+}

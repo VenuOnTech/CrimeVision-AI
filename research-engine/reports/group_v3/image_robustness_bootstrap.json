@@ -1,0 +1,3425 @@
+{
+  "alpha": 0.1,
+  "manifest": {
+    "manifest_schema_version": 1,
+    "created_at_utc": "2026-11-15T07:40:03.899221+00:00",
+    "experiment_script": "evaluate_image_robustness_bootstrap.py",
+    "model": {
+      "name": "openai/clip-vit-base-patch32",
+      "resolved_revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268"
+    },
+    "feature_schema_version": 4,
+    "splits": {
+      "fit": {
+        "file_name": "fit.csv",
+        "sha256": "32451c1d57b98d5ef7d30ea9d3399d107183c7bf1e4c58515dc1635d4d1ece11",
+        "image_assets_sha256": "ba72f306019a16cb7e5a24a63224a3f2b37f40497c84ba8bc3e0a248ce7ae827",
+        "sample_count": 3136,
+        "class_counts": {
+          "CONTRADICTION": 1568,
+          "MATCH": 1568
+        },
+        "recording_count": 1568
+      },
+      "calibration": {
+        "file_name": "calibration.csv",
+        "sha256": "f647e36d9a9b4ed296671430f96d7c1ebbe2ee86f4be01ba1ef2628127e72629",
+        "image_assets_sha256": "5c4ba0e749ab676139c6654c6c8f01601fe32444033120687e4d58e35e1a6092",
+        "sample_count": 140,
+        "class_counts": {
+          "MATCH": 70,
+          "CONTRADICTION": 70
+        },
+        "recording_count": 70
+      },
+      "test": {
+        "file_name": "test.csv",
+        "sha256": "125ca450b822ffff48b8dcf848531ed6263af00428b0d58553e868fcc38f9da9",
+        "image_assets_sha256": "02555b6585cc1a42844acaeaeb4ab806313fac21eb6b2ddcb0f4b867006b2485",
+        "sample_count": 140,
+        "class_counts": {
+          "MATCH": 70,
+          "CONTRADICTION": 70
+        },
+        "recording_count": 70
+      }
+    },
+    "split_audit": {
+      "split_names": [
+        "fit",
+        "calibration",
+        "test"
+      ],
+      "splits": {
+        "fit": {
+          "sample_count": 3136,
+          "class_counts": {
+            "MATCH": 1568,
+            "CONTRADICTION": 1568
+          },
+          "source_recording_count": 1568,
+          "camera_id_count": 1568,
+          "environment_category_count": 14
+        },
+        "calibration": {
+          "sample_count": 140,
+          "class_counts": {
+            "MATCH": 70,
+            "CONTRADICTION": 70
+          },
+          "source_recording_count": 70,
+          "camera_id_count": 70,
+          "environment_category_count": 13
+        },
+        "test": {
+          "sample_count": 140,
+          "class_counts": {
+            "MATCH": 70,
+            "CONTRADICTION": 70
+          },
+          "source_recording_count": 70,
+          "camera_id_count": 70,
+          "environment_category_count": 12
+        }
+      },
+      "pairwise_group_overlap_counts": {
+        "source_recording_id": {
+          "fit__calibration": 0,
+          "fit__test": 0,
+          "calibration__test": 0
+        },
+        "camera_id": {
+          "fit__calibration": 0,
+          "fit__test": 0,
+          "calibration__test": 0
+        },
+        "environment_id": {
+          "fit__calibration": 13,
+          "fit__test": 12,
+          "calibration__test": 12
+        }
+      },
+      "source_recording_disjoint": true,
+      "camera_id_is_recording_alias": true,
+      "camera_generalization_claim_supported": false,
+      "physical_camera_identity_verified": false,
+      "environment_ids_are_activity_categories": true,
+      "statement_source_provenance_available": true,
+      "environment_disjointness_required": false,
+      "note": "Source-recording IDs are disjoint. In the current UCA adapter, camera_id is derived from source_recording_id and is not an independently verified physical camera ID; environment_id represents an activity category and may overlap across splits."
+    },
+    "configuration": {
+      "alpha": 0.1,
+      "experiment": "fixed_threshold_image_robustness",
+      "profile": "full",
+      "distortions": [
+        {
+          "name": "gaussian_blur_r0_8",
+          "kind": "gaussian_blur",
+          "radius": 0.8
+        },
+        {
+          "name": "gaussian_blur_r1_5",
+          "kind": "gaussian_blur",
+          "radius": 1.5
+        },
+        {
+          "name": "brightness_0_7",
+          "kind": "brightness",
+          "factor": 0.7
+        },
+        {
+          "name": "brightness_1_3",
+          "kind": "brightness",
+          "factor": 1.3
+        },
+        {
+          "name": "gaussian_noise_sigma10",
+          "kind": "gaussian_noise",
+          "sigma": 10.0
+        },
+        {
+          "name": "gaussian_noise_sigma15",
+          "kind": "gaussian_noise",
+          "sigma": 15.0
+        },
+        {
+          "name": "gaussian_noise_sigma25",
+          "kind": "gaussian_noise",
+          "sigma": 25.0
+        },
+        {
+          "name": "jpeg_quality60",
+          "kind": "jpeg",
+          "quality": 60
+        },
+        {
+          "name": "jpeg_quality35",
+          "kind": "jpeg",
+          "quality": 35
+        },
+        {
+          "name": "jpeg_quality25",
+          "kind": "jpeg",
+          "quality": 25
+        }
+      ],
+      "calibration_data": "clean_fit_and_clean_calibration_only",
+      "q_hat_policy": "fit_once_on_clean_calibration_then_freeze_for_all_test_conditions",
+      "noise_seed": 42,
+      "paired_group_bootstrap": {
+        "replicates": 2000,
+        "seed": 42,
+        "resampling_unit": "source_recording_id"
+      },
+      "cache_paths": {
+        "full_ot:fit:clean": ".cache\\group_v3_ot\\full_ot\\fit.2503bdca0462cb6539c5.npz",
+        "full_ot:calibration:clean": ".cache\\group_v3_ot\\full_ot\\calibration.0fa135a6c04d9b2ccbe0.npz",
+        "full_ot:test:clean": ".cache\\group_v3_ot\\full_ot\\test.fae5afa495bf1eff448f.npz",
+        "full_ot:test:gaussian_blur_r0_8": ".cache\\group_v3_ot\\full_ot\\robustness\\test_gaussian_blur_r0_8.647c1d4387a2ad8e46f8.npz",
+        "full_ot:test:gaussian_blur_r1_5": ".cache\\group_v3_ot\\full_ot\\robustness\\test_gaussian_blur_r1_5.857a698a27110a6f79b4.npz",
+        "full_ot:test:brightness_0_7": ".cache\\group_v3_ot\\full_ot\\robustness\\test_brightness_0_7.42a2244a8c7bcfaf2a67.npz",
+        "full_ot:test:brightness_1_3": ".cache\\group_v3_ot\\full_ot\\robustness\\test_brightness_1_3.c9f21c406c802a623862.npz",
+        "full_ot:test:gaussian_noise_sigma10": ".cache\\group_v3_ot\\full_ot\\robustness\\test_gaussian_noise_sigma10.317f5e29867d82cf15e5.npz",
+        "full_ot:test:gaussian_noise_sigma15": ".cache\\group_v3_ot\\full_ot\\robustness\\test_gaussian_noise_sigma15.9bfcd708f388123d4fc3.npz",
+        "full_ot:test:gaussian_noise_sigma25": ".cache\\group_v3_ot\\full_ot\\robustness\\test_gaussian_noise_sigma25.9f40d490145311a4c646.npz",
+        "full_ot:test:jpeg_quality60": ".cache\\group_v3_ot\\full_ot\\robustness\\test_jpeg_quality60.12fd7b90445f614df415.npz",
+        "full_ot:test:jpeg_quality35": ".cache\\group_v3_ot\\full_ot\\robustness\\test_jpeg_quality35.ae3aa9d7b4ac6394c02e.npz",
+        "full_ot:test:jpeg_quality25": ".cache\\group_v3_ot\\full_ot\\robustness\\test_jpeg_quality25.b1a4e4e7d89090b3e11e.npz",
+        "partial_ot:fit:clean": ".cache\\group_v3_ot\\partial_ot\\fit.3fccb8c1d836e2c3b50d.npz",
+        "partial_ot:calibration:clean": ".cache\\group_v3_ot\\partial_ot\\calibration.76b43a6b2cfb338de006.npz",
+        "partial_ot:test:clean": ".cache\\group_v3_ot\\partial_ot\\test.6df9951dbd2560254e16.npz",
+        "partial_ot:test:gaussian_blur_r0_8": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_gaussian_blur_r0_8.df227227bc05966f392c.npz",
+        "partial_ot:test:gaussian_blur_r1_5": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_gaussian_blur_r1_5.8a7542367c05080ae1bc.npz",
+        "partial_ot:test:brightness_0_7": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_brightness_0_7.c0a564494473a50f4a89.npz",
+        "partial_ot:test:brightness_1_3": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_brightness_1_3.2e489661f93c3642ed8d.npz",
+        "partial_ot:test:gaussian_noise_sigma10": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_gaussian_noise_sigma10.84dfee28e1df58adce76.npz",
+        "partial_ot:test:gaussian_noise_sigma15": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_gaussian_noise_sigma15.f03351ef09cf1b11c34e.npz",
+        "partial_ot:test:gaussian_noise_sigma25": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_gaussian_noise_sigma25.db1261105e8c368e876e.npz",
+        "partial_ot:test:jpeg_quality60": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_jpeg_quality60.07f33434165005c2be8d.npz",
+        "partial_ot:test:jpeg_quality35": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_jpeg_quality35.9bd29882540b0a81a1be.npz",
+        "partial_ot:test:jpeg_quality25": ".cache\\group_v3_ot\\partial_ot\\robustness\\test_jpeg_quality25.732869028bb4b2920f3f.npz"
+      },
+      "calibration_unit": "source_recording_id_max",
+      "selected_rows_sha256": {
+        "fit": "e6a7aae37cd69a539408810c180f24c011a9865f7ab5391d81d76cb0f959795f",
+        "calibration": "2fc1cd5ce6008a295f34d733af0ba0dd689223f3821a4b247f2992bc07b4e2db",
+        "test": "eb73aa11c9a5966a3e26dc5c0015ccd74982bd33fdec04cf71a535b07ff2a715"
+      }
+    },
+    "interpretation": "This manifest establishes input and configuration provenance. It does not establish annotation validity, forensic suitability, or generalisation to unseen physical cameras."
+  },
+  "results": {
+    "full_ot__clip_only": {
+      "mode": "full_ot",
+      "variant": "clip_only",
+      "features": [
+        "one_minus_global_clip_similarity"
+      ],
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 70,
+      "q_hat_clean_calibration": 0.6089090279232872,
+      "fixed_q_hat_for_all_conditions": true,
+      "clean_baseline": {
+        "q_hat_used": 0.6089090279232872,
+        "empirical_coverage": 0.9428571428571428,
+        "singleton_rate": 0.2642857142857143,
+        "selective_accuracy": 0.7837837837837838,
+        "abstention_rate": 0.7357142857142858,
+        "recording_group_coverage": {
+          "group_key": "source_recording_id",
+          "group_count": 70,
+          "simultaneously_covered_group_count": 62,
+          "simultaneous_group_coverage": 0.8857142857142857,
+          "groups_with_any_missed_label": 8,
+          "group_sizes": {
+            "min": 2,
+            "max": 2
+          },
+          "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+        }
+      },
+      "distortions": {
+        "gaussian_blur_r0_8": {
+          "distortion": {
+            "name": "gaussian_blur_r0_8",
+            "kind": "gaussian_blur",
+            "radius": 0.8
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9785714285714285,
+            "singleton_rate": 0.16428571428571428,
+            "selective_accuracy": 0.8695652173913043,
+            "abstention_rate": 0.8357142857142857,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 67,
+              "simultaneous_group_coverage": 0.9571428571428572,
+              "groups_with_any_missed_label": 3,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0357142857142857,
+            "singleton_rate": -0.1,
+            "selective_accuracy": 0.08578143360752055,
+            "abstention_rate": 0.09999999999999998,
+            "recording_group_coverage": 0.07142857142857151
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0357142857142857,
+              "singleton_rate": -0.1,
+              "selective_accuracy": 0.08578143360752055,
+              "abstention_rate": 0.09999999999999998,
+              "recording_group_coverage": 0.07142857142857151
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": 0.0,
+                "upper_95": 0.07142857142857151,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.1714285714285714,
+                "upper_95": -0.028571428571428553,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.05060062741312746,
+                "upper_95": 0.23338942307692273,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.02857142857142858,
+                "upper_95": 0.17142857142857137,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": 0.0,
+                "upper_95": 0.1428571428571429,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_blur_r1_5": {
+          "distortion": {
+            "name": "gaussian_blur_r1_5",
+            "kind": "gaussian_blur",
+            "radius": 1.5
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.1,
+            "selective_accuracy": 0.6428571428571429,
+            "abstention_rate": 0.9,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.16428571428571428,
+            "selective_accuracy": -0.14092664092664087,
+            "abstention_rate": 0.16428571428571426,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.16428571428571428,
+              "selective_accuracy": -0.14092664092664087,
+              "abstention_rate": 0.16428571428571426,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.021428571428571352,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.2357142857142857,
+                "upper_95": -0.09285714285714286,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.3611217948717949,
+                "upper_95": 0.09376201923076917,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.09285714285714286,
+                "upper_95": 0.23571428571428565,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.12857142857142856,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_0_7": {
+          "distortion": {
+            "name": "brightness_0_7",
+            "kind": "brightness",
+            "factor": 0.7
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.22857142857142856,
+            "selective_accuracy": 0.84375,
+            "abstention_rate": 0.7714285714285715,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.035714285714285726,
+            "selective_accuracy": 0.05996621621621623,
+            "abstention_rate": 0.0357142857142857,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.035714285714285726,
+              "selective_accuracy": 0.05996621621621623,
+              "abstention_rate": 0.0357142857142857,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0071428571428571175,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.09285714285714286,
+                "upper_95": 0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.03703703703703709,
+                "upper_95": 0.17513714107184378,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.09285714285714286,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_1_3": {
+          "distortion": {
+            "name": "brightness_1_3",
+            "kind": "brightness",
+            "factor": 1.3
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.2857142857142857,
+            "selective_accuracy": 0.75,
+            "abstention_rate": 0.7142857142857143,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": 0.021428571428571408,
+            "selective_accuracy": -0.03378378378378377,
+            "abstention_rate": -0.021428571428571463,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": 0.021428571428571408,
+              "selective_accuracy": -0.03378378378378377,
+              "abstention_rate": -0.021428571428571463,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0357142857142857,
+                "upper_95": 0.0,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.07142857142857142,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.10354871388301626,
+                "upper_95": 0.02363384809119832,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.0,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma10": {
+          "distortion": {
+            "name": "gaussian_noise_sigma10",
+            "kind": "gaussian_noise",
+            "sigma": 10.0
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9357142857142857,
+            "singleton_rate": 0.22142857142857142,
+            "selective_accuracy": 0.7096774193548387,
+            "abstention_rate": 0.7785714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 61,
+              "simultaneous_group_coverage": 0.8714285714285714,
+              "groups_with_any_missed_label": 9,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.0071428571428571175,
+            "singleton_rate": -0.04285714285714287,
+            "selective_accuracy": -0.07410636442894503,
+            "abstention_rate": 0.042857142857142816,
+            "recording_group_coverage": -0.014285714285714235
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.0071428571428571175,
+              "singleton_rate": -0.04285714285714287,
+              "selective_accuracy": -0.07410636442894503,
+              "abstention_rate": 0.042857142857142816,
+              "recording_group_coverage": -0.014285714285714235
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.050000000000000044,
+                "upper_95": 0.0357142857142857,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.1357142857142857,
+                "upper_95": 0.04285714285714287,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.2043710952441668,
+                "upper_95": 0.05555555555555547,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.13571428571428568,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.09999999999999998,
+                "upper_95": 0.0714285714285714,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma15": {
+          "distortion": {
+            "name": "gaussian_noise_sigma15",
+            "kind": "gaussian_noise",
+            "sigma": 15.0
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9571428571428572,
+            "singleton_rate": 0.17142857142857143,
+            "selective_accuracy": 0.75,
+            "abstention_rate": 0.8285714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 64,
+              "simultaneous_group_coverage": 0.9142857142857143,
+              "groups_with_any_missed_label": 6,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.014285714285714346,
+            "singleton_rate": -0.09285714285714286,
+            "selective_accuracy": -0.03378378378378377,
+            "abstention_rate": 0.09285714285714286,
+            "recording_group_coverage": 0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.014285714285714346,
+              "singleton_rate": -0.09285714285714286,
+              "selective_accuracy": -0.03378378378378377,
+              "abstention_rate": 0.09285714285714286,
+              "recording_group_coverage": 0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.18571428571428572,
+                "upper_95": -0.007142857142857145,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.1874158637061862,
+                "upper_95": 0.13691514396456247,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.0071428571428571175,
+                "upper_95": 0.18571428571428572,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.05714285714285716,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma25": {
+          "distortion": {
+            "name": "gaussian_noise_sigma25",
+            "kind": "gaussian_noise",
+            "sigma": 25.0
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9428571428571428,
+            "singleton_rate": 0.16428571428571428,
+            "selective_accuracy": 0.6521739130434783,
+            "abstention_rate": 0.8357142857142857,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 62,
+              "simultaneous_group_coverage": 0.8857142857142857,
+              "groups_with_any_missed_label": 8,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0,
+            "singleton_rate": -0.1,
+            "selective_accuracy": -0.1316098707403055,
+            "abstention_rate": 0.09999999999999998,
+            "recording_group_coverage": 0.0
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0,
+              "singleton_rate": -0.1,
+              "selective_accuracy": -0.1316098707403055,
+              "abstention_rate": 0.09999999999999998,
+              "recording_group_coverage": 0.0
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.04285714285714293,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.18571428571428572,
+                "upper_95": -0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.3232286111362199,
+                "upper_95": 0.05090571193512312,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.014285714285714346,
+                "upper_95": 0.18571428571428572,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.08571428571428574,
+                "upper_95": 0.08571428571428574,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality60": {
+          "distortion": {
+            "name": "jpeg_quality60",
+            "kind": "jpeg",
+            "quality": 60
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.95,
+            "singleton_rate": 0.2357142857142857,
+            "selective_accuracy": 0.7878787878787878,
+            "abstention_rate": 0.7642857142857142,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 63,
+              "simultaneous_group_coverage": 0.9,
+              "groups_with_any_missed_label": 7,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0071428571428571175,
+            "singleton_rate": -0.02857142857142858,
+            "selective_accuracy": 0.004095004095004073,
+            "abstention_rate": 0.02857142857142847,
+            "recording_group_coverage": 0.014285714285714346
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0071428571428571175,
+              "singleton_rate": -0.02857142857142858,
+              "selective_accuracy": 0.004095004095004073,
+              "abstention_rate": 0.02857142857142847,
+              "recording_group_coverage": 0.014285714285714346
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0357142857142857,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.12142857142857144,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.13434200705525573,
+                "upper_95": 0.15936692597852045,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.06428571428571428,
+                "upper_95": 0.12142857142857144,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.11428571428571421,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality35": {
+          "distortion": {
+            "name": "jpeg_quality35",
+            "kind": "jpeg",
+            "quality": 35
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.95,
+            "singleton_rate": 0.22142857142857142,
+            "selective_accuracy": 0.7741935483870968,
+            "abstention_rate": 0.7785714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 63,
+              "simultaneous_group_coverage": 0.9,
+              "groups_with_any_missed_label": 7,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0071428571428571175,
+            "singleton_rate": -0.04285714285714287,
+            "selective_accuracy": -0.009590235396687019,
+            "abstention_rate": 0.042857142857142816,
+            "recording_group_coverage": 0.014285714285714346
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0071428571428571175,
+              "singleton_rate": -0.04285714285714287,
+              "selective_accuracy": -0.009590235396687019,
+              "abstention_rate": 0.042857142857142816,
+              "recording_group_coverage": 0.014285714285714346
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.03571428571428581,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.14285714285714282,
+                "upper_95": 0.04999999999999996,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.1666826309067689,
+                "upper_95": 0.14260886172650872,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.04999999999999993,
+                "upper_95": 0.1428571428571428,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.07142857142857151,
+                "upper_95": 0.11428571428571421,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality25": {
+          "distortion": {
+            "name": "jpeg_quality25",
+            "kind": "jpeg",
+            "quality": 25
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.15714285714285714,
+            "selective_accuracy": 0.7727272727272727,
+            "abstention_rate": 0.8428571428571429,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.10714285714285715,
+            "selective_accuracy": -0.011056511056511065,
+            "abstention_rate": 0.1071428571428571,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.10714285714285715,
+              "selective_accuracy": -0.011056511056511065,
+              "abstention_rate": 0.1071428571428571,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.021428571428571352,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.1928571428571429,
+                "upper_95": -0.021250000000000956,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.17953781512605044,
+                "upper_95": 0.16112373737373728,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.02124999999999994,
+                "upper_95": 0.19285714285714295,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.12857142857142856,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        }
+      }
+    },
+    "full_ot__sinkhorn_plus_clip": {
+      "mode": "full_ot",
+      "variant": "sinkhorn_plus_clip",
+      "features": [
+        "sinkhorn_divergence",
+        "one_minus_global_clip_similarity"
+      ],
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 70,
+      "q_hat_clean_calibration": 0.5997564080476097,
+      "fixed_q_hat_for_all_conditions": true,
+      "clean_baseline": {
+        "q_hat_used": 0.5997564080476097,
+        "empirical_coverage": 0.9428571428571428,
+        "singleton_rate": 0.32857142857142857,
+        "selective_accuracy": 0.8260869565217391,
+        "abstention_rate": 0.6714285714285714,
+        "recording_group_coverage": {
+          "group_key": "source_recording_id",
+          "group_count": 70,
+          "simultaneously_covered_group_count": 62,
+          "simultaneous_group_coverage": 0.8857142857142857,
+          "groups_with_any_missed_label": 8,
+          "group_sizes": {
+            "min": 2,
+            "max": 2
+          },
+          "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+        }
+      },
+      "distortions": {
+        "gaussian_blur_r0_8": {
+          "distortion": {
+            "name": "gaussian_blur_r0_8",
+            "kind": "gaussian_blur",
+            "radius": 0.8
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.2571428571428571,
+            "selective_accuracy": 0.8611111111111112,
+            "abstention_rate": 0.7428571428571429,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.07142857142857145,
+            "selective_accuracy": 0.035024154589372025,
+            "abstention_rate": 0.07142857142857151,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.07142857142857145,
+              "selective_accuracy": 0.035024154589372025,
+              "abstention_rate": 0.07142857142857151,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.15,
+                "upper_95": 0.0071428571428571175,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.0611139455782313,
+                "upper_95": 0.1442226874003189,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.0071428571428571175,
+                "upper_95": 0.15000000000000002,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_blur_r1_5": {
+          "distortion": {
+            "name": "gaussian_blur_r1_5",
+            "kind": "gaussian_blur",
+            "radius": 1.5
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.22142857142857142,
+            "selective_accuracy": 0.6774193548387096,
+            "abstention_rate": 0.7785714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": -0.10714285714285715,
+            "selective_accuracy": -0.1486676016830295,
+            "abstention_rate": 0.1071428571428572,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": -0.10714285714285715,
+              "selective_accuracy": -0.1486676016830295,
+              "abstention_rate": 0.1071428571428572,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.06428571428571428,
+                "upper_95": 0.0357142857142857,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.18571428571428572,
+                "upper_95": -0.021428571428571463,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.29999999999999993,
+                "upper_95": 0.019464530892448432,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.021428571428571463,
+                "upper_95": 0.18571428571428572,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.12857142857142856,
+                "upper_95": 0.0714285714285714,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_0_7": {
+          "distortion": {
+            "name": "brightness_0_7",
+            "kind": "brightness",
+            "factor": 0.7
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.95,
+            "singleton_rate": 0.3357142857142857,
+            "selective_accuracy": 0.851063829787234,
+            "abstention_rate": 0.6642857142857143,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 63,
+              "simultaneous_group_coverage": 0.9,
+              "groups_with_any_missed_label": 7,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0071428571428571175,
+            "singleton_rate": 0.0071428571428571175,
+            "selective_accuracy": 0.024976873265494914,
+            "abstention_rate": -0.0071428571428571175,
+            "recording_group_coverage": 0.014285714285714346
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0071428571428571175,
+              "singleton_rate": 0.0071428571428571175,
+              "selective_accuracy": 0.024976873265494914,
+              "abstention_rate": -0.0071428571428571175,
+              "recording_group_coverage": 0.014285714285714346
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.04999999999999999,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.0364715219421102,
+                "upper_95": 0.0888888888888889,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.05714285714285716,
+                "upper_95": 0.04999999999999993,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_1_3": {
+          "distortion": {
+            "name": "brightness_1_3",
+            "kind": "brightness",
+            "factor": 1.3
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.34285714285714286,
+            "selective_accuracy": 0.7916666666666666,
+            "abstention_rate": 0.6571428571428571,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": 0.01428571428571429,
+            "selective_accuracy": -0.034420289855072506,
+            "abstention_rate": -0.014285714285714235,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": 0.01428571428571429,
+              "selective_accuracy": -0.034420289855072506,
+              "abstention_rate": -0.014285714285714235,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.014285714285714235,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.035714285714285754,
+                "upper_95": 0.07142857142857145,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.10649526707234616,
+                "upper_95": 0.028014360618316556,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.03571428571428581,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.08571428571428574,
+                "upper_95": 0.028571428571428473,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma10": {
+          "distortion": {
+            "name": "gaussian_noise_sigma10",
+            "kind": "gaussian_noise",
+            "sigma": 10.0
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.2785714285714286,
+            "selective_accuracy": 0.7435897435897436,
+            "abstention_rate": 0.7214285714285714,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 61,
+              "simultaneous_group_coverage": 0.8714285714285714,
+              "groups_with_any_missed_label": 9,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": -0.04999999999999999,
+            "selective_accuracy": -0.08249721293199552,
+            "abstention_rate": 0.050000000000000044,
+            "recording_group_coverage": -0.014285714285714235
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": -0.04999999999999999,
+              "selective_accuracy": -0.08249721293199552,
+              "abstention_rate": 0.050000000000000044,
+              "recording_group_coverage": -0.014285714285714235
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.05714285714285716,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.13571428571428573,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.2095389975877781,
+                "upper_95": 0.042055114429063956,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.13571428571428568,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.09999999999999998,
+                "upper_95": 0.0714285714285714,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma15": {
+          "distortion": {
+            "name": "gaussian_noise_sigma15",
+            "kind": "gaussian_noise",
+            "sigma": 15.0
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.25,
+            "selective_accuracy": 0.7142857142857143,
+            "abstention_rate": 0.75,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": -0.07857142857142857,
+            "selective_accuracy": -0.11180124223602483,
+            "abstention_rate": 0.07857142857142863,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": -0.07857142857142857,
+              "selective_accuracy": -0.11180124223602483,
+              "abstention_rate": 0.07857142857142863,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.06428571428571428,
+                "upper_95": 0.028749999999999033,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.16428571428571428,
+                "upper_95": 0.007142857142857173,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.24777319228086483,
+                "upper_95": 0.023092334494773464,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.0071428571428572285,
+                "upper_95": 0.16428571428571437,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.12857142857142856,
+                "upper_95": 0.05749999999999807,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma25": {
+          "distortion": {
+            "name": "gaussian_noise_sigma25",
+            "kind": "gaussian_noise",
+            "sigma": 25.0
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.20714285714285716,
+            "selective_accuracy": 0.6551724137931034,
+            "abstention_rate": 0.7928571428571428,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": -0.12142857142857141,
+            "selective_accuracy": -0.1709145427286357,
+            "abstention_rate": 0.12142857142857144,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": -0.12142857142857141,
+              "selective_accuracy": -0.1709145427286357,
+              "abstention_rate": 0.12142857142857144,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.05714285714285716,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.20732142857142857,
+                "upper_95": -0.035714285714285726,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.3261747273589379,
+                "upper_95": -0.013125390056168303,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.0357142857142857,
+                "upper_95": 0.20732142857142763,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.11428571428571432,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality60": {
+          "distortion": {
+            "name": "jpeg_quality60",
+            "kind": "jpeg",
+            "quality": 60
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9142857142857143,
+            "singleton_rate": 0.35,
+            "selective_accuracy": 0.7551020408163265,
+            "abstention_rate": 0.65,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 58,
+              "simultaneous_group_coverage": 0.8285714285714286,
+              "groups_with_any_missed_label": 12,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.02857142857142858,
+            "singleton_rate": 0.021428571428571408,
+            "selective_accuracy": -0.07098491570541265,
+            "abstention_rate": -0.021428571428571352,
+            "recording_group_coverage": -0.05714285714285705
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.02857142857142858,
+              "singleton_rate": 0.021428571428571408,
+              "selective_accuracy": -0.07098491570541265,
+              "abstention_rate": -0.021428571428571352,
+              "recording_group_coverage": -0.05714285714285705
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.07857142857142851,
+                "upper_95": 0.021428571428571352,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.08571428571428574,
+                "upper_95": 0.12857142857142856,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.16912883631713552,
+                "upper_95": 0.032988507509210646,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.12857142857142856,
+                "upper_95": 0.08571428571428574,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.15714285714285714,
+                "upper_95": 0.042857142857142816,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality35": {
+          "distortion": {
+            "name": "jpeg_quality35",
+            "kind": "jpeg",
+            "quality": 35
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9142857142857143,
+            "singleton_rate": 0.3357142857142857,
+            "selective_accuracy": 0.7446808510638298,
+            "abstention_rate": 0.6642857142857143,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 58,
+              "simultaneous_group_coverage": 0.8285714285714286,
+              "groups_with_any_missed_label": 12,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.02857142857142858,
+            "singleton_rate": 0.0071428571428571175,
+            "selective_accuracy": -0.08140610545790938,
+            "abstention_rate": -0.0071428571428571175,
+            "recording_group_coverage": -0.05714285714285705
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.02857142857142858,
+              "singleton_rate": 0.0071428571428571175,
+              "selective_accuracy": -0.08140610545790938,
+              "abstention_rate": -0.0071428571428571175,
+              "recording_group_coverage": -0.05714285714285705
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.07857142857142863,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.10000000000000003,
+                "upper_95": 0.10714285714285715,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.19079246411483253,
+                "upper_95": 0.03924410673360246,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.1071428571428571,
+                "upper_95": 0.09999999999999998,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.15714285714285714,
+                "upper_95": 0.05714285714285705,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality25": {
+          "distortion": {
+            "name": "jpeg_quality25",
+            "kind": "jpeg",
+            "quality": 25
+          },
+          "metrics": {
+            "q_hat_used": 0.5997564080476097,
+            "empirical_coverage": 0.9,
+            "singleton_rate": 0.2714285714285714,
+            "selective_accuracy": 0.631578947368421,
+            "abstention_rate": 0.7285714285714285,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 56,
+              "simultaneous_group_coverage": 0.8,
+              "groups_with_any_missed_label": 14,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.042857142857142816,
+            "singleton_rate": -0.05714285714285716,
+            "selective_accuracy": -0.19450800915331812,
+            "abstention_rate": 0.05714285714285716,
+            "recording_group_coverage": -0.08571428571428563
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.042857142857142816,
+              "singleton_rate": -0.05714285714285716,
+              "selective_accuracy": -0.19450800915331812,
+              "abstention_rate": 0.05714285714285716,
+              "recording_group_coverage": -0.08571428571428563
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.09999999999999998,
+                "upper_95": 0.014285714285714235,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.15714285714285714,
+                "upper_95": 0.04285714285714287,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.34922619047619047,
+                "upper_95": -0.04909276677893722,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.15714285714285714,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.19999999999999996,
+                "upper_95": 0.028571428571428473,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        }
+      }
+    },
+    "partial_ot__clip_only": {
+      "mode": "partial_ot",
+      "variant": "clip_only",
+      "features": [
+        "one_minus_global_clip_similarity"
+      ],
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 70,
+      "q_hat_clean_calibration": 0.6089090279232872,
+      "fixed_q_hat_for_all_conditions": true,
+      "clean_baseline": {
+        "q_hat_used": 0.6089090279232872,
+        "empirical_coverage": 0.9428571428571428,
+        "singleton_rate": 0.2642857142857143,
+        "selective_accuracy": 0.7837837837837838,
+        "abstention_rate": 0.7357142857142858,
+        "recording_group_coverage": {
+          "group_key": "source_recording_id",
+          "group_count": 70,
+          "simultaneously_covered_group_count": 62,
+          "simultaneous_group_coverage": 0.8857142857142857,
+          "groups_with_any_missed_label": 8,
+          "group_sizes": {
+            "min": 2,
+            "max": 2
+          },
+          "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+        }
+      },
+      "distortions": {
+        "gaussian_blur_r0_8": {
+          "distortion": {
+            "name": "gaussian_blur_r0_8",
+            "kind": "gaussian_blur",
+            "radius": 0.8
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9785714285714285,
+            "singleton_rate": 0.16428571428571428,
+            "selective_accuracy": 0.8695652173913043,
+            "abstention_rate": 0.8357142857142857,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 67,
+              "simultaneous_group_coverage": 0.9571428571428572,
+              "groups_with_any_missed_label": 3,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0357142857142857,
+            "singleton_rate": -0.1,
+            "selective_accuracy": 0.08578143360752055,
+            "abstention_rate": 0.09999999999999998,
+            "recording_group_coverage": 0.07142857142857151
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0357142857142857,
+              "singleton_rate": -0.1,
+              "selective_accuracy": 0.08578143360752055,
+              "abstention_rate": 0.09999999999999998,
+              "recording_group_coverage": 0.07142857142857151
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": 0.0,
+                "upper_95": 0.07142857142857151,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.1714285714285714,
+                "upper_95": -0.028571428571428553,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.05060062741312746,
+                "upper_95": 0.23338942307692273,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.02857142857142858,
+                "upper_95": 0.17142857142857137,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": 0.0,
+                "upper_95": 0.1428571428571429,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_blur_r1_5": {
+          "distortion": {
+            "name": "gaussian_blur_r1_5",
+            "kind": "gaussian_blur",
+            "radius": 1.5
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.1,
+            "selective_accuracy": 0.6428571428571429,
+            "abstention_rate": 0.9,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.16428571428571428,
+            "selective_accuracy": -0.14092664092664087,
+            "abstention_rate": 0.16428571428571426,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.16428571428571428,
+              "selective_accuracy": -0.14092664092664087,
+              "abstention_rate": 0.16428571428571426,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.021428571428571352,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.2357142857142857,
+                "upper_95": -0.09285714285714286,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.3611217948717949,
+                "upper_95": 0.09376201923076917,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.09285714285714286,
+                "upper_95": 0.23571428571428565,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.12857142857142856,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_0_7": {
+          "distortion": {
+            "name": "brightness_0_7",
+            "kind": "brightness",
+            "factor": 0.7
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.22857142857142856,
+            "selective_accuracy": 0.84375,
+            "abstention_rate": 0.7714285714285715,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.035714285714285726,
+            "selective_accuracy": 0.05996621621621623,
+            "abstention_rate": 0.0357142857142857,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.035714285714285726,
+              "selective_accuracy": 0.05996621621621623,
+              "abstention_rate": 0.0357142857142857,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0071428571428571175,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.09285714285714286,
+                "upper_95": 0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.03703703703703709,
+                "upper_95": 0.17513714107184378,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.09285714285714286,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_1_3": {
+          "distortion": {
+            "name": "brightness_1_3",
+            "kind": "brightness",
+            "factor": 1.3
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.2857142857142857,
+            "selective_accuracy": 0.75,
+            "abstention_rate": 0.7142857142857143,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714235,
+            "singleton_rate": 0.021428571428571408,
+            "selective_accuracy": -0.03378378378378377,
+            "abstention_rate": -0.021428571428571463,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714235,
+              "singleton_rate": 0.021428571428571408,
+              "selective_accuracy": -0.03378378378378377,
+              "abstention_rate": -0.021428571428571463,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0357142857142857,
+                "upper_95": 0.0,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.07142857142857142,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.10354871388301626,
+                "upper_95": 0.02363384809119832,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.0,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma10": {
+          "distortion": {
+            "name": "gaussian_noise_sigma10",
+            "kind": "gaussian_noise",
+            "sigma": 10.0
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9357142857142857,
+            "singleton_rate": 0.22142857142857142,
+            "selective_accuracy": 0.7096774193548387,
+            "abstention_rate": 0.7785714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 61,
+              "simultaneous_group_coverage": 0.8714285714285714,
+              "groups_with_any_missed_label": 9,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.0071428571428571175,
+            "singleton_rate": -0.04285714285714287,
+            "selective_accuracy": -0.07410636442894503,
+            "abstention_rate": 0.042857142857142816,
+            "recording_group_coverage": -0.014285714285714235
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.0071428571428571175,
+              "singleton_rate": -0.04285714285714287,
+              "selective_accuracy": -0.07410636442894503,
+              "abstention_rate": 0.042857142857142816,
+              "recording_group_coverage": -0.014285714285714235
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.050000000000000044,
+                "upper_95": 0.0357142857142857,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.1357142857142857,
+                "upper_95": 0.04285714285714287,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.2043710952441668,
+                "upper_95": 0.05555555555555547,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.13571428571428568,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.09999999999999998,
+                "upper_95": 0.0714285714285714,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma15": {
+          "distortion": {
+            "name": "gaussian_noise_sigma15",
+            "kind": "gaussian_noise",
+            "sigma": 15.0
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9571428571428572,
+            "singleton_rate": 0.17142857142857143,
+            "selective_accuracy": 0.75,
+            "abstention_rate": 0.8285714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 64,
+              "simultaneous_group_coverage": 0.9142857142857143,
+              "groups_with_any_missed_label": 6,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.014285714285714346,
+            "singleton_rate": -0.09285714285714286,
+            "selective_accuracy": -0.03378378378378377,
+            "abstention_rate": 0.09285714285714286,
+            "recording_group_coverage": 0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.014285714285714346,
+              "singleton_rate": -0.09285714285714286,
+              "selective_accuracy": -0.03378378378378377,
+              "abstention_rate": 0.09285714285714286,
+              "recording_group_coverage": 0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.18571428571428572,
+                "upper_95": -0.007142857142857145,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.1874158637061862,
+                "upper_95": 0.13691514396456247,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.0071428571428571175,
+                "upper_95": 0.18571428571428572,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.05714285714285716,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma25": {
+          "distortion": {
+            "name": "gaussian_noise_sigma25",
+            "kind": "gaussian_noise",
+            "sigma": 25.0
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9428571428571428,
+            "singleton_rate": 0.16428571428571428,
+            "selective_accuracy": 0.6521739130434783,
+            "abstention_rate": 0.8357142857142857,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 62,
+              "simultaneous_group_coverage": 0.8857142857142857,
+              "groups_with_any_missed_label": 8,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0,
+            "singleton_rate": -0.1,
+            "selective_accuracy": -0.1316098707403055,
+            "abstention_rate": 0.09999999999999998,
+            "recording_group_coverage": 0.0
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0,
+              "singleton_rate": -0.1,
+              "selective_accuracy": -0.1316098707403055,
+              "abstention_rate": 0.09999999999999998,
+              "recording_group_coverage": 0.0
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.04285714285714293,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.18571428571428572,
+                "upper_95": -0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.3232286111362199,
+                "upper_95": 0.05090571193512312,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.014285714285714346,
+                "upper_95": 0.18571428571428572,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.08571428571428574,
+                "upper_95": 0.08571428571428574,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality60": {
+          "distortion": {
+            "name": "jpeg_quality60",
+            "kind": "jpeg",
+            "quality": 60
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.95,
+            "singleton_rate": 0.2357142857142857,
+            "selective_accuracy": 0.7878787878787878,
+            "abstention_rate": 0.7642857142857142,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 63,
+              "simultaneous_group_coverage": 0.9,
+              "groups_with_any_missed_label": 7,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0071428571428571175,
+            "singleton_rate": -0.02857142857142858,
+            "selective_accuracy": 0.004095004095004073,
+            "abstention_rate": 0.02857142857142847,
+            "recording_group_coverage": 0.014285714285714346
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0071428571428571175,
+              "singleton_rate": -0.02857142857142858,
+              "selective_accuracy": 0.004095004095004073,
+              "abstention_rate": 0.02857142857142847,
+              "recording_group_coverage": 0.014285714285714346
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0357142857142857,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.12142857142857144,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.13434200705525573,
+                "upper_95": 0.15936692597852045,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.06428571428571428,
+                "upper_95": 0.12142857142857144,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.11428571428571421,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality35": {
+          "distortion": {
+            "name": "jpeg_quality35",
+            "kind": "jpeg",
+            "quality": 35
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.95,
+            "singleton_rate": 0.22142857142857142,
+            "selective_accuracy": 0.7741935483870968,
+            "abstention_rate": 0.7785714285714286,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 63,
+              "simultaneous_group_coverage": 0.9,
+              "groups_with_any_missed_label": 7,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0071428571428571175,
+            "singleton_rate": -0.04285714285714287,
+            "selective_accuracy": -0.009590235396687019,
+            "abstention_rate": 0.042857142857142816,
+            "recording_group_coverage": 0.014285714285714346
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0071428571428571175,
+              "singleton_rate": -0.04285714285714287,
+              "selective_accuracy": -0.009590235396687019,
+              "abstention_rate": 0.042857142857142816,
+              "recording_group_coverage": 0.014285714285714346
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.03571428571428581,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.14285714285714282,
+                "upper_95": 0.04999999999999996,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.1666826309067689,
+                "upper_95": 0.14260886172650872,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.04999999999999993,
+                "upper_95": 0.1428571428571428,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.07142857142857151,
+                "upper_95": 0.11428571428571421,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality25": {
+          "distortion": {
+            "name": "jpeg_quality25",
+            "kind": "jpeg",
+            "quality": 25
+          },
+          "metrics": {
+            "q_hat_used": 0.6089090279232872,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.15714285714285714,
+            "selective_accuracy": 0.7727272727272727,
+            "abstention_rate": 0.8428571428571429,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.10714285714285715,
+            "selective_accuracy": -0.011056511056511065,
+            "abstention_rate": 0.1071428571428571,
+            "recording_group_coverage": 0.04285714285714293
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.10714285714285715,
+              "selective_accuracy": -0.011056511056511065,
+              "abstention_rate": 0.1071428571428571,
+              "recording_group_coverage": 0.04285714285714293
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.021428571428571352,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.1928571428571429,
+                "upper_95": -0.021250000000000956,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.17953781512605044,
+                "upper_95": 0.16112373737373728,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.02124999999999994,
+                "upper_95": 0.19285714285714295,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.12857142857142856,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        }
+      }
+    },
+    "partial_ot__sinkhorn_plus_clip": {
+      "mode": "partial_ot",
+      "variant": "sinkhorn_plus_clip",
+      "features": [
+        "sinkhorn_divergence",
+        "one_minus_global_clip_similarity"
+      ],
+      "calibration_unit": "source_recording_id_max",
+      "calibration_group_count": 70,
+      "q_hat_clean_calibration": 0.615190539573253,
+      "fixed_q_hat_for_all_conditions": true,
+      "clean_baseline": {
+        "q_hat_used": 0.615190539573253,
+        "empirical_coverage": 0.9357142857142857,
+        "singleton_rate": 0.2714285714285714,
+        "selective_accuracy": 0.7631578947368421,
+        "abstention_rate": 0.7285714285714285,
+        "recording_group_coverage": {
+          "group_key": "source_recording_id",
+          "group_count": 70,
+          "simultaneously_covered_group_count": 61,
+          "simultaneous_group_coverage": 0.8714285714285714,
+          "groups_with_any_missed_label": 9,
+          "group_sizes": {
+            "min": 2,
+            "max": 2
+          },
+          "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+        }
+      },
+      "distortions": {
+        "gaussian_blur_r0_8": {
+          "distortion": {
+            "name": "gaussian_blur_r0_8",
+            "kind": "gaussian_blur",
+            "radius": 0.8
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9642857142857143,
+            "singleton_rate": 0.18571428571428572,
+            "selective_accuracy": 0.8076923076923077,
+            "abstention_rate": 0.8142857142857143,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 65,
+              "simultaneous_group_coverage": 0.9285714285714286,
+              "groups_with_any_missed_label": 5,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.02857142857142858,
+            "singleton_rate": -0.08571428571428569,
+            "selective_accuracy": 0.04453441295546556,
+            "abstention_rate": 0.08571428571428574,
+            "recording_group_coverage": 0.05714285714285716
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.02857142857142858,
+              "singleton_rate": -0.08571428571428569,
+              "selective_accuracy": 0.04453441295546556,
+              "abstention_rate": 0.08571428571428574,
+              "recording_group_coverage": 0.05714285714285716
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": 0.0,
+                "upper_95": 0.06428571428571428,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.15714285714285714,
+                "upper_95": -0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.069233193277311,
+                "upper_95": 0.17145774515339712,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.014285714285714346,
+                "upper_95": 0.15714285714285714,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": 0.0,
+                "upper_95": 0.12857142857142856,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_blur_r1_5": {
+          "distortion": {
+            "name": "gaussian_blur_r1_5",
+            "kind": "gaussian_blur",
+            "radius": 1.5
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9571428571428572,
+            "singleton_rate": 0.1,
+            "selective_accuracy": 0.5714285714285714,
+            "abstention_rate": 0.9,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 64,
+              "simultaneous_group_coverage": 0.9142857142857143,
+              "groups_with_any_missed_label": 6,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.1714285714285714,
+            "selective_accuracy": -0.19172932330827075,
+            "abstention_rate": 0.17142857142857149,
+            "recording_group_coverage": 0.042857142857142816
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.1714285714285714,
+              "selective_accuracy": -0.19172932330827075,
+              "abstention_rate": 0.17142857142857149,
+              "recording_group_coverage": 0.042857142857142816
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.24285714285714283,
+                "upper_95": -0.10000000000000002,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.4092962398373984,
+                "upper_95": 0.009794372294371974,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.10000000000000009,
+                "upper_95": 0.24285714285714277,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_0_7": {
+          "distortion": {
+            "name": "brightness_0_7",
+            "kind": "brightness",
+            "factor": 0.7
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9571428571428572,
+            "singleton_rate": 0.22857142857142856,
+            "selective_accuracy": 0.8125,
+            "abstention_rate": 0.7714285714285715,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 64,
+              "simultaneous_group_coverage": 0.9142857142857143,
+              "groups_with_any_missed_label": 6,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.042857142857142844,
+            "selective_accuracy": 0.049342105263157854,
+            "abstention_rate": 0.04285714285714293,
+            "recording_group_coverage": 0.042857142857142816
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.042857142857142844,
+              "selective_accuracy": 0.049342105263157854,
+              "abstention_rate": 0.04285714285714293,
+              "recording_group_coverage": 0.042857142857142816
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0071428571428571175,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.09285714285714286,
+                "upper_95": -0.0071428571428571175,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.04139321468298117,
+                "upper_95": 0.15508990157327743,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.0071428571428571175,
+                "upper_95": 0.09285714285714286,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "brightness_1_3": {
+          "distortion": {
+            "name": "brightness_1_3",
+            "kind": "brightness",
+            "factor": 1.3
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9214285714285714,
+            "singleton_rate": 0.2785714285714286,
+            "selective_accuracy": 0.717948717948718,
+            "abstention_rate": 0.7214285714285714,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 59,
+              "simultaneous_group_coverage": 0.8428571428571429,
+              "groups_with_any_missed_label": 11,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.014285714285714346,
+            "singleton_rate": 0.007142857142857173,
+            "selective_accuracy": -0.045209176788124195,
+            "abstention_rate": -0.0071428571428571175,
+            "recording_group_coverage": -0.02857142857142858
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.014285714285714346,
+              "singleton_rate": 0.007142857142857173,
+              "selective_accuracy": -0.045209176788124195,
+              "abstention_rate": -0.0071428571428571175,
+              "recording_group_coverage": -0.02857142857142858
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0357142857142857,
+                "upper_95": 0.0,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.04285714285714287,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.12153234649122809,
+                "upper_95": 0.014285714285714235,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.05714285714285716,
+                "upper_95": 0.04285714285714293,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.0,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma10": {
+          "distortion": {
+            "name": "gaussian_noise_sigma10",
+            "kind": "gaussian_noise",
+            "sigma": 10.0
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9571428571428572,
+            "singleton_rate": 0.17857142857142858,
+            "selective_accuracy": 0.76,
+            "abstention_rate": 0.8214285714285714,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 64,
+              "simultaneous_group_coverage": 0.9142857142857143,
+              "groups_with_any_missed_label": 6,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.021428571428571463,
+            "singleton_rate": -0.09285714285714283,
+            "selective_accuracy": -0.0031578947368421373,
+            "abstention_rate": 0.09285714285714286,
+            "recording_group_coverage": 0.042857142857142816
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.021428571428571463,
+              "singleton_rate": -0.09285714285714283,
+              "selective_accuracy": -0.0031578947368421373,
+              "abstention_rate": 0.09285714285714286,
+              "recording_group_coverage": 0.042857142857142816
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.17857142857142855,
+                "upper_95": -0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.15002237851662406,
+                "upper_95": 0.13193439182768452,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.014285714285714346,
+                "upper_95": 0.1785714285714285,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.02857142857142858,
+                "upper_95": 0.11428571428571432,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma15": {
+          "distortion": {
+            "name": "gaussian_noise_sigma15",
+            "kind": "gaussian_noise",
+            "sigma": 15.0
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9714285714285714,
+            "singleton_rate": 0.1357142857142857,
+            "selective_accuracy": 0.7894736842105263,
+            "abstention_rate": 0.8642857142857143,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 66,
+              "simultaneous_group_coverage": 0.9428571428571428,
+              "groups_with_any_missed_label": 4,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0357142857142857,
+            "singleton_rate": -0.1357142857142857,
+            "selective_accuracy": 0.02631578947368418,
+            "abstention_rate": 0.1357142857142858,
+            "recording_group_coverage": 0.0714285714285714
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0357142857142857,
+              "singleton_rate": -0.1357142857142857,
+              "selective_accuracy": 0.02631578947368418,
+              "abstention_rate": 0.1357142857142858,
+              "recording_group_coverage": 0.0714285714285714
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0071428571428571175,
+                "upper_95": 0.07857142857142863,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.21428571428571427,
+                "upper_95": -0.06428571428571425,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.1658681408681409,
+                "upper_95": 0.2059727132897863,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.06428571428571428,
+                "upper_95": 0.2142857142857143,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.014285714285714235,
+                "upper_95": 0.15714285714285714,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "gaussian_noise_sigma25": {
+          "distortion": {
+            "name": "gaussian_noise_sigma25",
+            "kind": "gaussian_noise",
+            "sigma": 25.0
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9857142857142858,
+            "singleton_rate": 0.05,
+            "selective_accuracy": 0.7142857142857143,
+            "abstention_rate": 0.95,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 68,
+              "simultaneous_group_coverage": 0.9714285714285714,
+              "groups_with_any_missed_label": 2,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.050000000000000044,
+            "singleton_rate": -0.22142857142857142,
+            "selective_accuracy": -0.048872180451127845,
+            "abstention_rate": 0.22142857142857142,
+            "recording_group_coverage": 0.09999999999999998
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.050000000000000044,
+              "singleton_rate": -0.22142857142857142,
+              "selective_accuracy": -0.048872180451127845,
+              "abstention_rate": 0.22142857142857142,
+              "recording_group_coverage": 0.09999999999999998
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": 0.021428571428571352,
+                "upper_95": 0.08571428571428574,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.29285714285714287,
+                "upper_95": -0.15000000000000002,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.4251593137254901,
+                "upper_95": 0.24244471744471735,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": 0.15000000000000002,
+                "upper_95": 0.2928571428571429,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": 0.042857142857142816,
+                "upper_95": 0.17142857142857137,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality60": {
+          "distortion": {
+            "name": "jpeg_quality60",
+            "kind": "jpeg",
+            "quality": 60
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9285714285714286,
+            "singleton_rate": 0.2571428571428571,
+            "selective_accuracy": 0.7222222222222222,
+            "abstention_rate": 0.7428571428571429,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 60,
+              "simultaneous_group_coverage": 0.8571428571428571,
+              "groups_with_any_missed_label": 10,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.0071428571428571175,
+            "singleton_rate": -0.01428571428571429,
+            "selective_accuracy": -0.040935672514619936,
+            "abstention_rate": 0.014285714285714346,
+            "recording_group_coverage": -0.014285714285714346
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.0071428571428571175,
+              "singleton_rate": -0.01428571428571429,
+              "selective_accuracy": -0.040935672514619936,
+              "abstention_rate": 0.014285714285714346,
+              "recording_group_coverage": -0.014285714285714346
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.05714285714285705,
+                "upper_95": 0.04285714285714293,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.10714285714285712,
+                "upper_95": 0.07142857142857142,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.1825306057375588,
+                "upper_95": 0.10635939510939511,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.1071428571428571,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.11428571428571421,
+                "upper_95": 0.08571428571428574,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality35": {
+          "distortion": {
+            "name": "jpeg_quality35",
+            "kind": "jpeg",
+            "quality": 35
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9142857142857143,
+            "singleton_rate": 0.2785714285714286,
+            "selective_accuracy": 0.6923076923076923,
+            "abstention_rate": 0.7214285714285714,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 58,
+              "simultaneous_group_coverage": 0.8285714285714286,
+              "groups_with_any_missed_label": 12,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": -0.021428571428571463,
+            "singleton_rate": 0.007142857142857173,
+            "selective_accuracy": -0.07085020242914986,
+            "abstention_rate": -0.0071428571428571175,
+            "recording_group_coverage": -0.042857142857142816
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": -0.021428571428571463,
+              "singleton_rate": 0.007142857142857173,
+              "selective_accuracy": -0.07085020242914986,
+              "abstention_rate": -0.0071428571428571175,
+              "recording_group_coverage": -0.042857142857142816
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.0714285714285714,
+                "upper_95": 0.02857142857142858,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.08571428571428574,
+                "upper_95": 0.10000000000000003,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.20020733091623735,
+                "upper_95": 0.06367438899198478,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.09999999999999998,
+                "upper_95": 0.08571428571428574,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.1428571428571429,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        },
+        "jpeg_quality25": {
+          "distortion": {
+            "name": "jpeg_quality25",
+            "kind": "jpeg",
+            "quality": 25
+          },
+          "metrics": {
+            "q_hat_used": 0.615190539573253,
+            "empirical_coverage": 0.9428571428571428,
+            "singleton_rate": 0.2,
+            "selective_accuracy": 0.7142857142857143,
+            "abstention_rate": 0.8,
+            "recording_group_coverage": {
+              "group_key": "source_recording_id",
+              "group_count": 70,
+              "simultaneously_covered_group_count": 62,
+              "simultaneous_group_coverage": 0.8857142857142857,
+              "groups_with_any_missed_label": 8,
+              "group_sizes": {
+                "min": 2,
+                "max": 2
+              },
+              "interpretation": "Descriptive held-out recording-level simultaneous coverage. The split-conformal guarantee applies only under exchangeability of recording groups and the same group construction protocol; it is not per-example conditional correctness."
+            }
+          },
+          "delta_vs_clean": {
+            "empirical_coverage": 0.0071428571428571175,
+            "singleton_rate": -0.0714285714285714,
+            "selective_accuracy": -0.048872180451127845,
+            "abstention_rate": 0.07142857142857151,
+            "recording_group_coverage": 0.014285714285714235
+          },
+          "paired_group_bootstrap": {
+            "method": "paired_percentile_cluster_bootstrap",
+            "resampling_unit": "source_recording_id",
+            "group_count": 70,
+            "replicates": 2000,
+            "seed": 42,
+            "difference_direction": "distorted_minus_clean",
+            "point_difference": {
+              "empirical_coverage": 0.0071428571428571175,
+              "singleton_rate": -0.0714285714285714,
+              "selective_accuracy": -0.048872180451127845,
+              "abstention_rate": 0.07142857142857151,
+              "recording_group_coverage": 0.014285714285714235
+            },
+            "ci_95_percentile": {
+              "empirical_coverage": {
+                "lower_95": -0.042857142857142816,
+                "upper_95": 0.05714285714285716,
+                "valid_replicates": 2000
+              },
+              "singleton_rate": {
+                "lower_95": -0.15714285714285714,
+                "upper_95": 0.01428571428571429,
+                "valid_replicates": 2000
+              },
+              "selective_accuracy": {
+                "lower_95": -0.20215542521994134,
+                "upper_95": 0.11401656314699789,
+                "valid_replicates": 2000
+              },
+              "abstention_rate": {
+                "lower_95": -0.014285714285714346,
+                "upper_95": 0.15714285714285714,
+                "valid_replicates": 2000
+              },
+              "recording_group_coverage": {
+                "lower_95": -0.08571428571428563,
+                "upper_95": 0.11428571428571421,
+                "valid_replicates": 2000
+              }
+            },
+            "note": "Intervals quantify held-out recording-sampling uncertainty conditional on the fitted clean-data conformal artifact and this fixed corruption realization. They do not account for model-selection, annotation, dataset, or corruption-seed uncertainty."
+          },
+          "q_hat_fixed": true
+        }
+      }
+    }
+  },
+  "important_note": "All conformal artifacts were fitted and calibrated on clean fit and calibration splits only. The same q_hat was reused for clean and distorted test images; no corrupted test data was used for recalibration. Paired percentile intervals resample source recordings, preserving the two-row recording clusters. These intervals are conditional on the fixed noise seed. Results are robustness measurements on the held-out proxy dataset, not evidence of real-world forensic validity."
+}

@@ -1,0 +1,118 @@
+PS C:\Capstone-Project\CrimeVision-AI\research-engine> if (Test-Path .cache\uca_ablation) { Copy-Item -Recurse .cache\uca_ablation .cache\uca_ablation_prefix }; if (Test-Path .cache\ot_ablation)  { Copy-Item -Recurse .cache\ot_ablation  .cache\ot_ablation_prefix }; py ablate_conformal_scores.py --fit-csv datasets/uca/fit.csv --calibration-csv datasets/uca/calibration.csv --test-csv datasets/uca/test.csv --alpha 0.10 --output reports/uca_ablation_postfix.json --cache-dir .cache/uca_ablation_postfix --save-artifacts; py ablate_full_vs_partial_ot.py --fit-csv datasets/uca/fit.csv --calibration-csv datasets/uca/calibration.csv --test-csv datasets/uca/test.csv --output reports/full_vs_partial_ot_postfix.json --cache-dir .cache/ot_ablation_postfix; py ablate_degradation_sensitivity.py --max-examples 20 --trust-mode heterogeneity --output reports/degradation_sensitivity_postfix.csv; py ablate_degradation_sensitivity.py --max-examples 20 --trust-mode absolute --trust-tau 50 --trust-k 100 --output reports/degradation_sensitivity_absolute.csv
+[engine] loading openai/clip-vit-base-patch32 on device=auto
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[engine] resolved revision: 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268
+[extract] fit.csv: 1000/3136
+[extract] fit.csv: 2000/3136
+[extract] fit.csv: 3000/3136
+[extract] fit.csv: 3136/3136
+[cache] wrote .cache\uca_ablation_postfix\fit.npz (X=(3136, 3))
+[extract] calibration.csv: 140/140
+[cache] wrote .cache\uca_ablation_postfix\calibration.npz (X=(140, 3))
+[extract] test.csv: 140/140
+[cache] wrote .cache\uca_ablation_postfix\test.npz (X=(140, 3))
+
+[data] fit=3136 calibration=140 test=140
+[data] label counts: fit=[1568, 1568] calibration=[70, 70] test=[70, 70]
+
+[ablate] clip_only: features=('one_minus_global_clip_similarity',)
+
+[ablate] sinkhorn_only: features=('sinkhorn_divergence',)
+
+[ablate] discarded_only: features=('discarded_mass',)
+
+[ablate] sinkhorn_plus_clip: features=('sinkhorn_divergence', 'one_minus_global_clip_similarity')
+
+[ablate] discarded_plus_clip: features=('discarded_mass', 'one_minus_global_clip_similarity')
+
+[ablate] all_three: features=('sinkhorn_divergence', 'discarded_mass', 'one_minus_global_clip_similarity')
+
+[write] reports\uca_ablation_postfix.json
+[write] artifacts → reports\ablation_artifacts
+
+variant                  cover  single   sel_acc   abstain  set_size
+--------------------------------------------------------------------
+clip_only                0.864   0.471     0.712     0.529     1.529
+sinkhorn_only            0.886   0.236     0.515     0.764     1.764
+discarded_only           0.900   0.200     0.500     0.800     1.800
+sinkhorn_plus_clip       0.893   0.421     0.746     0.579     1.579
+discarded_plus_clip      0.893   0.421     0.746     0.579     1.579
+all_three                0.893   0.429     0.750     0.571     1.571
+
+
+======================================================================
+[mode] full_ot
+======================================================================
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[extract] fit.csv: 1000/3136
+[extract] fit.csv: 2000/3136
+[extract] fit.csv: 3000/3136
+[stats] sinkhorn mean=0.7388 std=0.0319
+[stats] discarded mean=0.0000 std=0.0000
+  clip_only              cover=0.864 single=0.471 sel_acc=0.712
+  sinkhorn_plus_clip     cover=0.900 single=0.421 sel_acc=0.763
+
+======================================================================
+[mode] partial_ot
+======================================================================
+[extract] fit.csv: 1000/3136
+[extract] fit.csv: 2000/3136
+[extract] fit.csv: 3000/3136
+[stats] sinkhorn mean=0.2474 std=0.1601
+[stats] discarded mean=0.6753 std=0.1994
+  clip_only              cover=0.864 single=0.471 sel_acc=0.712
+  sinkhorn_plus_clip     cover=0.893 single=0.421 sel_acc=0.746
+
+[write] reports\full_vs_partial_ot_postfix.json
+
+comparison                                 cover  single   sel_acc
+------------------------------------------------------------------
+full_ot__clip_only                         0.864   0.471     0.712
+full_ot__sinkhorn_plus_clip                0.900   0.421     0.763
+partial_ot__clip_only                      0.864   0.471     0.712
+partial_ot__sinkhorn_plus_clip             0.893   0.421     0.746
+[data] 20 source examples from datasets/uca/test.csv
+[data] severities: ['clean', 'mild', 'moderate', 'heavy']
+[plan] 80 CLIP+OT runs expected
+[config] trust_mode=heterogeneity tau=50.0 k=100.0
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[progress] 5/20 images
+[progress] 10/20 images
+[progress] 15/20 images
+[progress] 20/20 images
+
+[write] reports\degradation_sensitivity_postfix.csv
+[write] reports\degradation_sensitivity_postfix.summary.json
+
+severity       n   disc_mean  disc_std   sink_mean  sink_std
+------------------------------------------------------------
+clean         20      0.7086    0.1792      0.2202    0.1448
+mild          20      0.6554    0.1655      0.2533    0.1350  <- non-monotone!
+moderate      20      0.5358    0.1655      0.3348    0.1328  <- non-monotone!
+heavy         20      0.4156    0.1546      0.4191    0.1212  <- non-monotone!
+
+[!!] discarded_mass is NOT monotone in blur severity.
+     This is a legitimate negative finding; report it honestly.
+[data] 20 source examples from datasets/uca/test.csv
+[data] severities: ['clean', 'mild', 'moderate', 'heavy']
+[plan] 80 CLIP+OT runs expected
+[config] trust_mode=absolute tau=50.0 k=100.0
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[progress] 5/20 images
+[progress] 10/20 images
+[progress] 15/20 images
+[progress] 20/20 images
+
+[write] reports\degradation_sensitivity_absolute.csv
+[write] reports\degradation_sensitivity_absolute.summary.json
+
+severity       n   disc_mean  disc_std   sink_mean  sink_std
+------------------------------------------------------------
+clean         20      0.5056    0.0685      0.3586    0.0489
+mild          20      0.6125    0.0074      0.2764    0.0131
+moderate      20      0.6177    0.0026      0.2706    0.0130
+heavy         20      0.6194    0.0012      0.2702    0.0130
+
+[OK] discarded_mass is monotonically non-decreasing with blur severity.
+     This is the partial-OT mechanism operating as designed.
+PS C:\Capstone-Project\CrimeVision-AI\research-engine>

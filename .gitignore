@@ -1,21 +1,24 @@
-# Python / PyTorch
+# =====================================================================
+# CrimeVision-AI — .gitignore
+# Clean, non-redundant, grouped by category.
+# =====================================================================
+
+# ─── Python / PyTorch ────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
-env/
-venv/
-ENV/
 .venv/
+venv/
+env/
+ENV/
 build/
-develop-eggs/
 dist/
+develop-eggs/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
 parts/
 sdist/
 var/
@@ -23,38 +26,93 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# Jupyter / Colab
-.ipynb_checkpoints
+# ─── Jupyter / Colab ─────────────────────────────────────────────────
+.ipynb_checkpoints/
 *-checkpoint.ipynb
 
-# Node.js / React
+# ─── Node.js / Next.js ───────────────────────────────────────────────
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 .pnpm-debug.log*
 .next/
+.next-cache/
 out/
 
-# Environment Keys & Logs
+# ─── Secrets and environment files ───────────────────────────────────
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-*.log
+.env.*
+!.env.example
+!**/.env.example
 
-# Databases & Local Data
+# ─── Databases ───────────────────────────────────────────────────────
 database_data/
 *.db
 *.sqlite3
 
-# IDE / Operating System
+# ─── IDE / editor / OS ───────────────────────────────────────────────
 .vscode/
 .idea/
+.cursor/
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
 
-# Local media / generated test videos
-cctv_degraded.mp4
+# ─── Model checkpoints, weights, and model caches ────────────────────
+research-engine/models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+*.pkl
+*.pickle
+*.joblib
+huggingface-cache/
+.cache/
+
+# ─── NumPy feature caches (regenerable) ──────────────────────────────
+*.npy
+*.npz
+
+# ─── Datasets and evidence (keep documentation and downloaders) ──────
+research-engine/datasets/*
+!research-engine/datasets/README.md
+!research-engine/datasets/SNLI_VE_DOWNLOAD_GUIDE.md
+!research-engine/datasets/download_snli_ve_annotations.py
+evidence/
+uploads/
+research-engine/local_evidence_vault/
+
+# ─── Orphaned ChromaDB (from a retired experiment) ───────────────────
+research-engine/chroma_vault/
+
+# ─── Generated media (large binaries) ────────────────────────────────
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# ─── Logs and temporary files ────────────────────────────────────────
+*.log
+*.tmp
+*.temp
+
+# ─── Regenerable runtime artifacts ───────────────────────────────────
+research-engine/memory_snapshot.json
+reports/ablation_artifacts/
+
+# ─── gitingest / map_everything.py / PowerShell outputs ──────────────
+digest.txt
+full_repo_structure.txt
+full_output.txt

@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+  "neo4j: requires a live Neo4j instance (skipped when NEO4J_TEST_URI is unset)",
+]
