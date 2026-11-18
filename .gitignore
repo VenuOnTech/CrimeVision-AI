@@ -68,7 +68,8 @@ Thumbs.db
 *.swo
 
 # ─── Model checkpoints, weights, and model caches ────────────────────
-research-engine/models/
+# Keep JSON calibration/configuration artifacts in research-engine/models/.
+# Exclude only binary model weights and serialized model/cache formats.
 *.pt
 *.pth
 *.ckpt
@@ -85,11 +86,15 @@ huggingface-cache/
 *.npy
 *.npz
 
-# ─── Datasets and evidence (keep documentation and downloaders) ──────
+# ─── Datasets and evidence (keep documentation and utility scripts) ──
 research-engine/datasets/*
 !research-engine/datasets/README.md
 !research-engine/datasets/SNLI_VE_DOWNLOAD_GUIDE.md
 !research-engine/datasets/download_snli_ve_annotations.py
+!research-engine/datasets/adapt_uca.py
+!research-engine/datasets/inspect_uca.py
+!research-engine/datasets/prepare_smoke_test.py
+!research-engine/datasets/prepare_ucf_crime_proxy.py
 evidence/
 uploads/
 research-engine/local_evidence_vault/
